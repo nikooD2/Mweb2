@@ -1,0 +1,272 @@
+/* =====================================
+   NAVBAR DROPDOWNS
+   Shared between Desktop & Mobile
+===================================== */
+
+
+
+
+/* =====================================
+   DROPDOWN
+===================================== */
+
+.nav-dropdown {
+    position: fixed;
+
+    z-index: 20000;
+
+    width: 270px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+
+    direction: rtl;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+/* OPEN */
+
+.nav-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 16px;
+
+    font-size: var(--fs-sm);
+    font-weight: 600;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.dropdown-count {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: var(--surface);
+
+    font-size: 11px;
+}
+
+
+/* =====================================
+   ITEMS
+===================================== */
+
+.dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+
+    padding: 13px 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    transition: background 0.2s ease;
+}
+
+
+.dropdown-item:hover {
+    background: var(--background);
+}
+
+
+.dropdown-item > i {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--background);
+    color: var(--primary);
+}
+
+
+.dropdown-item strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: var(--fs-sm);
+}
+
+
+.dropdown-item p {
+    margin: 0;
+
+    color: var(--gray);
+
+    font-size: var(--fs-xs);
+
+    line-height: 1.6;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.dropdown-footer {
+    display: block;
+
+    padding: 12px;
+
+    text-align: center;
+
+    color: var(--primary);
+
+    font-size: var(--fs-xs);
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+}
+
+
+.dropdown-footer:hover {
+    background: var(--background);
+}
+
+
+/* =====================================
+   USER
+===================================== */
+
+.user-dropdown-profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 16px;
+}
+
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: var(--surface);
+}
+
+
+.user-dropdown-profile strong {
+    display: block;
+
+    font-size: var(--fs-sm);
+}
+
+
+.user-dropdown-profile span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--gray);
+    font-size: var(--fs-xs);
+}
+
+
+/* =====================================
+   LINKS
+===================================== */
+
+.dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 16px;
+
+    color: var(--text);
+
+    font-size: var(--fs-sm);
+
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+}
+
+
+.dropdown-link:hover {
+    background: var(--background);
+}
+
+
+.dropdown-link i {
+    width: 18px;
+
+    text-align: center;
+
+    color: var(--gray);
+}
+
+
+.logout-link,
+.logout-link i {
+    color: #b33;
+}
+
+
+/* =====================================
+   DIVIDER
+===================================== */
+
+.dropdown-divider {
+    height: 1px;
+
+    background: var(--border);
+}

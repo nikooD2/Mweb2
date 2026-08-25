@@ -1,0 +1,1163 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>سامانه مصباح</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="navbar-dropdowns.css">
+
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <!-- ================= TOP NAVBAR ================= -->
+        <nav class="navbar">
+
+            <!-- RIGHT SIDE -->
+            <div class="nav-right">
+
+                <!-- Menu -->
+                <div class="menu-wrapper">
+
+                    <button class="menu-toggle" type="button" aria-label="باز کردن منو">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="mega-menu">
+
+                        <!-- گروه اول -->
+                        <div class="menu-section">
+
+                            <a href="#">
+                                <i class="fa-solid fa-house"></i>
+                                <span>خانه</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-fire"></i>
+                                <span>پربازدیدترین‌ها</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <span>محتواهای جدید</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-list"></i>
+                                <span>فهرست‌های پخش</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <span>مناسبت‌ها و موضوعات</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>سخنران‌ها</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <span>هوش مصنوعی مصباح</span>
+                            </a>
+
+                        </div>
+
+                        <!-- گروه دوم -->
+                        <div class="menu-section">
+
+                            <a href="#">
+                                <i class="fa-solid fa-user-check"></i>
+                                <span>برای شما</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                <span>تاریخچه</span>
+                            </a>
+                            
+                            <a href="#">
+                                <i class="fa-regular fa-bookmark"></i>
+                                <span>ذخیره‌ها</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-heart"></i>
+                                <span>موردعلاقه‌ها</span>
+                            </a>
+                            
+
+                        </div>
+
+
+                        <!-- گروه سوم -->
+                        <div class="menu-section">
+
+                            <a href="#">
+                                <i class="fa-solid fa-file-circle-plus"></i>
+                                <span>درخواست یا ارسال مطلب جدید</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-book-open"></i>
+                                <span>مرور منابع</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>درباره ما</span>
+                            </a>
+
+                            <a href="#">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>تماس با ما</span> 
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <img src="pics/logo.png" alt="سامانه مصباح">
+                </a>
+
+            </div>
+
+
+            <!-- CENTER -->
+            <div class="nav-center">
+                <!-- intentionally empty -->
+            </div>
+
+
+            <!-- LEFT SIDE -->
+            <div class="nav-left">
+
+                <!-- Language -->
+                <div class="language-wrapper">
+
+                    <select class="language-select" aria-label="زبان">
+                        <option value="fa">FA</option>
+                        <option value="ar">AR</option>
+                        <option value="en">EN</option>
+                    </select>
+
+                </div>
+
+
+                <!-- User / Messages / Notifications -->
+                <div class="nav-actions">
+
+                    <button class="nav-icon" type="button" title="حساب کاربری" href="javascript:void(0)" data-dropdown="user-dropdown">
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+
+                    <button class="nav-icon" type="button" title="پیام‌ها" data-dropdown="message-dropdown">
+                        <i class="fa-regular fa-envelope"></i>
+                    </button>
+
+                    <button class="nav-icon notification-icon"
+                            type="button"
+                            title="اعلان‌ها" data-dropdown="notification-dropdown">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- Search -->
+                <form class="nav-search">
+
+                    <input
+                        type="search"
+                        placeholder="جستجو..."
+                        aria-label="جستجو">
+
+                    <button type="submit" aria-label="جستجو">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </nav>
+
+
+        <!-- ================= CATEGORY BAR ================= -->
+        <div class="category-bar">
+
+            <button class="category-arrow category-prev"
+                    type="button"
+                    aria-label="موضوعات قبلی">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+
+            <div class="categories-container">
+
+                <div class="categories">
+
+                    <a href="#">
+                        قرآن
+                    </a>
+
+                    <a href="#">
+                        چهارده معصوم
+                    </a>
+
+                    <a href="#">
+                        پیامبران
+                    </a>
+
+                    <a href="#">
+                        حدیث
+                    </a>
+
+                    <a href="#">
+                        تاریخ
+                    </a>
+
+                    <a href="#">
+                        سیره
+                    </a>
+
+                    <a href="#">
+                        قواعد عربی
+                    </a>
+
+                    <a href="#">
+                        کلام و عقاید
+                    </a>
+
+                    <a href="#">
+                        فقه و احکام
+                    </a>
+
+                    <a href="#">
+                        اخلاق
+                    </a>
+
+                    <a href="#">
+                        خانواده
+                    </a>
+
+                    <a href="#">
+                        فلسفه
+                    </a>
+
+                    <a href="#">
+                        عرفان
+                    </a>
+
+                    <a href="#">
+                        علوم اسلامی
+                    </a>
+
+                    <a href="#">
+                        پاسخ به پرسش‌ها
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <button class="category-arrow category-next"
+                    type="button"
+                    aria-label="موضوعات بعدی">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- ================== HOME HERO ================== -->
+
+    <section class="home-hero">
+        <div class="hero-slider">
+
+            <!-- SLIDE 1 -->
+            <div class="hero-slide active"
+                style="background-image: url('pics/hero1.jpg');">
+
+                <div class="hero-slide-overlay"></div>
+
+                <div class="hero-slide-content">
+
+                    <span class="hero-slide-label">
+                        ویژه
+                    </span>
+
+                    <h1>
+                        معارف توحیدی
+                    </h1>
+
+                    <p>
+                        مجموعه‌ای از سخنرانی‌ها و مطالب درباره توحید و شناخت خداوند
+                    </p>
+
+                    <button class="hero-slide-btn">
+                        مشاهده مطالب
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- SLIDE 2 -->
+            <div class="hero-slide"
+                style="background-image: url('pics/hero2.jpg');">
+
+                <div class="hero-slide-overlay"></div>
+
+                <div class="hero-slide-content">
+
+                    <span class="hero-slide-label">
+                        منتخب
+                    </span>
+
+                    <h1>
+                        امام حسن مجتبی (ع)
+                    </h1>
+
+                    <p>
+                        نگاهی به زندگی، سیره و شخصیت کریم اهل‌بیت
+                    </p>
+
+                    <button class="hero-slide-btn">
+                        مشاهده مطالب
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- SLIDE 3 -->
+            <div class="hero-slide"
+                style="background-image: url('pics/hero3.png');">
+
+                <div class="hero-slide-overlay"></div>
+
+                <div class="hero-slide-content">
+
+                    <span class="hero-slide-label">
+                        سخنرانی
+                    </span>
+
+                    <h1>
+                        تاریخ امیرالمؤمنین (ع)
+                    </h1>
+
+                    <p>
+                        مجموعه‌ای از سخنرانی‌ها درباره زندگی و تاریخ امیرالمؤمنین
+                    </p>
+
+                    <button class="hero-slide-btn">
+                        مشاهده مطالب
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- SLIDER CONTROLS -->
+
+            <button class="hero-slider-arrow hero-slider-prev"
+                    aria-label="اسلاید قبلی">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button class="hero-slider-arrow hero-slider-next"
+                    aria-label="اسلاید بعدی">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+
+            <!-- DOTS -->
+
+            <div class="hero-slider-dots">
+
+                <button class="hero-dot active"
+                        data-slide="0"></button>
+
+                <button class="hero-dot"
+                        data-slide="1"></button>
+
+                <button class="hero-dot"
+                        data-slide="2"></button>
+
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- ================= HOME CONTENT ================= -->
+
+    <section class="home-content">
+
+        <!-- ================= VIDEO FILTER ================= -->
+        <div class="filter-fields">
+
+            <!-- موضوع -->
+            <div class="filter-field">
+                <select id="topic-filter">
+                    <option value="">همه موضوعات</option>
+                    <option value="quran">قرآن</option>
+                    <option value="ahlulbayt">چهارده معصوم</option>
+                    <option value="prophets">پیامبران</option>
+                    <option value="hadith">حدیث</option>
+                    <option value="history">تاریخ</option>
+                    <option value="seerah">سیره</option>
+                    <option value="arabic">قواعد عربی</option>
+                    <option value="aqeedah">کلام و عقاید</option>
+                    <option value="fiqh">فقه و احکام</option>
+                    <option value="ethics">اخلاق</option>
+                    <option value="family">خانواده</option>
+                    <option value="islamic-sciences">علوم اسلامی</option>
+                    <option value="questions">پاسخ به پرسش‌ها</option>
+                </select>
+            </div>
+
+
+            <!-- نام سخنران -->
+            <div class="filter-field">
+                <select id="speaker-filter">
+                    <option value="">همه سخنرانان</option>
+                    <option value="speaker1">سخنران 1</option>
+                    <option value="speaker2">سخنران 2</option>
+                    <option value="speaker3">سخنران 3</option>
+                </select>
+            </div>
+
+
+            <!-- قالب -->
+            <div class="filter-field">
+                <select id="format-filter">
+                    <option value="">همه قالب‌ها</option>
+                    <option value="video">ویدیو</option>
+                    <option value="audio">صوت</option>
+                    <option value="image">عکس</option>
+                    <option value="text">متن</option>
+                </select>
+            </div>
+
+
+            <!-- دکمه اعمال -->
+            <button type="button" class="filter-button" id="apply-filter">
+                <i class="fa-solid fa-sliders"></i>
+                اعمال فیلتر
+            </button>
+
+        </div>
+
+        <!-- ===== NEWEST ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>جدیدترین‌ها</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content1.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای نمونه</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content2.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای نمونه</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content3.jpg" alt="">
+                        <span class="content-type">مقاله</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای نمونه</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content4.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای نمونه</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content4.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای نمونه</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+        <!-- ===== MOST VIEWED ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>پربازدیدهای اخیر</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content5.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای پربازدید</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content6.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای پربازدید</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content7.jpg" alt="">
+                        <span class="content-type">مقاله</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای پربازدید</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content8.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای پربازدید</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content8.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+
+                    <div class="content-card-body">
+                        <h3>عنوان محتوای پربازدید</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ===== TOHID ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>توحید</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content9.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>معارف توحیدی</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content10.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>شناخت خداوند</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content11.jpg" alt="">
+                        <span class="content-type">مقاله</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>مراتب توحید</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content12.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>توحید در زندگی</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content12.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>توحید در زندگی</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ===== MAAD ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>معاد</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content13.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>زندگی پس از مرگ</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content14.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>حقیقت معاد</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content15.jpg" alt="">
+                        <span class="content-type">مقاله</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>دلایل اثبات معاد</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content16.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>معاد در قرآن</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content16.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>معاد در قرآن</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ===== IMAM ALI ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>تاریخ امیرالمؤمنین</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content17.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>زندگی امیرالمؤمنین</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content18.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>دوران حکومت امام علی</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content19.jpg" alt="">
+                        <span class="content-type">مقاله</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>سیره امیرالمؤمنین</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content20.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>فضایل امیرالمؤمنین</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content20.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>فضایل امیرالمؤمنین</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ===== IMAM HASAN ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>تاریخ امام حسن</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content21.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>زندگی امام حسن مجتبی</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content22.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>صلح امام حسن</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content23.jpg" alt="">
+                        <span class="content-type">مقاله</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>سیره امام حسن</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content24.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>فضایل امام حسن</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+                                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content24.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>فضایل امام حسن</h3>
+                        <p>استاد نمونه</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ===== BY PROFESSOR ===== -->
+        <section class="content-row">
+
+            <div class="content-row-header">
+                <h2>از زبان استاد ...</h2>
+                <a href="#" class="view-all">مشاهده همه <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+
+            <div class="content-slider">
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content25.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>عنوان سخنرانی</h3>
+                        <p>استاد ...</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content26.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>عنوان سخنرانی</h3>
+                        <p>استاد ...</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content27.jpg" alt="">
+                        <span class="content-type">ویدئو</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>عنوان سخنرانی</h3>
+                        <p>استاد ...</p>
+                    </div>
+                </article>
+
+                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content28.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>عنوان سخنرانی</h3>
+                        <p>استاد ...</p>
+                    </div>
+                </article>
+
+                                <article class="content-card">
+                    <div class="content-card-image">
+                        <img src="pics/content28.jpg" alt="">
+                        <span class="content-type">صوت</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>عنوان سخنرانی</h3>
+                        <p>استاد ...</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </section>
+    
+    <!-- ================= SHARED DROPDOWNS ================= -->
+
+    <!-- USER DROPDOWN -->
+    <div id="user-dropdown" class="nav-dropdown">
+
+        <div class="user-dropdown-profile">
+
+            <div class="user-avatar">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+            <div>
+                <strong>کاربر</strong>
+                <span>حساب کاربری</span>
+            </div>
+
+        </div>
+
+
+        <div class="dropdown-divider"></div>
+
+
+        <a href="#" class="dropdown-link">
+            <i class="fa-regular fa-user"></i>
+            <span>پروفایل من</span>
+        </a>
+
+
+        <a href="#" class="dropdown-link">
+            <i class="fa-solid fa-gear"></i>
+            <span>تنظیمات</span>
+        </a>
+
+        <a href="#" class="dropdown-link">
+            <i class="fa-solid fa-language"></i>
+            <span>زبان</span>
+        </a>
+
+        <div class="dropdown-divider"></div>
+
+
+        <a href="#" class="dropdown-link logout-link">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>خروج از حساب</span>
+        </a>
+
+    </div>
+
+    <!-- NOTIFICATION DROPDOWN -->
+    <div id="notification-dropdown" class="nav-dropdown">
+
+        <div class="dropdown-header">
+
+            <span>اعلان‌ها</span>
+
+            <span class="dropdown-count">2</span>
+
+        </div>
+
+
+        <div class="dropdown-item">
+
+            <i class="fa-regular fa-bell"></i>
+
+            <div>
+
+                <strong>اعلان جدید</strong>
+
+                <p>
+                    محتوای جدیدی به سایت اضافه شد.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dropdown-item">
+
+            <i class="fa-regular fa-bell"></i>
+
+            <div>
+
+                <strong>به‌روزرسانی</strong>
+
+                <p>
+                    حساب کاربری شما به‌روزرسانی شد.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="#" class="dropdown-footer">
+            مشاهده همه اعلان‌ها
+        </a>
+
+    </div>
+
+    <!-- MESSAGE DROPDOWN -->
+    <div id="message-dropdown" class="nav-dropdown">
+
+        <div class="dropdown-header">
+
+            <span>پیام‌ها</span>
+
+            <span class="dropdown-count">3</span>
+
+        </div>
+
+
+        <div class="dropdown-item">
+
+            <i class="fa-regular fa-user"></i>
+
+            <div>
+
+                <strong>پیام جدید</strong>
+
+                <p>
+                    شما یک پیام جدید دارید.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dropdown-item">
+
+            <i class="fa-regular fa-user"></i>
+
+            <div>
+
+                <strong>پشتیبانی</strong>
+
+                <p>
+                    پاسخ پیام شما ارسال شد.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="#" class="dropdown-footer">
+            مشاهده همه پیام‌ها
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div>
+            <h3>ارتباط با ما</h3>
+            <p>ایمیل</p>
+            <p>شماره تماس</p>
+            <p>آدرس</p>
+        </div>
+
+        <div>
+            <h3>درباره سامانه</h3>
+            <p>قوانین</p>
+            <p>حریم خصوصی</p>
+            <p>سوالات متداول</p>
+        </div>
+
+        <p class="copyright">
+            © 2026 تمامی حقوق این وب‌سایت محفوظ است.
+            استفاده از مطالب تنها با ذکر منبع مجاز است.
+        </p>
+
+    </footer>
+
+    </div>
+    
+    <!-- JS -->
+
+    <script src="navbar-dropdowns.js"></script>
+    <script src="navbar.js"></script>
+    <script src="slider.js"></script>
+
+</body>
+
+</html>
