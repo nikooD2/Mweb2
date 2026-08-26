@@ -1,0 +1,184 @@
+/* =========================================================
+   SPEAKERS
+========================================================= */
+
+.speakers-section {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SPEAKERS GRID
+========================================================= */
+
+.speakers-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 3rem 0px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   SPEAKER CARD
+========================================================= */
+
+.speaker-card {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.speaker-card:hover {
+    transform: translateY(-6px);
+}
+
+
+/* =========================================================
+   SPEAKER IMAGE
+========================================================= */
+
+.speaker-image {
+    width: 150px;
+    height: 150px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    border: 3px solid var(--primary-soft);
+
+    background: var(--surface);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.speaker-card:hover .speaker-image {
+    border-color: var(--primary-light);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+    transform: scale(1.04);
+}
+
+
+.speaker-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   SPEAKER NAME
+========================================================= */
+
+.speaker-card h2 {
+    margin: 1rem 0 0;
+
+    font-family: var(--font-family);
+
+    font-size: 1.05rem;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    color: var(--text);
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.speaker-card:hover h2 {
+    color: var(--primary-dark);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .speakers-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+        gap: 2.5rem 1.5rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .speakers-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 2rem 1rem;
+    }
+
+    .speaker-image {
+        width: 110px;
+        height: 110px;
+    }
+
+    .speaker-card h2 {
+        font-size: 0.9rem;
+
+        margin-top: 0.75rem;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .speakers-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 2rem 1rem;
+    }
+
+    .speaker-image {
+        width: 120px;
+        height: 120px;
+    }
+
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results type="filtered">
+    <item>
+        <id>301</id>
+        <title>آشنایی با قواعد عربی</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content6.jpg</image>
+        <topic>arabic</topic>
+        <views>430</views>
+        <date>2026-08-15</date>
+    </item>
+    <item>
+        <id>302</id>
+        <title>احکام خانواده در اسلام</title>
+        <speaker>استاد نمونه</speaker>
+        <type>مقاله</type>
+        <image>pics/content/content7.jpg</image>
+        <topic>family</topic>
+        <views>390</views>
+        <date>2026-08-14</date>
+    </item>
+    <item>
+        <id>303</id>
+        <title>اخلاق در زندگی روزمره</title>
+        <speaker>استاد نمونه</speaker>
+        <type>صوت</type>
+        <image>pics/content/content8.jpg</image>
+        <topic>ethics</topic>
+        <views>350</views>
+        <date>2026-08-13</date>
+    </item>
+    <item>
+        <id>304</id>
+        <title>تاریخ صدر اسلام</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content9.jpg</image>
+        <topic>history</topic>
+        <views>310</views>
+        <date>2026-08-12</date>
+    </item>
+    <item>
+        <id>305</id>
+        <title>پاسخ به پرسش‌های اعتقادی</title>
+        <speaker>استاد نمونه</speaker>
+        <type>صوت</type>
+        <image>pics/content/content10.jpg</image>
+        <topic>questions</topic>
+        <views>280</views>
+        <date>2026-08-11</date>
+    </item>
+</results>

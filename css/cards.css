@@ -1,0 +1,305 @@
+
+/* =========================================
+   FILTER FIELDS
+========================================= */
+
+.filter-fields {
+    width: 70%;
+    margin: 0 auto 20px auto;
+    align-items: center;
+    margin-bottom: 0px;
+    background: none;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(60px, 1fr)
+        minmax(60px, 1fr)
+        minmax(60px, 1fr)
+        auto;
+
+    align-items: end;
+    gap: 1rem;
+}
+
+
+/* =========================================
+   FILTER FIELD
+========================================= */
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+.filter-field select {
+    height: 44px;
+
+    padding: 0 0.85rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    background-color: var(--surface);
+
+    color: var(--text);
+
+    font-family: var(--font-family);
+
+    font-size: var(--fs-sm);
+
+    cursor: pointer;
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        background-color var(--transition),
+        box-shadow var(--transition);
+}
+
+
+/* Hover */
+
+.filter-field select:hover {
+    border-color: var(--primary-light);
+    background-color: var(--surface);
+}
+
+
+/* Focus */
+
+.filter-field select:focus {
+    border-color: var(--primary);
+
+    background-color: var(--surface);
+
+    box-shadow:
+        0 0 0 3px rgba(186, 153, 78, 0.12);
+}
+
+
+/* =========================================
+   FILTER BUTTON
+========================================= */
+
+.filter-button {
+    height: 44px;
+
+    padding: 0 1.15rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.45rem;
+
+    border: 1px solid var(--primary);
+
+    border-radius: var(--radius-lg);
+
+    background: var(--primary);
+
+    color: var(--surface);
+
+    font-family: var(--font-family);
+
+    font-size: var(--fs-sm);
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+
+/* Hover */
+
+.filter-button:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+
+/* Active */
+
+.filter-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1050px) {
+
+    .filter-fields {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filter-button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .filter-fields {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .filter-field select {
+        height: 42px;
+    }
+
+    .filter-button {
+        width: 100%;
+        height: 42px;
+    }
+}
+/* =========================================
+   CONTENT CARD
+========================================= */
+.content-card {
+    flex: 0 0 250px;
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+.content-card-image {
+    position: relative;
+
+    width: 100%;
+    height: 145px;
+
+    overflow: hidden;
+
+    background: var(--border);
+}
+
+.content-card-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover .content-card-image img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   CONTENT TYPE
+========================================= */
+
+.content-type {
+    position: absolute;
+
+    bottom: 0.65rem;
+    right: 0.65rem;
+
+    padding: 0.25rem 0.55rem;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    color: var(--surface);
+
+    border-radius: var(--radius-sm);
+
+    font-size: var(--fs-xs);
+}
+
+
+/* =========================================
+   CARD BODY
+========================================= */
+
+.content-card-body {
+    padding: 0.9rem 1rem;
+}
+.content-card-body h3 {
+    margin: 0 0 0.5rem;
+
+    color: var(--text);
+
+    font-size: var(--fs-md);
+    font-weight: 700;
+
+    line-height: 1.7;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+.content-card-body p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: var(--fs-xs);
+}
+
+@media (max-width: 768px) {
+    .content-card {
+        flex: 0 0 190px;
+        border-radius: 10px;
+    }
+
+    .content-card-image {
+        height: 115px;
+    }
+
+    .content-card-body {
+        padding: 0.7rem 0.8rem;
+    }
+
+    .content-card-body h3 {
+        font-size: 0.82rem;
+    }
+
+    .content-card-body p {
+        font-size: 0.7rem;
+    }
+}

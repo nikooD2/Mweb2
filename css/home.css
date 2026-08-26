@@ -1,0 +1,390 @@
+@import url("./cards.css");
+/* =========================================
+   HOME CONTENT
+========================================= */
+
+.home-content {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 1.5rem 2rem 4rem;
+}
+
+
+/* =========================================
+   CONTENT ROW
+========================================= */
+
+.content-row {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+
+/* =========================================
+   ROW HEADER
+========================================= */
+
+.content-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.2rem;
+    padding: 0 0.2rem;
+}
+
+.content-row-header h2 {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    color: var(--primary);
+    text-decoration: none;
+
+    font-size: var(--fs-sm);
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.view-all:hover {
+    color: var(--primary-light);
+}
+
+.view-all i {
+    font-size: var(--fs-xs);
+}
+
+
+/* =========================================
+   CONTENT SLIDER
+========================================= */
+
+.content-slider {
+    display: flex;
+    gap: 1.2rem;
+
+    overflow-x: auto;
+
+    padding: 0.3rem 0.2rem 0.8rem;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: thin;
+}
+
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .home-content {
+        padding: 1.8rem 1rem 3rem;
+    }
+
+    .content-row {
+        margin-bottom: 2.2rem;
+    }
+
+    .content-row-header {
+        margin-bottom: 0.9rem;
+    }
+
+    .content-row-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .view-all {
+        font-size: 0.75rem;
+    }
+
+    .content-slider {
+        gap: 0.8rem;
+    }
+
+}
+
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.home-hero {
+    width: 100%;
+    overflow: hidden;
+    margin-top: calc(
+        var(--navbar-height) + var(--category-height)
+    );
+}
+
+
+/* =========================================================
+   HERO SLIDER
+========================================================= */
+
+.hero-slider {
+    position: relative;
+
+    width: 100%;
+    height: 75vh;
+
+    overflow: hidden;
+
+    background: var(--text);
+}
+
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* DARK OVERLAY */
+
+.hero-slide-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.70) 0%,
+            rgba(0, 0, 0, 0.35) 50%,
+            rgba(0, 0, 0, 0.15) 100%
+        );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+.hero-slide-content {
+    position: absolute;
+
+    right: 8%;
+    bottom: 100px;
+
+    width: min(500px, 45%);
+
+    color: var(--surface);
+
+    z-index: 2;
+
+    text-align: right;
+}
+
+
+.hero-slide-label {
+    display: inline-block;
+
+    margin-bottom: 0.8rem;
+
+    padding: 0.35rem 0.8rem;
+
+    border-radius: var(--radius-sm);
+
+    background: rgba(255, 255, 255, 0.14);
+
+    font-size: var(--fs-sm);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.hero-slide-content h1 {
+    margin: 0 0 0.8rem;
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+
+    line-height: 1.25;
+}
+
+
+.hero-slide-content p {
+    margin: 0 0 1.4rem;
+
+    max-width: 450px;
+
+    font-size: 1rem;
+
+    line-height: 1.9;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================================
+   HERO BUTTON
+========================================================= */
+.hero-slide-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    padding: 0.65rem 1rem;
+
+    border: none;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--primary);
+
+    color: var(--surface);
+
+    font-family: inherit;
+
+    font-size: var(--fs-sm);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.hero-slide-btn:hover {
+    background: var(--primary-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SLIDER ARROWS
+========================================================= */
+
+.hero-slider-arrow {
+    position: absolute;
+
+    top: 50%;
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    transition: 0.2s ease;
+}
+
+
+.hero-slider-arrow:hover {
+    background: rgba(0, 0, 0, 0.55);
+}
+
+
+.hero-slider-prev {
+    right: 25px;
+}
+
+
+.hero-slider-next {
+    left: 25px;
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.hero-slider-dots {
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.hero-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    cursor: pointer;
+
+    transition:
+        width 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.hero-dot.active {
+    width: 24px;
+
+    border-radius: 10px;
+
+    background: #fff;
+}
+
+@media (max-width: 768px) {
+    .home-hero {
+        margin-top: calc(
+            var(--mobile-navbar-height) + var(--mobile-category-height)
+        );
+    }
+}

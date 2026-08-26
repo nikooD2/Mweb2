@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>نتایج - مصباح</title>
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Global -->
+
+    <link
+        rel="stylesheet"
+        href="css/global.css">
+
+
+    <!-- Results -->
+
+    <link
+        rel="stylesheet"
+        href="css/results.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div id="header"></div>
+
+
+
+    <!-- ================= RESULTS ================= -->
+
+    <main class="page">
+
+
+        <section class="page-header">
+
+            <a href="index.html" class="back-button">
+                <i class="fa-solid fa-house"></i>
+                بازگشت به خانه
+            </a>
+
+            <h1 id="results-title">
+            </h1>
+
+        </section>
+
+        <div class="filter-fields">
+
+            <!-- موضوع -->
+            <div class="filter-field">
+                <select id="topic-filter">
+                    <option value="">همه موضوعات</option>
+                    <option value="quran">قرآن</option>
+                    <option value="ahlulbayt">چهارده معصوم</option>
+                    <option value="prophets">پیامبران</option>
+                    <option value="hadith">حدیث</option>
+                    <option value="history">تاریخ</option>
+                    <option value="seerah">سیره</option>
+                    <option value="arabic">قواعد عربی</option>
+                    <option value="aqeedah">کلام و عقاید</option>
+                    <option value="fiqh">فقه و احکام</option>
+                    <option value="ethics">اخلاق</option>
+                    <option value="family">خانواده</option>
+                    <option value="islamic-sciences">علوم اسلامی</option>
+                </select>
+            </div>
+
+
+            <!-- نام سخنران -->
+            <div class="filter-field">
+                <select id="speaker-filter">
+                    <option value="">همه سخنرانان</option>
+                    <option value="speaker1">سخنران 1</option>
+                    <option value="speaker2">سخنران 2</option>
+                    <option value="speaker3">سخنران 3</option>
+                </select>
+            </div>
+
+
+            <!-- قالب -->
+            <div class="filter-field">
+                <select id="format-filter">
+                    <option value="">همه قالب‌ها</option>
+                    <option value="video">ویدیو</option>
+                    <option value="audio">صوت</option>
+                    <option value="image">عکس</option>
+                    <option value="text">متن</option>
+                </select>
+            </div>
+
+
+            <!-- دکمه اعمال -->
+            <button type="button" class="filter-button" id="apply-filter">
+                <i class="fa-solid fa-sliders"></i>
+                اعمال فیلتر
+            </button>
+
+        </div>
+
+
+        <!-- ================= CARDS ================= -->
+
+        <section class="results-grid">
+
+            <!--
+                کارت‌ها اینجا توسط results.js
+                ساخته می‌شوند.
+            -->
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div id="footer"></div>
+
+
+
+    <!-- ================= JS ================= -->
+
+    <script src="js/global.js"></script>
+    <script src="js/results.js"></script>
+
+
+</body>
+
+</html>

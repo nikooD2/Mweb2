@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results type="popular">
+    <item>
+        <id>201</id>
+        <title>زندگی امیرالمؤمنین (ع)</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content17.jpg</image>
+        <topic>history</topic>
+        <views>15400</views>
+        <date>2026-07-18</date>
+    </item>
+    <item>
+        <id>202</id>
+        <title>صلح امام حسن (ع)</title>
+        <speaker>استاد نمونه</speaker>
+        <type>صوت</type>
+        <image>pics/content/content22.jpg</image>
+        <topic>history</topic>
+        <views>12100</views>
+        <date>2026-07-12</date>
+    </item>
+    <item>
+        <id>203</id>
+        <title>مراتب توحید</title>
+        <speaker>استاد نمونه</speaker>
+        <type>مقاله</type>
+        <image>pics/content/content11.jpg</image>
+        <topic>aqeedah</topic>
+        <views>10800</views>
+        <date>2026-06-30</date>
+    </item>
+    <item>
+        <id>204</id>
+        <title>زندگی پس از مرگ</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content13.jpg</image>
+        <topic>aqeedah</topic>
+        <views>9700</views>
+        <date>2026-06-25</date>
+    </item>
+    <item>
+        <id>205</id>
+        <title>فضایل امام حسن مجتبی (ع)</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content24.jpg</image>
+        <topic>ahlulbayt</topic>
+        <views>8900</views>
+        <date>2026-06-20</date>
+    </item>
+</results>

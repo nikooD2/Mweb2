@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results type="newest">
+    <item>
+        <id>101</id>
+        <title>معارف توحیدی</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content1.jpg</image>
+        <topic>aqeedah</topic>
+        <views>1250</views>
+        <date>2026-08-25</date>
+    </item>
+    <item>
+        <id>102</id>
+        <title>شناخت خداوند</title>
+        <speaker>استاد نمونه</speaker>
+        <type>صوت</type>
+        <image>pics/content/content2.jpg</image>
+        <topic>aqeedah</topic>
+        <views>980</views>
+        <date>2026-08-24</date>
+    </item>
+    <item>
+        <id>103</id>
+        <title>سیره امیرالمؤمنین (ع)</title>
+        <speaker>استاد نمونه</speaker>
+        <type>مقاله</type>
+        <image>pics/content/content3.jpg</image>
+        <topic>seerah</topic>
+        <views>760</views>
+        <date>2026-08-23</date>
+    </item>
+    <item>
+        <id>104</id>
+        <title>زندگی امام حسن مجتبی (ع)</title>
+        <speaker>استاد نمونه</speaker>
+        <type>ویدئو</type>
+        <image>pics/content/content4.jpg</image>
+        <topic>ahlulbayt</topic>
+        <views>650</views>
+        <date>2026-08-22</date>
+    </item>
+    <item>
+        <id>105</id>
+        <title>حقیقت معاد</title>
+        <speaker>استاد نمونه</speaker>
+        <type>صوت</type>
+        <image>pics/content/content5.jpg</image>
+        <topic>aqeedah</topic>
+        <views>540</views>
+        <date>2026-08-21</date>
+    </item>
+</results>

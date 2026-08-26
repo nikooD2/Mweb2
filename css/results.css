@@ -1,0 +1,189 @@
+/* =========================================================
+   CONTENT CARDS
+========================================================= */
+
+@import url("./cards.css");
+
+/* =========================================================
+   RESULTS GRID
+========================================================= */
+
+.results-grid {
+
+    width: 100%;
+
+    margin-top: 15px;
+    
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 1.5rem;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   RESULT CARD WIDTH
+========================================================= */
+
+/*
+   چون card.css خودش عرض کارت را با flex تعیین می‌کند،
+   اینجا flex را خنثی می‌کنیم تا کارت داخل Grid
+   عرض ستون را کامل بگیرد.
+*/
+
+.results-grid .content-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    flex: none;
+}
+
+
+/* =========================================================
+   RESULTS STATUS
+========================================================= */
+
+.results-status,
+.results-empty {
+
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    padding: 3rem 1rem;
+
+    text-align: center;
+
+    color: var(--text-light);
+
+    font-family: var(--font-family);
+
+    font-size: var(--fs-md);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+
+/* -------------------------
+   Large Desktop
+------------------------- */
+
+/* @media (max-width: 1200px) {
+
+    .results-page {
+
+        padding:
+            2.5rem
+            2rem
+            4rem;
+    }
+
+
+    .results-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 1.25rem;
+    }
+
+} */
+
+
+/* -------------------------
+   Tablet
+------------------------- */
+/* 
+@media (max-width: 900px) {
+
+    .results-page {
+
+        padding:
+            2rem
+            1.5rem
+            3rem;
+
+        min-height: calc(
+            100vh -
+            var(--mobile-navbar-height) -
+            var(--mobile-category-height)
+        );
+    }
+
+
+    .results-header {
+
+        margin-bottom: 1.5rem;
+    }
+
+
+    .results-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 1rem;
+    }
+
+} */
+
+
+/* -------------------------
+   Mobile
+------------------------- */
+
+@media (max-width: 700px) {
+
+    .results-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 0.75rem;
+    }
+
+}
+
+
+/* -------------------------
+   Small Mobile
+------------------------- */
+/* 
+@media (max-width: 420px) {
+
+    .results-page {
+
+        padding:
+            1.25rem
+            0.75rem
+            2rem;
+    }
+
+
+    .results-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 1rem;
+    }
+
+} */
+
