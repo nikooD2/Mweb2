@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>محتوا | سامانه مصباح</title>
+
+    <!-- Global -->
+    <link rel="stylesheet" href="css/global.css">
+
+    <!-- Content Page -->
+    <link rel="stylesheet" href="css/content.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div id="header"></div>
+
+
+
+    <!-- ================= CONTENT PAGE ================= -->
+
+    <main class="page">
+
+
+        <!-- Loading -->
+
+        <!-- <div
+            id="content-loading"
+            class="content-loading"
+        >
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <span>
+                در حال بارگذاری محتوا...
+            </span>
+        </div> -->
+
+
+
+        <!-- Error -->
+
+        <div
+            id="content-error"
+            class="content-error"
+            hidden
+        >
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            <h2>
+                محتوا پیدا نشد
+            </h2>
+
+            <p>
+                محتوای مورد نظر در دسترس نیست.
+            </p>
+
+            <a
+                href="index.html"
+                class="content-home-button"
+            >
+                <i class="fa-solid fa-house"></i>
+                بازگشت به خانه
+            </a>
+
+        </div>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <article
+            id="content-container"
+            class="content-container"
+            hidden
+        >
+
+
+            <!-- Header -->
+
+            <header class="content-header">
+
+
+                <!-- <div
+                    id="content-type"
+                    class="content-type"
+                >
+                </div> -->
+
+
+                <h1
+                    id="content-title"
+                    class="content-title"
+                >
+                </h1>
+
+
+                <div
+                    id="content-speaker"
+                    class="content-speaker"
+                    hidden
+                >
+
+                    <i class="fa-solid fa-microphone-lines"></i>
+
+                    <span id="speaker-name"></span>
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="content-actions">
+
+
+                    <button
+                        type="button"
+                        id="download-button"
+                        class="content-action"
+                        title="دانلود"
+                    >
+
+                        <i class="fa-solid fa-download"></i>
+
+                        <span>
+                            دانلود
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="share-button"
+                        class="content-action"
+                        title="اشتراک‌گذاری"
+                    >
+
+                        <i class="fa-solid fa-share-nodes"></i>
+
+                        <span>
+                            اشتراک‌گذاری
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="copy-link-button"
+                        class="content-action"
+                        title="کپی لینک"
+                    >
+
+                        <i class="fa-solid fa-link"></i>
+
+                        <span>
+                            کپی لینک
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ================= TEXT ================= -->
+
+            <section
+                id="text-section"
+                class="content-section content-text-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-icon">
+                        <i class="fa-solid fa-align-right"></i>
+                    </span>
+
+                    <h2>
+                        متن
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="content-text"
+                    class="content-text"
+                >
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= AUDIO ================= -->
+
+            <section
+                id="audio-section"
+                class="content-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-icon">
+                        <i class="fa-solid fa-headphones"></i>
+                    </span>
+
+                    <h2>
+                        صوت
+                    </h2>
+
+                </div>
+
+
+                <div class="audio-player-card">
+
+                    <audio
+                        id="content-audio"
+                        controls
+                    >
+                    </audio>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= VIDEO ================= -->
+
+            <section
+                id="video-section"
+                class="content-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-icon">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </span>
+
+                    <h2>
+                        ویدیو
+                    </h2>
+
+                </div>
+
+
+                <div class="video-wrapper">
+
+                    <video
+                        id="content-video"
+                        controls
+                        preload="metadata"
+                    >
+                    </video>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= TRANSCRIPT ================= -->
+
+            <section
+                id="transcript-section"
+                class="content-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-icon">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </span>
+
+                    <h2>
+                        متن پیاده‌شده
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="content-transcript"
+                    class="content-transcript"
+                >
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= SOURCES ================= -->
+
+            <section
+                id="sources-section"
+                class="content-section"
+                hidden
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-icon">
+                        <i class="fa-solid fa-book"></i>
+                    </span>
+
+                    <h2>
+                        منابع
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="content-sources"
+                    class="sources-list"
+                >
+                </div>
+
+            </section>
+
+
+        </article>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div id="footer"></div>
+
+
+
+    <!-- ================= JS ================= -->
+
+    <script src="js/global.js"></script>
+
+    <script src="js/content.js"></script>
+
+
+</body>
+
+</html>

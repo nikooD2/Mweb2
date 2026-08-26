@@ -183,6 +183,7 @@
     background: var(--surface);
 
     border: 1px solid var(--border);
+    text-decoration: none;
 
     border-radius: var(--radius-md);
 
@@ -262,6 +263,7 @@
 
     font-size: var(--fs-md);
     font-weight: 700;
+    
 
     line-height: 1.7;
 
