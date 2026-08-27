@@ -1,7 +1,4 @@
-
-/* =========================================
-   FILTER FIELDS
-========================================= */
+/* #region FILTER */
 
 .filter-fields {
     width: 70%;
@@ -21,11 +18,6 @@
     align-items: end;
     gap: 1rem;
 }
-
-
-/* =========================================
-   FILTER FIELD
-========================================= */
 
 .filter-field {
     display: flex;
@@ -172,17 +164,19 @@
         height: 42px;
     }
 }
-/* =========================================
-   CONTENT CARD
-========================================= */
+
+/* #endregion */
+
+
+/* #region CONTENT CARD */
+
 .content-card {
     flex: 0 0 250px;
 
     overflow: hidden;
 
-    background: var(--surface);
+    background: transparent;
 
-    border: 1px solid var(--border);
     text-decoration: none;
 
     border-radius: var(--radius-md);
@@ -200,16 +194,44 @@
 }
 
 
+/* =========================================
+   CARD IMAGE
+========================================= */
+
 .content-card-image {
     position: relative;
 
     width: 100%;
-    height: 145px;
 
     overflow: hidden;
 
     background: var(--border);
+
+    border-radius: var(--radius-md);
 }
+
+
+/* =========================================
+   VIDEO CARD
+========================================= */
+
+.content-card.video-card .content-card-image {
+    aspect-ratio: 16 / 9;
+}
+
+
+/* =========================================
+   AUDIO CARD
+========================================= */
+
+.content-card.audio-card .content-card-image {
+    aspect-ratio: 1 / 1;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
 
 .content-card-image img {
     width: 100%;
@@ -228,24 +250,57 @@
 
 
 /* =========================================
-   CONTENT TYPE
+   VIDEO PLAY ICON
 ========================================= */
 
-.content-type {
+.video-play-icon {
+    position: absolute;
+
+    top: 0.65rem;
+    left: 0.65rem;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    color: var(--surface);
+
+    border-radius: 50%;
+
+    font-size: 0.8rem;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   VIDEO DURATION
+========================================= */
+
+.video-duration {
     position: absolute;
 
     bottom: 0.65rem;
-    right: 0.65rem;
+    left: 0.65rem;
 
-    padding: 0.25rem 0.55rem;
+    padding: 0.2rem 0.45rem;
 
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.7);
 
     color: var(--surface);
 
     border-radius: var(--radius-sm);
 
     font-size: var(--fs-xs);
+
+    line-height: 1.3;
+
+    z-index: 2;
 }
 
 
@@ -254,8 +309,14 @@
 ========================================= */
 
 .content-card-body {
-    padding: 0.9rem 1rem;
+    padding: 0.9rem 0.2rem;
 }
+
+
+/* =========================================
+   TITLE
+========================================= */
+
 .content-card-body h3 {
     margin: 0 0 0.5rem;
 
@@ -263,17 +324,23 @@
 
     font-size: var(--fs-md);
     font-weight: 700;
-    
 
     line-height: 1.7;
 
     display: -webkit-box;
+
     -webkit-line-clamp: 2;
     line-clamp: 2;
+
     -webkit-box-orient: vertical;
 
     overflow: hidden;
 }
+
+
+/* =========================================
+   SPEAKER
+========================================= */
 
 .content-card-body p {
     margin: 0;
@@ -283,25 +350,654 @@
     font-size: var(--fs-xs);
 }
 
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 768px) {
+
     .content-card {
         flex: 0 0 190px;
+
         border-radius: 10px;
     }
 
-    .content-card-image {
-        height: 115px;
+
+    /* Video */
+
+    .content-card.video-card .content-card-image {
+        aspect-ratio: 16 / 9;
     }
 
-    .content-card-body {
-        padding: 0.7rem 0.8rem;
+
+    /* Audio */
+
+    .content-card.audio-card .content-card-image {
+        aspect-ratio: 1 / 1;
     }
+
+
+    .content-card-body {
+        padding: 0.7rem 0.1rem;
+    }
+
 
     .content-card-body h3 {
         font-size: 0.82rem;
     }
 
+
     .content-card-body p {
         font-size: 0.7rem;
     }
+
+
+    .video-play-icon {
+        width: 28px;
+        height: 28px;
+
+        top: 0.5rem;
+        left: 0.5rem;
+
+        font-size: 0.7rem;
+    }
+
+
+    .video-duration {
+        bottom: 0.5rem;
+        left: 0.5rem;
+
+        font-size: 0.65rem;
+    }
+}
+
+/* #endregion */
+
+
+/* #region PLAYLIST CARD */
+
+.playlist-card {
+    display: block;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PLAYLIST IMAGE AREA
+========================================================= */
+
+.playlist-image {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+   BACK CARDS
+========================================================= */
+
+.playlist-back {
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+
+    height: 100%;
+
+    border-radius: var(--radius-md);
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    pointer-events: none;
+}
+
+
+/* کارت پشتی اول */
+
+.playlist-back.back-1 {
+    top: -12px;
+
+    transform: scale(0.94);
+
+    opacity: 0.8;
+
+    z-index: 1;
+}
+
+
+/* کارت پشتی دوم */
+
+.playlist-back.back-2 {
+    top: -6px;
+
+    transform: scale(0.97);
+
+    opacity: 0.9;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   MAIN PLAYLIST IMAGE
+========================================================= */
+
+.playlist-main {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-md);
+
+    background: var(--border);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.playlist-main img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.playlist-card:hover .playlist-main {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+
+.playlist-card:hover .playlist-main img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   PLAYLIST INFO
+========================================================= */
+
+.playlist-info {
+    position: absolute;
+
+    bottom: 0.75rem;
+    left: 0.75rem;
+
+    z-index: 4;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.45rem;
+
+    padding: 0.4rem 0.65rem;
+
+    background: rgba(0, 0, 0, 0.68);
+
+    color: var(--surface);
+
+    border-radius: var(--radius-sm);
+
+    font-size: var(--fs-xs);
+
+    line-height: 1.4;
+
+    backdrop-filter: blur(4px);
+}
+
+
+.playlist-info i {
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   PLAYLIST TITLE
+========================================================= */
+
+.playlist-card h3 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: var(--fs-md);
+
+    font-weight: 700;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+    .playlists-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 2rem 1rem;
+    }
+
+    .playlist-image {
+        margin-bottom: 0.7rem;
+    }
+
+
+    .playlist-back {
+        left: 6%;
+        right: 6%;
+
+        border-radius: 10px;
+    }
+
+
+    .playlist-back.back-1 {
+        top: -9px;
+    }
+
+
+    .playlist-back.back-2 {
+        top: -5px;
+    }
+
+
+    .playlist-main {
+        border-radius: 10px;
+    }
+
+
+    .playlist-info {
+        bottom: 0.5rem;
+        left: 0.5rem;
+
+        gap: 0.35rem;
+
+        padding: 0.3rem 0.5rem;
+
+        font-size: 0.68rem;
+    }
+
+
+    .playlist-info i {
+        font-size: 0.7rem;
+    }
+
+
+    .playlist-card h3 {
+        font-size: 0.82rem;
+    }
+}
+/* #endregion */
+
+
+/* #region TOPIC CARD */
+
+.topic-card {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.8rem;
+
+    padding: 1.5rem 1rem;
+
+    background: var(--primary-soft);
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    border-radius: var(--radius-md);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   TOPIC ICON
+========================================================= */
+
+.topic-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface);
+
+    color: var(--primary);
+
+    border-radius: 50%;
+
+    font-size: 1.25rem;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   TOPIC TITLE
+========================================================= */
+
+.topic-card h3 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: var(--fs-sm);
+
+    font-weight: 700;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.topic-card:hover {
+    transform: translateY(-4px);
+
+    background: var(--surface);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.07);
+}
+
+
+.topic-card:hover .topic-icon {
+    transform: scale(1.08);
+
+    background: var(--primary);
+
+    color: var(--surface);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .topics-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 1rem;
+    }
+
+
+    .topic-card {
+        gap: 0.6rem;
+
+        padding: 1.1rem 0.6rem;
+
+        border-radius: 12px;
+    }
+
+
+    .topic-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 1rem;
+    }
+
+
+    .topic-card h3 {
+        font-size: 0.75rem;
+    }
+}
+/* #endregion */
+
+
+/* #region SEAKERS CARD */
+
+.speaker-card {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    text-decoration: none;
+
+    color: var(--text);
+
+    transition: transform 0.25s ease;
+}
+
+
+/* =========================================================
+   SPEAKER IMAGE
+========================================================= */
+
+.speaker-image {
+    width: 130px;
+    height: 130px;
+
+    max-width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: var(--border);
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.speaker-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================================================
+   SPEAKER NAME
+========================================================= */
+
+.speaker-card h3 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: var(--fs-sm);
+
+    font-weight: 700;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.speaker-card:hover {
+    transform: translateY(-4px);
+}
+
+
+.speaker-card:hover .speaker-image {
+    transform: scale(1.04);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.13);
+}
+
+
+.speaker-card:hover .speaker-image img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .speakers-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 2rem 1rem;
+    }
+
+
+    .speaker-card {
+        gap: 0.6rem;
+    }
+
+
+    .speaker-image {
+        width: 90px;
+        height: 90px;
+    }
+
+
+    .speaker-card h3 {
+        font-size: 0.75rem;
+    }
+}
+/* #endregion */
+
+/* =========================================================
+   SLIDER CARD SIZES
+========================================================= */
+
+.content-slider > .content-card {
+    flex: 0 0 250px;
+}
+
+/* AUDIO */
+.content-slider > .content-card.audio-card {
+    flex: 0 0 190px;
+}
+
+.content-slider > .playlist-card {
+    flex: 0 0 190px;
+}
+
+.content-slider > .topic-card {
+    flex: 0 0 160px;
+}
+
+.content-slider > .speaker-card {
+    flex: 0 0 180px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .content-slider > .content-card {
+        flex: 0 0 190px;
+    }
+
+    /* AUDIO */
+    .content-slider > .content-card.audio-card {
+        flex: 0 0 120px;
+    }
+
+    .content-slider > .playlist-card {
+        flex: 0 0 190px;
+    }
+
+    .content-slider > .topic-card {
+        flex: 0 0 130px;
+    }
+
+    .content-slider > .speaker-card {
+        flex: 0 0 110px;
+    }
+
 }

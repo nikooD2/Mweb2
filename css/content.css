@@ -1,95 +1,165 @@
-
 /* =========================================================
-   CONTENT CONTAINER
-========================================================= */
-
-.content-container {
-    width: 100%;
-    max-width: 1050px;
-
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius-lg);
-
-    box-shadow:
-        0 5px 22px rgba(0, 0, 0, 0.025);
-    margin: 0 auto;
-}
-
-
-
-/* =========================================================
-   CONTENT HEADER
-========================================================= */
-
-.content-header {
-    position: relative;
-
-    padding: 2.5rem;
-
-    margin-bottom: 2rem;
-/* 
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius-lg); */
-
-    text-align: center;
-
-    /* box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.04); */
-}
-
-
-
-/* =========================================================
-   CONTENT TYPE
+   BACK
 ========================================================= */
 /* 
-.content-type {
+.content-back {
+
     display: inline-flex;
 
     align-items: center;
-    justify-content: center;
 
-    padding: 0.45rem 1rem;
+    gap: .5rem;
 
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
 
-    border-radius: 999px;
+    color: var(--text-light);
 
-    background: var(--primary-soft);
+    text-decoration: none;
 
-    color: var(--primary-dark);
+    font-size: .9rem;
 
-    font-size: 0.85rem;
+    transition: color .2s ease;
 
-    font-weight: 700;
-} */
+}
+
+.content-back:hover {
+
+    color: var(--primary);
+
+}
+ */
+
+
+/* =========================================================
+   DEFAULT
+========================================================= */
+
+.video-layout,
+.audio-layout {
+
+    display: none;
+
+}
 
 
 
 /* =========================================================
-   TITLE
+   VIDEO
 ========================================================= */
 
-.content-title {
-    max-width: 850px;
+.video-box {
 
-    margin: 0 auto;
+    width: 100%;
+
+    overflow: hidden;
+
+    /* border-radius: var(--radius-lg); */
+
+    background: #111;
+
+}
+
+.video-box video {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+
+}
+
+
+
+/* =========================================================
+   VIDEO INFORMATION
+========================================================= */
+
+.video-information {
+
+    width: 100%;
+
+    padding-top: 1rem;
+
+    text-align: right;
+
+}
+
+.video-information h1 {
+
+    margin: 0;
 
     color: var(--text);
 
-    font-family: var(--font-family);
+    font-size: 1.5rem;
 
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: 1.7;
 
     font-weight: 800;
 
-    line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.content-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: .5rem;
+
+    margin-top: 0.8rem;
+
+}
+
+.content-tag {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: .35rem .8rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    background: var(--surface);
+
+    color: var(--text-light);
+
+    text-decoration: none;
+
+    font-family: var(--font-family);
+
+    font-size: .78rem;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+
+}
+
+.content-tag:hover {
+
+    color: var(--primary-dark);
+
+    background: var(--primary-soft);
+
+    border-color: var(--primary-light);
+
 }
 
 
@@ -98,23 +168,127 @@
    SPEAKER
 ========================================================= */
 
-.content-speaker {
+.speaker-profile {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .7rem;
+
+    margin-top: 0.8rem;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+}
+
+.speaker-avatar {
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    gap: 0.5rem;
+    width: 44px;
+    height: 44px;
 
-    margin-top: 1rem;
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: var(--primary-soft);
+
+    color: var(--primary-dark);
+
+    font-weight: 700;
+
+}
+
+.speaker-profile span {
+
+    font-size: .9rem;
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================================================
+   TRANSCRIPT
+========================================================= */
+
+.transcript-section {
+
+    margin-top: 0.8rem;
+
+    /* padding-top: 1.4rem; */
+
+    /* border-top: 1px solid var(--border); */
+
+}
+
+.transcript-text {
 
     color: var(--text-light);
 
-    font-size: 1.1rem;
+    font-size: .92rem;
+
+    line-height: 2;
+
+    overflow: hidden;
+
+    white-space: pre-line;
+
 }
 
-.content-speaker i {
-    color: var(--primary);
+.transcript-text.collapsed {
+
+    max-height: 4rem;
+
+}
+
+.transcript-text.expanded {
+
+    max-height: 3000px;
+
+}
+
+.transcript-more {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .4rem;
+
+    margin-top: .4rem;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary-dark);
+
+    font-family: var(--font-family);
+
+    font-size: .82rem;
+
+    cursor: pointer;
+
+}
+
+.transcript-more i {
+
+    font-size: .65rem;
+
+    transition: transform .2s ease;
+
 }
 
 
@@ -124,397 +298,402 @@
 ========================================================= */
 
 .content-actions {
+
     display: flex;
 
-    justify-content: center;
+    align-items: center;
 
-    flex-wrap: wrap;
+    gap: 1.5rem;
 
-    gap: 0.7rem;
+    margin-top: 1.4rem;
 
-    margin-top: 1.75rem;
+    padding-top: 1.2rem;
 
-    padding-top: 1.5rem;
+    /* border-top: 1px solid var(--border); */
 
-    border-top: 1px solid var(--border);
 }
 
-
 .content-action {
+
     display: inline-flex;
 
     align-items: center;
-    justify-content: center;
 
-    gap: 0.45rem;
+    gap: .4rem;
 
-    min-width: 120px;
+    padding: 0;
 
-    padding: 0.7rem 1rem;
+    border: none;
 
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    background: var(--surface);
+    background: transparent;
 
     color: var(--text-light);
 
-    font-family: inherit;
+    font-family: var(--font-family);
 
-    font-size: 0.88rem;
+    font-size: .82rem;
 
     cursor: pointer;
 
-    transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
+    transition: color .2s ease;
 
+}
 
 .content-action:hover {
+
     color: var(--primary-dark);
 
-    border-color: var(--primary-light);
-
-    background: var(--primary-soft);
-
-    transform: translateY(-2px);
 }
-
-
-.content-action i {
-    color: var(--primary);
-}
-
 
 
 /* =========================================================
-   CONTENT SECTIONS
+   VIDEO AUDIO SECTION
 ========================================================= */
 
-.content-section {
-    margin-bottom: 1.75rem;
+.video-audio-section {
 
-    padding: 2rem;
+    display: none;
 
-    /* background: var(--surface);
+    width: 100%;
 
-    border: 1px solid var(--border);
+    margin-top: 1.8rem;
 
-    border-radius: var(--radius-lg);
-
-    box-shadow:
-        0 5px 22px rgba(0, 0, 0, 0.025); */
 }
-
 
 
 /* =========================================================
-   SECTION HEADING
+   DIVIDER
 ========================================================= */
 
-.section-heading {
-    display: flex;
+.video-audio-divider {
 
-    align-items: center;
+    width: 100%;
 
-    gap: 0.75rem;
+    height: 1px;
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
+
+    background: var(--border);
+
 }
 
 
-.section-heading h2 {
+/* =========================================================
+   AUDIO TITLE
+========================================================= */
+
+.video-audio-title {
+
     margin: 0;
-
-    color: var(--text);
-
-    font-size: 1.25rem;
-
-    font-weight: 750;
-}
-
-
-.section-icon {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 38px;
-    height: 38px;
-
-    flex-shrink: 0;
-
-    border-radius: 10px;
-
-    background: var(--primary-soft);
-
-    color: var(--primary-dark);
-}
-
-
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-.content-text {
-    color: var(--text);
-
-    font-size: 1.05rem;
-
-    line-height: 2.3;
-
-    white-space: pre-line;
-}
-
-
-
-/* =========================================================
-   AUDIO
-========================================================= */
-
-.audio-player-card {
-    padding: 1rem;
-
-    border-radius: 14px;
-
-    background: var(--background);
-}
-
-
-.audio-player-card audio {
-    display: block;
-
-    width: 100%;
-
-    height: 45px;
-}
-
-
-
-/* =========================================================
-   VIDEO
-========================================================= */
-
-.video-wrapper {
-    overflow: hidden;
-
-    width: 100%;
-
-    background: #000;
-
-    border-radius: 14px;
-
-    aspect-ratio: 16 / 9;
-}
-
-
-.video-wrapper video {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-}
-
-
-
-/* =========================================================
-   TRANSCRIPT
-========================================================= */
-
-.content-transcript {
-    padding: 1.5rem;
-
-    border-radius: 14px;
-
-    background: var(--background);
 
     color: var(--text);
 
     font-size: 1rem;
 
-    line-height: 2.2;
+    line-height: 1.8;
 
-    white-space: pre-line;
+    font-weight: 700;
+
 }
-
 
 
 /* =========================================================
-   SOURCES
+   VIDEO AUDIO PLAYER
 ========================================================= */
 
-.sources-list {
-    display: flex;
+.video-audio-player {
 
-    flex-direction: column;
+    margin-top: 1rem;
 
-    gap: 0.75rem;
 }
 
 
-.source-item {
-    display: flex;
+/* =========================================================
+   PROGRESS
+========================================================= */
 
-    align-items: flex-start;
+.video-audio-player .audio-progress {
 
-    gap: 0.85rem;
-
-    padding: 1rem 1.1rem;
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    background: var(--background);
-}
-
-
-.source-number {
     display: flex;
 
     align-items: center;
+
+    gap: .7rem;
+
+    color: var(--text-light);
+
+    font-size: .72rem;
+
+}
+
+
+.video-audio-player
+.audio-progress input {
+
+    flex: 1;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.video-audio-player .audio-controls {
+
+    display: flex;
+
+    align-items: center;
+
     justify-content: center;
 
-    width: 30px;
-    height: 30px;
+    gap: 1.5rem;
 
-    flex-shrink: 0;
+    margin-top: 1rem;
+
+}
+
+
+.video-audio-player
+.audio-control,
+
+.video-audio-player
+.audio-play {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+
+.video-audio-player
+.audio-control {
+
+    width: 40px;
+
+    height: 40px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: .95rem;
+
+}
+
+
+.video-audio-player
+.audio-play {
+
+    width: 55px;
+
+    height: 55px;
 
     border-radius: 50%;
 
-    background: var(--primary-soft);
+    background: var(--primary);
 
-    color: var(--primary-dark);
+    color: white;
 
-    font-size: 0.8rem;
+    font-size: 1rem;
 
-    font-weight: 700;
 }
 
 
-.source-content {
-    min-width: 0;
-}
+/* =========================================================
+   AUDIO ACTIONS
+========================================================= */
 
+.video-audio-actions {
 
-.source-title {
-    margin-bottom: 0.25rem;
+    justify-content: flex-start;
 
-    color: var(--text);
+    margin-top: 1.2rem;
 
-    font-weight: 700;
-}
+    padding-top: 0;
 
+    border-top: none;
 
-.source-details {
-    color: var(--text-light);
-
-    font-size: 0.9rem;
-
-    line-height: 1.8;
 }
 
 
 
 /* =========================================================
-   LOADING
+   AUDIO LAYOUT
 ========================================================= */
 
-/* .content-loading {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 0.7rem;
-
-    min-height: 300px;
-
-    color: var(--text-light);
-}
-
-
-.content-loading i {
-    color: var(--primary);
-
-    font-size: 1.3rem;
-}
- */
-
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-.content-error {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 450px;
+.audio-layout {
 
     text-align: center;
+
 }
 
+.audio-cover-container {
 
-.content-error > i {
-    margin-bottom: 1rem;
+    display: flex;
 
-    color: var(--primary);
+    justify-content: center;
 
-    font-size: 3rem;
 }
 
+.audio-cover {
 
-.content-error h2 {
-    margin: 0 0 0.5rem;
+    width: min(380px, 80vw);
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
+
+}
+
+.audio-information {
+
+    width: min(700px, 100%);
+
+    margin: 0 auto;
+
+}
+
+.audio-information h1 {
+
+    margin: 1.6rem 0 0;
 
     color: var(--text);
+
+    font-size: 2rem;
+
+    line-height: 1.6;
+
+    font-weight: 800;
+
 }
 
 
-.content-error p {
-    margin: 0 0 1.5rem;
 
-    color: var(--text-light);
+/* =========================================================
+   AUDIO TAGS
+========================================================= */
+
+.audio-tags {
+
+    justify-content: center;
+
 }
 
 
-.content-home-button {
-    display: inline-flex;
+
+/* =========================================================
+   AUDIO PLAYER
+========================================================= */
+
+.audio-player {
+
+    margin-top: 2rem;
+
+}
+
+.audio-progress {
+
+    display: flex;
 
     align-items: center;
 
-    gap: 0.5rem;
+    gap: .7rem;
 
-    padding: 0.75rem 1.2rem;
+    color: var(--text-light);
 
-    border-radius: 10px;
+    font-size: .72rem;
+
+}
+
+.audio-progress input {
+
+    flex: 1;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
+
+}
+
+.audio-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 1.5rem;
+
+    margin-top: 1rem;
+
+}
+
+.audio-control,
+.audio-play {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+.audio-control {
+
+    width: 40px;
+    height: 40px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: .95rem;
+
+}
+
+.audio-play {
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
 
     background: var(--primary);
 
-    color: #fff;
+    color: white;
 
-    text-decoration: none;
+    font-size: 1rem;
 
-    transition: 0.2s ease;
 }
 
+.audio-actions {
 
-.content-home-button:hover {
-    background: var(--primary-dark);
+    justify-content: center;
+
+    text-align: center;
+
 }
 
 
@@ -523,86 +702,51 @@
    MOBILE
 ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
 
+    .content-page {
 
+        padding: 1.2rem 1rem 4rem;
 
-    .content-header {
-        padding: 1.5rem 1rem;
     }
 
 
-    .content-title {
-        font-size: 1.5rem;
+    .video-information h1,
+    .audio-information h1 {
 
-        line-height: 1.8;
+        font-size: 1.4rem;
+
+    }
+
+
+    .video-box {
+
+        border-radius: 14px;
+
+    }
+
+
+    .audio-cover {
+
+        width: min(300px, 82vw);
+
+        border-radius: 18px;
+
     }
 
 
     .content-actions {
-        gap: 0.5rem;
+
+        gap: 1.2rem;
+
     }
 
 
-    .content-action {
-        min-width: 0;
+    .related-audio-card img {
 
-        flex: 1;
+        width: 62px;
+        height: 62px;
 
-        padding: 0.65rem 0.6rem;
     }
 
-
-    .content-action span {
-        display: none;
-    }
-
-
-    .content-action i {
-        font-size: 1rem;
-    }
-
-
-    .content-section {
-        padding: 1.25rem;
-
-        border-radius: 16px;
-    }
-
-
-    .content-text {
-        font-size: 0.98rem;
-
-        line-height: 2.15;
-    }
-
-
-    .content-transcript {
-        padding: 1rem;
-
-        line-height: 2.1;
-    }
-
-}
-
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 400px) {
-
-    .content-action {
-        width: 42px;
-        height: 42px;
-
-        flex: 0 0 42px;
-
-        padding: 0;
-    }
-
-}
-[hidden] {
-    display: none !important;
 }
