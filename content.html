@@ -4,370 +4,495 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>محتوا | سامانه مصباح</title>
 
-    <!-- Global -->
     <link rel="stylesheet" href="css/global.css">
-
-    <!-- Content Page -->
     <link rel="stylesheet" href="css/content.css">
 
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 
 <body>
 
-
     <!-- ================= HEADER ================= -->
 
     <div id="header"></div>
 
 
-
-    <!-- ================= CONTENT PAGE ================= -->
+    <!-- ================= CONTENT ================= -->
 
     <main class="page">
 
 
-        <!-- Loading -->
+        <!-- BACK -->
+<!-- 
+        <a href="index.html" class="content-back">
 
-        <!-- <div
-            id="content-loading"
-            class="content-loading"
-        >
-            <i class="fa-solid fa-spinner fa-spin"></i>
+            <i class="fa-solid fa-arrow-right"></i>
 
-            <span>
-                در حال بارگذاری محتوا...
-            </span>
-        </div> -->
+            <span>بازگشت</span>
+
+        </a> -->
 
 
 
-        <!-- Error -->
+        <!-- =====================================================
+             VIDEO CONTENT
+        ====================================================== -->
 
-        <div
-            id="content-error"
-            class="content-error"
-            hidden
-        >
+        <section id="video-layout"
+                 class="content-main video-layout">
 
-            <i class="fa-solid fa-circle-exclamation"></i>
 
-            <h2>
-                محتوا پیدا نشد
-            </h2>
+            <!-- VIDEO -->
 
-            <p>
-                محتوای مورد نظر در دسترس نیست.
-            </p>
+            <div class="video-box">
 
-            <a
-                href="index.html"
-                class="content-home-button"
-            >
-                <i class="fa-solid fa-house"></i>
-                بازگشت به خانه
-            </a>
+                <video id="content-video"
+                       controls
+                       playsinline>
 
-        </div>
+                    <source id="video-source"
+                            src=""
+                            type="video/mp4">
+
+                    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+
+                </video>
+
+            </div>
 
 
 
-        <!-- ================= CONTENT ================= -->
+            <!-- INFORMATION -->
 
-        <article
-            id="content-container"
-            class="content-container"
-            hidden
-        >
+            <div class="video-information">
 
 
-            <!-- Header -->
+                <!-- TITLE -->
 
-            <header class="content-header">
-
-
-                <!-- <div
-                    id="content-type"
-                    class="content-type"
-                >
-                </div> -->
+                <h1 id="video-title"></h1>
 
 
-                <h1
-                    id="content-title"
-                    class="content-title"
-                >
-                </h1>
 
+                <!-- TOPIC -->
 
-                <div
-                    id="content-speaker"
-                    class="content-speaker"
-                    hidden
-                >
-
-                    <i class="fa-solid fa-microphone-lines"></i>
-
-                    <span id="speaker-name"></span>
-
+                <div id="video-topic"
+                     class="content-tags">
                 </div>
 
 
-                <!-- Actions -->
+
+                <!-- SPEAKER -->
+
+                <a id="video-speaker"
+                   class="speaker-profile"
+                   href="#">
+
+                    <div id="speaker-avatar"
+                         class="speaker-avatar">
+
+                        <span id="speaker-initial"></span>
+
+                    </div>
+
+                    <span id="video-speaker-name"></span>
+
+                </a>
+
+
+
+                <!-- TRANSCRIPT -->
+
+                <section id="video-transcript-section"
+                         class="transcript-section">
+
+
+                    <div id="video-transcript"
+                         class="transcript-text collapsed">
+                    </div>
+
+
+                    <button id="video-transcript-more"
+                            class="transcript-more"
+                            type="button">
+
+                        بیشتر
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </button>
+
+
+                </section>
+
+
+
+                <!-- ACTIONS -->
 
                 <div class="content-actions">
 
 
-                    <button
-                        type="button"
-                        id="download-button"
-                        class="content-action"
-                        title="دانلود"
-                    >
+                    <button type="button"
+                            class="content-action">
 
                         <i class="fa-solid fa-download"></i>
 
-                        <span>
-                            دانلود
-                        </span>
+                        <span>دانلود</span>
 
                     </button>
 
 
-                    <button
-                        type="button"
-                        id="share-button"
-                        class="content-action"
-                        title="اشتراک‌گذاری"
-                    >
+                    <button type="button"
+                            class="content-action">
 
                         <i class="fa-solid fa-share-nodes"></i>
 
-                        <span>
-                            اشتراک‌گذاری
-                        </span>
+                        <span>اشتراک</span>
 
                     </button>
 
 
-                    <button
-                        type="button"
-                        id="copy-link-button"
-                        class="content-action"
-                        title="کپی لینک"
-                    >
+                    <button type="button"
+                            class="content-action save-action">
 
-                        <i class="fa-solid fa-link"></i>
+                        <i class="fa-regular fa-bookmark"></i>
 
-                        <span>
-                            کپی لینک
-                        </span>
+                        <span>ذخیره</span>
 
                     </button>
 
 
                 </div>
 
-            </header>
+
+                <!-- =====================================================
+                    RELATED AUDIO PLAYER
+                ====================================================== -->
+
+                <section id="video-audio-section"
+                        class="video-audio-section">
+
+                    <div class="video-audio-divider"></div>
 
 
+                    <!-- AUDIO TITLE -->
 
-            <!-- ================= TEXT ================= -->
-
-            <section
-                id="text-section"
-                class="content-section content-text-section"
-                hidden
-            >
-
-                <div class="section-heading">
-
-                    <span class="section-icon">
-                        <i class="fa-solid fa-align-right"></i>
-                    </span>
-
-                    <h2>
-                        متن
+                    <h2 id="video-audio-title"
+                        class="video-audio-title">
                     </h2>
 
+
+                    <!-- AUDIO PLAYER -->
+
+                    <div class="video-audio-player">
+
+                        <audio id="video-audio">
+
+                            <source id="video-audio-source"
+                                    src=""
+                                    type="audio/mpeg">
+
+                        </audio>
+
+
+                        <div class="audio-progress">
+
+                            <span id="video-audio-current">
+                                00:00
+                            </span>
+
+
+                            <input id="video-audio-progress"
+                                type="range"
+                                min="0"
+                                max="100"
+                                value="0">
+
+
+                            <span id="video-audio-duration">
+                                00:00
+                            </span>
+
+                        </div>
+
+
+                        <div class="audio-controls">
+
+                            <button id="video-audio-prev"
+                                    type="button"
+                                    class="audio-control">
+
+                                <i class="fa-solid fa-backward-step"></i>
+
+                            </button>
+
+
+                            <button id="video-audio-play"
+                                    type="button"
+                                    class="audio-play">
+
+                                <i class="fa-solid fa-play"></i>
+
+                            </button>
+
+
+                            <button id="video-audio-next"
+                                    type="button"
+                                    class="audio-control">
+
+                                <i class="fa-solid fa-forward-step"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AUDIO ACTIONS -->
+
+                    <div class="content-actions video-audio-actions">
+
+                        <button type="button"
+                                class="content-action">
+
+                            <i class="fa-solid fa-download"></i>
+
+                            <span>دانلود</span>
+
+                        </button>
+
+
+                        <button type="button"
+                                class="content-action">
+
+                            <i class="fa-solid fa-share-nodes"></i>
+
+                            <span>اشتراک</span>
+
+                        </button>
+
+
+                        <button type="button"
+                                class="content-action save-action">
+
+                            <i class="fa-regular fa-bookmark"></i>
+
+                            <span>ذخیره</span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             AUDIO CONTENT
+        ====================================================== -->
+
+        <section id="audio-layout"
+                 class="content-main audio-layout">
+
+
+            <!-- COVER -->
+
+            <div class="audio-cover-container">
+
+                <img id="audio-cover"
+                     class="audio-cover"
+                     src=""
+                     alt="">
+
+            </div>
+
+
+
+            <!-- INFORMATION -->
+
+            <div class="audio-information">
+
+
+                <!-- TITLE -->
+
+                <h1 id="audio-title"></h1>
+
+
+
+                <!-- SPEAKER + TOPIC -->
+
+                <div id="audio-tags"
+                     class="content-tags audio-tags">
                 </div>
 
 
-                <div
-                    id="content-text"
-                    class="content-text"
-                >
-                </div>
 
-            </section>
+                <!-- AUDIO PLAYER -->
+
+                <div class="audio-player">
 
 
+                    <audio id="content-audio">
 
-            <!-- ================= AUDIO ================= -->
+                        <source id="audio-source"
+                                src=""
+                                type="audio/mpeg">
 
-            <section
-                id="audio-section"
-                class="content-section"
-                hidden
-            >
-
-                <div class="section-heading">
-
-                    <span class="section-icon">
-                        <i class="fa-solid fa-headphones"></i>
-                    </span>
-
-                    <h2>
-                        صوت
-                    </h2>
-
-                </div>
-
-
-                <div class="audio-player-card">
-
-                    <audio
-                        id="content-audio"
-                        controls
-                    >
                     </audio>
 
-                </div>
 
-            </section>
-
+                    <div class="audio-progress">
 
 
-            <!-- ================= VIDEO ================= -->
-
-            <section
-                id="video-section"
-                class="content-section"
-                hidden
-            >
-
-                <div class="section-heading">
-
-                    <span class="section-icon">
-                        <i class="fa-solid fa-circle-play"></i>
-                    </span>
-
-                    <h2>
-                        ویدیو
-                    </h2>
-
-                </div>
+                        <span id="audio-current">
+                            00:00
+                        </span>
 
 
-                <div class="video-wrapper">
+                        <input id="audio-progress-bar"
+                               type="range"
+                               min="0"
+                               max="100"
+                               value="0">
 
-                    <video
-                        id="content-video"
-                        controls
-                        preload="metadata"
-                    >
-                    </video>
 
-                </div>
+                        <span id="audio-duration">
+                            00:00
+                        </span>
 
-            </section>
+
+                    </div>
 
 
 
-            <!-- ================= TRANSCRIPT ================= -->
-
-            <section
-                id="transcript-section"
-                class="content-section"
-                hidden
-            >
-
-                <div class="section-heading">
-
-                    <span class="section-icon">
-                        <i class="fa-solid fa-file-lines"></i>
-                    </span>
-
-                    <h2>
-                        متن پیاده‌شده
-                    </h2>
-
-                </div>
+                    <div class="audio-controls">
 
 
-                <div
-                    id="content-transcript"
-                    class="content-transcript"
-                >
-                </div>
+                        <button id="audio-prev"
+                                type="button"
+                                class="audio-control">
 
-            </section>
+                            <i class="fa-solid fa-backward-step"></i>
+
+                        </button>
 
 
 
-            <!-- ================= SOURCES ================= -->
+                        <button id="audio-play"
+                                type="button"
+                                class="audio-play">
 
-            <section
-                id="sources-section"
-                class="content-section"
-                hidden
-            >
+                            <i class="fa-solid fa-play"></i>
 
-                <div class="section-heading">
+                        </button>
 
-                    <span class="section-icon">
-                        <i class="fa-solid fa-book"></i>
-                    </span>
 
-                    <h2>
-                        منابع
-                    </h2>
+
+                        <button id="audio-next"
+                                type="button"
+                                class="audio-control">
+
+                            <i class="fa-solid fa-forward-step"></i>
+
+                        </button>
+
+
+                    </div>
+
 
                 </div>
 
 
-                <div
-                    id="content-sources"
-                    class="sources-list"
-                >
+
+                <!-- TRANSCRIPT -->
+
+                <section id="audio-transcript-section"
+                         class="transcript-section">
+
+
+                    <div id="audio-transcript"
+                         class="transcript-text collapsed">
+                    </div>
+
+
+                    <button id="audio-transcript-more"
+                            class="transcript-more"
+                            type="button">
+
+                        بیشتر
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </button>
+
+
+                </section>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="content-actions audio-actions">
+
+
+                    <button type="button"
+                            class="content-action">
+
+                        <i class="fa-solid fa-download"></i>
+
+                        <span>دانلود</span>
+
+                    </button>
+
+
+                    <button type="button"
+                            class="content-action">
+
+                        <i class="fa-solid fa-share-nodes"></i>
+
+                        <span>اشتراک</span>
+
+                    </button>
+
+
+                    <button type="button"
+                            class="content-action save-action">
+
+                        <i class="fa-regular fa-bookmark"></i>
+
+                        <span>ذخیره</span>
+
+                    </button>
+
+
                 </div>
 
-            </section>
 
+            </div>
 
-        </article>
+        </section>
 
 
     </main>
 
 
 
-    <!-- ================= FOOTER ================= -->
-
-    <div id="footer"></div>
-
-
-
     <!-- ================= JS ================= -->
 
     <script src="js/global.js"></script>
-
     <script src="js/content.js"></script>
-
 
 </body>
 
