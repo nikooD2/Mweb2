@@ -1,4 +1,5 @@
-@import url("./cards.css");
+@import url("./rows.css");
+
 /* =========================================
    HOME CONTENT
 ========================================= */
@@ -11,114 +12,6 @@
 
     padding: 1.5rem 2rem 4rem;
 }
-
-
-/* =========================================
-   CONTENT ROW
-========================================= */
-
-.content-row {
-    width: 100%;
-    margin-bottom: 3rem;
-}
-
-
-/* =========================================
-   ROW HEADER
-========================================= */
-
-.content-row-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 1.2rem;
-    padding: 0 0.2rem;
-}
-
-.content-row-header h2 {
-    margin: 0;
-
-    color: var(--text);
-    font-size: 1.35rem;
-    font-weight: 700;
-}
-
-.view-all {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-
-    color: var(--primary);
-    text-decoration: none;
-
-    font-size: var(--fs-sm);
-    font-weight: 600;
-
-    transition: var(--transition);
-}
-
-.view-all:hover {
-    color: var(--primary-light);
-}
-
-.view-all i {
-    font-size: var(--fs-xs);
-}
-
-
-/* =========================================
-   CONTENT SLIDER
-========================================= */
-
-.content-slider {
-    display: flex;
-    gap: 1.2rem;
-
-    overflow-x: auto;
-
-    padding: 0.3rem 0.2rem 0.8rem;
-
-    scroll-behavior: smooth;
-
-    scrollbar-width: thin;
-}
-
-
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 768px) {
-
-    .home-content {
-        padding: 1.8rem 1rem 3rem;
-    }
-
-    .content-row {
-        margin-bottom: 2.2rem;
-    }
-
-    .content-row-header {
-        margin-bottom: 0.9rem;
-    }
-
-    .content-row-header h2 {
-        font-size: 1.1rem;
-    }
-
-    .view-all {
-        font-size: 0.75rem;
-    }
-
-    .content-slider {
-        gap: 0.8rem;
-    }
-
-}
-
 
 /* =========================================================
    HOME HERO

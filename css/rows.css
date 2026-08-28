@@ -1,0 +1,149 @@
+@import url("./cards.css");
+/* =========================================================
+   CONTENT GROUP
+========================================================= */
+
+.content-group {
+    position: relative;
+    padding: 14px 0 12px;
+}
+
+.content-group-title {
+    margin: 0 0 22px;
+    padding-bottom: 12px;
+
+    color: var(--primary);
+
+    font-size: 24px;
+    font-weight: 700;
+    text-align: right;
+
+    border-bottom: 3px solid var(--primary);
+}
+
+/* =========================================
+   CONTENT ROW
+========================================= */
+
+.content-row {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+
+/* =========================================
+   ROW HEADER
+========================================= */
+
+.content-row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* margin-bottom: 1.2rem; */
+    padding: 0 0.2rem;
+}
+
+.content-row-header h2 {
+    margin: 0;
+
+    color: var(--text);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.view-all {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    color: var(--primary);
+    text-decoration: none;
+
+    font-size: var(--fs-sm);
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.view-all:hover {
+    color: var(--primary-light);
+}
+
+.view-all i {
+    font-size: var(--fs-xs);
+}
+
+
+/* =========================================
+   CONTENT SLIDER
+========================================= */
+.content-slider {
+    display: flex;
+    gap: 1.2rem;
+
+    overflow-x: auto;
+
+    padding: 0.4rem 0.2rem 0.1rem;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+}
+
+.content-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.content-slider.dragging {
+    cursor: grabbing;
+}
+
+.content-slider .content-card {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.content-slider img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .home-content {
+        padding: 1.8rem 1rem 3rem;
+    }
+
+    .content-row {
+        margin-bottom: 2.2rem;
+    }
+
+    .content-row-header {
+        margin-bottom: 0.9rem;
+    }
+
+    .content-row-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .view-all {
+        font-size: 0.75rem;
+    }
+
+    .content-slider {
+        gap: 0.8rem;
+    }
+
+}

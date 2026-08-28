@@ -2,11 +2,7 @@
    CONTENT PAGE
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    loadContent();
-
-});
+document.addEventListener("DOMContentLoaded", loadContent);
 
 
 /* =========================================================
@@ -17,134 +13,61 @@ async function loadContent() {
 
     try {
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        const contentId =
-            params.get("id");
-
-
-        console.log(
-            "CONTENT ID:",
-            contentId
+        const params = new URLSearchParams(
+            window.location.search
         );
 
+        const contentId = params.get("id");
 
         if (!contentId) {
-
-            document.body.innerHTML +=
-                "<p>شناسه محتوا پیدا نشد.</p>";
-
-            return;
-
+            throw new Error("شناسه محتوا پیدا نشد.");
         }
 
 
-        const response =
-            await fetch(
-                "data/contents.xml"
-            );
-
-
-        console.log(
-            "XML RESPONSE:",
-            response
+        const response = await fetch(
+            "data/contents.xml"
         );
 
-
         if (!response.ok) {
-
             throw new Error(
                 "XML پیدا نشد. Status: " +
                 response.status
             );
-
         }
 
 
-        const xmlText =
-            await response.text();
+        const xmlText = await response.text();
 
-
-        console.log(
-            "XML:",
-            xmlText
+        const xml = new DOMParser().parseFromString(
+            xmlText,
+            "application/xml"
         );
 
 
-        const parser =
-            new DOMParser();
-
-
-        const xml =
-            parser.parseFromString(
-                xmlText,
-                "application/xml"
-            );
-
-
-        const parseError =
-            xml.querySelector(
-                "parsererror"
-            );
-
-
-        if (parseError) {
-
+        if (xml.querySelector("parsererror")) {
             throw new Error(
                 "ساختار XML مشکل دارد."
             );
-
         }
 
 
-        const contents =
-            xml.querySelectorAll(
-                "content"
-            );
-
-
-        console.log(
-            "NUMBER OF CONTENTS:",
-            contents.length
-        );
-
-
-        const content =
-            Array.from(
-                contents
-            ).find(
-                item =>
-                    item.getAttribute("id") ===
-                    contentId
-            );
-
-
-        console.log(
-            "FOUND CONTENT:",
-            content
+        const content = Array.from(
+            xml.querySelectorAll("content")
+        ).find(
+            item => item.getAttribute("id") === contentId
         );
 
 
         if (!content) {
-
             throw new Error(
-                "محتوای با id=" +
-                contentId +
-                " پیدا نشد."
+                "محتوای موردنظر پیدا نشد."
             );
-
         }
 
 
-        renderContent(
-            content
-        );
+        renderContent(content);
 
     }
-
 
     catch (error) {
 
@@ -153,165 +76,95 @@ async function loadContent() {
             error
         );
 
-
         document.body.innerHTML += `
-
             <div style="
                 direction:rtl;
                 padding:40px;
                 font-family:sans-serif;
                 color:red;
             ">
-
                 خطا در بارگذاری محتوا:
-
                 <br><br>
-
                 ${error.message}
-
             </div>
-
         `;
-
     }
-
 }
-
 
 
 /* =========================================================
    RENDER CONTENT
 ========================================================= */
 
-function renderContent(
-    content
-) {
+function renderContent(content) {
 
-    const type =
-        getText(
-            content,
-            "type"
-        );
-
-
-    /*
-        VIDEO
-    */
+    const type = getText(content, "type");
 
     if (type === "video") {
-
-        renderVideo(
-            content
-        );
-
+        renderVideo(content);
         return;
-
     }
-
-
-    /*
-        AUDIO
-    */
 
     if (type === "audio") {
-
-        renderAudio(
-            content
-        );
-
+        renderAudio(content);
         return;
-
     }
 
-
-    /*
-        ARTICLE
-    */
-
     if (type === "article") {
-
         console.log(
             "Article layout is not implemented yet."
         );
-
-        return;
-
     }
-
 }
-
 
 
 /* =========================================================
    VIDEO
 ========================================================= */
 
-function renderVideo(
-    content
-) {
+function renderVideo(content) {
 
-    const layout =
-        document.getElementById(
-            "video-layout"
-        );
+    const layout = document.getElementById(
+        "video-layout"
+    );
 
-
-    layout.style.display =
-        "block";
+    layout.style.display = "block";
 
 
+    /* VIDEO */
 
-    /*
-        VIDEO
-    */
+    const video = getText(
+        content,
+        "video"
+    );
 
-    const video =
-        getText(
-            content,
-            "video"
-        );
+    const videoElement = document.getElementById(
+        "content-video"
+    );
 
-
-    const videoElement =
-        document.getElementById(
-            "content-video"
-        );
-
-
-    const videoSource =
-        document.getElementById(
-            "video-source"
-        );
-
+    const videoSource = document.getElementById(
+        "video-source"
+    );
 
     if (video) {
 
-        videoSource.src =
-            video;
-
+        videoSource.src = video;
         videoElement.load();
 
     }
 
 
-
-    /*
-        TITLE
-    */
+    /* TITLE */
 
     document.getElementById(
         "video-title"
-    ).textContent =
-        getText(
-            content,
-            "title"
-        );
+    ).textContent = getText(
+        content,
+        "title"
+    );
 
 
-
-    /*
-        TAGS
-    */
+    /* TAGS */
 
     renderTags(
         content,
@@ -319,20 +172,12 @@ function renderVideo(
     );
 
 
+    /* SPEAKER */
 
-    /*
-        SPEAKER
-    */
-
-    renderSpeaker(
-        content
-    );
+    renderSpeaker(content);
 
 
-
-    /*
-        TRANSCRIPT
-    */
+    /* TRANSCRIPT */
 
     renderTranscript(
         content,
@@ -342,155 +187,186 @@ function renderVideo(
     );
 
 
-    /*
-        RELATED AUDIO
-    */
+    /* AUDIO */
 
-    renderVideoAudio(
-        content
-    );
-
+    renderVideoAudio(content);
 }
+
 
 /* =========================================================
    VIDEO AUDIO
 ========================================================= */
 
-function renderVideoAudio(
-    content
-) {
+function renderVideoAudio(content) {
 
-    const section =
-        document.getElementById(
-            "video-audio-section"
-        );
+    const section = document.getElementById(
+        "video-audio-section"
+    );
 
-
-    if (!section) {
-
-        return;
-
-    }
-
-
-    const audio =
-        getText(
-            content,
-            "audio"
-        );
-
-
-    /*
-        اگر صوت نداشت
-    */
+    const audio = getText(
+        content,
+        "audio"
+    );
 
     if (!audio) {
-
-        section.style.display =
-            "none";
-
+        section.style.display = "none";
         return;
-
     }
 
 
-    section.style.display =
-        "block";
+    section.style.display = "block";
 
 
-    /*
-        AUDIO TITLE
-    */
+    /* COVER */
 
-    const title =
-        getText(
-            content,
-            "title"
-        );
+    const cover = getText(
+        content,
+        "cover"
+    );
 
+    const coverElement = document.getElementById(
+        "video-audio-cover"
+    );
 
-    const titleElement =
-        document.getElementById(
-            "video-audio-title"
-        );
-
-
-    if (titleElement) {
-
-        titleElement.textContent =
-            "صوت " + title;
-
+    if (cover) {
+        coverElement.src = cover;
     }
 
 
-    /*
-        AUDIO SOURCE
-    */
+    /* AUDIO */
 
-    const audioSource =
-        document.getElementById(
-            "video-audio-source"
-        );
+    const source = document.getElementById(
+        "video-audio-source"
+    );
 
+    const audioElement = document.getElementById(
+        "video-audio"
+    );
 
-    const audioElement =
-        document.getElementById(
-            "video-audio"
-        );
+    document.getElementById(
+        "audio-title"
+    ).textContent = "صوت " +getText(
+        content,
+        "title"
+    );
 
-
-    if (audioSource && audioElement) {
-
-        audioSource.src =
-            audio;
-
-        audioElement.load();
-
-    }
+    source.src = audio;
+    audioElement.load();
 
 
-    /*
-        INIT PLAYER
-    */
+    /* PLAYER */
 
-    initVideoAudioPlayer();
-
+    initAudioPlayer(
+        "video-audio",
+        "video-audio-play",
+        "video-audio-progress",
+        "video-audio-current",
+        "video-audio-duration"
+    );
 }
 
+
 /* =========================================================
-   VIDEO AUDIO PLAYER
+   AUDIO ONLY
 ========================================================= */
 
-function initVideoAudioPlayer() {
+function renderAudio(content) {
 
-    const audio =
+    const layout = document.getElementById(
+        "audio-layout"
+    );
+
+    layout.style.display = "block";
+
+
+    /* COVER */
+
+    const cover = getText(
+        content,
+        "cover"
+    );
+
+    if (cover) {
+
         document.getElementById(
-            "video-audio"
-        );
+            "audio-cover"
+        ).src = cover;
+
+    }
 
 
-    const playButton =
-        document.getElementById(
-            "video-audio-play"
-        );
+    /* TITLE */
+
+    document.getElementById(
+        "audio-title"
+    ).textContent = getText(
+        content,
+        "title"
+    );
 
 
-    const progress =
-        document.getElementById(
-            "video-audio-progress"
-        );
+    /* SPEAKER + TAGS */
+
+    renderAudioTags(content);
 
 
-    const currentTime =
-        document.getElementById(
-            "video-audio-current"
-        );
+    /* AUDIO */
+
+    const audio = getText(
+        content,
+        "audio"
+    );
+
+    const source = document.getElementById(
+        "audio-source"
+    );
+
+    const audioElement = document.getElementById(
+        "content-audio"
+    );
 
 
-    const duration =
-        document.getElementById(
-            "video-audio-duration"
-        );
+    source.src = audio;
+    audioElement.load();
+
+
+    initAudioPlayer(
+        "content-audio",
+        "audio-play",
+        "audio-progress-bar",
+        "audio-current",
+        "audio-duration"
+    );
+
+
+    /* TRANSCRIPT */
+
+    renderTranscript(
+        content,
+        "audio-transcript-section",
+        "audio-transcript",
+        "audio-transcript-more"
+    );
+}
+
+
+/* =========================================================
+   AUDIO PLAYER
+========================================================= */
+
+function initAudioPlayer(
+    audioId,
+    playId,
+    progressId,
+    currentId,
+    durationId
+) {
+
+    const audio = document.getElementById(audioId);
+    const playButton = document.getElementById(playId);
+    const progress = document.getElementById(progressId);
+    const currentTime = document.getElementById(currentId);
+    const duration = document.getElementById(durationId);
 
 
     if (
@@ -500,90 +376,62 @@ function initVideoAudioPlayer() {
         !currentTime ||
         !duration
     ) {
-
         return;
-
     }
 
 
-    /*
-        جلوگیری از اضافه شدن
-        چندباره Event
-    */
+    /* جلوگیری از چند بار Event */
 
-    if (
-        audio.dataset.initialized ===
-        "true"
-    ) {
-
+    if (audio.dataset.initialized === "true") {
         return;
-
     }
 
-
-    audio.dataset.initialized =
-        "true";
+    audio.dataset.initialized = "true";
 
 
-    /*
-        PLAY / PAUSE
-    */
+    /* PLAY / PAUSE */
 
-    playButton.onclick =
-        () => {
+    playButton.onclick = () => {
 
-            if (audio.paused) {
+        if (audio.paused) {
 
-                audio.play();
+            audio.play();
 
-                playButton.innerHTML =
-                    '<i class="fa-solid fa-pause"></i>';
+            playButton.innerHTML =
+                '<i class="fa-solid fa-pause"></i>';
 
-            }
+        } else {
 
-            else {
+            audio.pause();
 
-                audio.pause();
-
-                playButton.innerHTML =
-                    '<i class="fa-solid fa-play"></i>';
-
-            }
-
-        };
+            playButton.innerHTML =
+                '<i class="fa-solid fa-play"></i>';
+        }
+    };
 
 
-    /*
-        DURATION
-    */
+    /* DURATION */
 
     audio.addEventListener(
         "loadedmetadata",
         () => {
 
             duration.textContent =
-                formatTime(
-                    audio.duration
-                );
+                formatTime(audio.duration);
 
         }
     );
 
 
-    /*
-        PROGRESS
-    */
+    /* PROGRESS */
 
     audio.addEventListener(
         "timeupdate",
         () => {
 
             if (!audio.duration) {
-
                 return;
-
             }
-
 
             progress.value =
                 (
@@ -591,43 +439,30 @@ function initVideoAudioPlayer() {
                     audio.duration
                 ) * 100;
 
-
             currentTime.textContent =
                 formatTime(
                     audio.currentTime
                 );
-
         }
     );
 
 
-    /*
-        SEEK
-    */
+    /* SEEK */
 
-    progress.oninput =
-        () => {
+    progress.oninput = () => {
 
-            if (!audio.duration) {
+        if (!audio.duration) {
+            return;
+        }
 
-                return;
-
-            }
-
-
-            audio.currentTime =
-                (
-                    progress.value /
-                    100
-                ) *
-                audio.duration;
-
-        };
+        audio.currentTime =
+            (
+                progress.value / 100
+            ) * audio.duration;
+    };
 
 
-    /*
-        END
-    */
+    /* END */
 
     audio.addEventListener(
         "ended",
@@ -636,138 +471,13 @@ function initVideoAudioPlayer() {
             playButton.innerHTML =
                 '<i class="fa-solid fa-play"></i>';
 
-            progress.value =
-                0;
+            progress.value = 0;
 
             currentTime.textContent =
                 "00:00";
-
         }
     );
-
 }
-
-/* =========================================================
-   AUDIO
-========================================================= */
-
-function renderAudio(
-    content
-) {
-
-    const layout =
-        document.getElementById(
-            "audio-layout"
-        );
-
-
-    layout.style.display =
-        "block";
-
-
-
-    /*
-        COVER
-    */
-
-    const cover =
-        getText(
-            content,
-            "cover"
-        );
-
-
-    const coverElement =
-        document.getElementById(
-            "audio-cover"
-        );
-
-
-    if (cover) {
-
-        coverElement.src =
-            cover;
-
-    }
-
-
-
-    /*
-        TITLE
-    */
-
-    document.getElementById(
-        "audio-title"
-    ).textContent =
-        getText(
-            content,
-            "title"
-        );
-
-
-
-    /*
-        SPEAKER + TAGS
-    */
-
-    renderAudioTags(
-        content
-    );
-
-
-
-    /*
-        AUDIO
-    */
-
-    const audio =
-        getText(
-            content,
-            "audio"
-        );
-
-
-    const audioSource =
-        document.getElementById(
-            "audio-source"
-        );
-
-
-    audioSource.src =
-        audio;
-
-
-    const audioElement =
-        document.getElementById(
-            "content-audio"
-        );
-
-
-    audioElement.load();
-
-
-
-    /*
-        TRANSCRIPT
-    */
-
-    renderTranscript(
-        content,
-        "audio-transcript-section",
-        "audio-transcript",
-        "audio-transcript-more"
-    );
-
-
-
-    /*
-        AUDIO PLAYER
-    */
-
-    initAudioPlayer();
-
-}
-
 
 
 /* =========================================================
@@ -779,225 +489,110 @@ function renderTags(
     containerId
 ) {
 
-    const container =
-        document.getElementById(
-            containerId
-        );
-
-
-    if (!container) {
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        "";
-
-
-
-    /*
-        TAG LIST
-    */
-
-    const tags =
-        content.querySelectorAll(
-            "tags > tag"
-        );
-
-
-    if (!tags.length) {
-
-        return;
-
-    }
-
-
-    tags.forEach(
-        tagElement => {
-
-            const tagName =
-                tagElement.textContent.trim();
-
-
-            if (!tagName) {
-
-                return;
-
-            }
-
-
-            const tag =
-                document.createElement(
-                    "a"
-                );
-
-
-            tag.className =
-                "content-tag";
-
-
-            tag.href =
-                "results.html?type=" +
-                encodeURIComponent(
-                    tagName
-                );
-
-
-            tag.textContent =
-                tagName;
-
-
-            container.appendChild(
-                tag
-            );
-
-        }
+    const container = document.getElementById(
+        containerId
     );
 
-}
+    if (!container) {
+        return;
+    }
 
+
+    container.innerHTML = "";
+
+
+    content.querySelectorAll(
+        "tags > tag"
+    ).forEach(tagElement => {
+
+        const tagName =
+            tagElement.textContent.trim();
+
+        if (!tagName) {
+            return;
+        }
+
+
+        const tag =
+            document.createElement("a");
+
+        tag.className = "content-tag";
+
+        tag.href =
+            "results.html?type=" +
+            encodeURIComponent(tagName);
+
+        tag.textContent = tagName;
+
+        container.appendChild(tag);
+    });
+}
 
 
 /* =========================================================
    AUDIO TAGS
 ========================================================= */
 
-function renderAudioTags(
-    content
-) {
+function renderAudioTags(content) {
 
-    const container =
-        document.getElementById(
-            "audio-tags"
-        );
-
+    const container = document.getElementById(
+        "audio-tags"
+    );
 
     if (!container) {
-
         return;
-
     }
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
+    /* SPEAKER */
 
-    /*
-        SPEAKER
-    */
-
-    const speaker =
-        getText(
-            content,
-            "speaker"
-        );
-
+    const speaker = getText(
+        content,
+        "speaker"
+    );
 
     if (speaker) {
 
         const speakerTag =
-            document.createElement(
-                "a"
-            );
-
+            document.createElement("a");
 
         speakerTag.className =
             "content-tag";
 
-
         speakerTag.href =
             "speakers.html?speaker=" +
-            encodeURIComponent(
-                speaker
-            );
+            encodeURIComponent(speaker);
 
-
-        speakerTag.textContent =
-            speaker;
-
+        speakerTag.textContent = speaker;
 
         container.appendChild(
             speakerTag
         );
-
     }
 
 
+    /* TAGS */
 
-    /*
-        TAGS
-    */
-
-    const tags =
-        content.querySelectorAll(
-            "tags > tag"
-        );
-
-
-    tags.forEach(
-        tagElement => {
-
-            const tagName =
-                tagElement.textContent.trim();
-
-
-            if (!tagName) {
-
-                return;
-
-            }
-
-
-            const tag =
-                document.createElement(
-                    "a"
-                );
-
-
-            tag.className =
-                "content-tag";
-
-
-            tag.href =
-                "results.html?type=" +
-                encodeURIComponent(
-                    tagName
-                );
-
-
-            tag.textContent =
-                tagName;
-
-
-            container.appendChild(
-                tag
-            );
-
-        }
+    renderTags(
+        content,
+        "audio-tags"
     );
-
 }
-
 
 
 /* =========================================================
    SPEAKER
 ========================================================= */
 
-function renderSpeaker(
-    content
-) {
+function renderSpeaker(content) {
 
-    const speaker =
-        getText(
-            content,
-            "speaker"
-        );
-
+    const speaker = getText(
+        content,
+        "speaker"
+    );
 
     const speakerLink =
         document.getElementById(
@@ -1007,56 +602,30 @@ function renderSpeaker(
 
     if (!speaker) {
 
-        speakerLink.style.display =
-            "none";
+        speakerLink.style.display = "none";
 
         return;
-
     }
 
 
-    speakerLink.style.display =
-        "";
+    speakerLink.style.display = "";
 
 
     document.getElementById(
         "video-speaker-name"
+    ).textContent = speaker;
+
+
+    document.getElementById(
+        "speaker-initial"
     ).textContent =
-        speaker;
+        speaker.charAt(0);
 
-
-
-    /*
-        SPEAKER INITIAL
-    */
-
-    const initial =
-        document.getElementById(
-            "speaker-initial"
-        );
-
-
-    if (initial) {
-
-        initial.textContent =
-            speaker.charAt(0);
-
-    }
-
-
-
-    /*
-        SPEAKER LINK
-    */
 
     speakerLink.href =
         "speakers.html?speaker=" +
-        encodeURIComponent(
-            speaker
-        );
-
+        encodeURIComponent(speaker);
 }
-
 
 
 /* =========================================================
@@ -1070,80 +639,45 @@ function renderTranscript(
     buttonId
 ) {
 
-    const transcript =
-        getText(
-            content,
-            "transcript"
-        );
-
-
-    const section =
-        document.getElementById(
-            sectionId
-        );
-
+    const section = document.getElementById(
+        sectionId
+    );
 
     if (!section) {
-
         return;
-
     }
+
+
+    const transcript = getText(
+        content,
+        "transcript"
+    );
 
 
     if (!transcript) {
 
-        section.style.display =
-            "none";
+        section.style.display = "none";
 
         return;
-
     }
 
 
-    section.style.display =
-        "";
+    section.style.display = "";
 
 
-    const text =
-        document.getElementById(
-            textId
-        );
+    const text = document.getElementById(
+        textId
+    );
 
-
-    text.textContent =
-        transcript;
-
-
-    /*
-        شروع در حالت بسته
-    */
-
-    text.classList.add(
-        "collapsed"
+    const button = document.getElementById(
+        buttonId
     );
 
 
-    text.classList.remove(
-        "expanded"
-    );
+    text.textContent = transcript;
 
-
-
-    /*
-        MORE BUTTON
-    */
-
-    const button =
-        document.getElementById(
-            buttonId
-        );
-
-
-    if (!button) {
-
-        return;
-
-    }
+    text.classList.add("collapsed");
+    text.classList.remove("expanded");
 
 
     button.innerHTML =
@@ -1151,338 +685,57 @@ function renderTranscript(
          <i class="fa-solid fa-chevron-down"></i>`;
 
 
-    button.onclick =
-        () => {
+    button.onclick = () => {
 
-            const isExpanded =
-                text.classList.toggle(
-                    "expanded"
-                );
-
-
+        const expanded =
             text.classList.toggle(
-                "collapsed",
-                !isExpanded
+                "expanded"
             );
 
+        text.classList.toggle(
+            "collapsed",
+            !expanded
+        );
 
-            button.innerHTML =
-                isExpanded
 
-                    ? `بستن
-                       <i class="fa-solid fa-chevron-up"></i>`
+        button.innerHTML = expanded
 
-                    : `بیشتر
-                       <i class="fa-solid fa-chevron-down"></i>`;
+            ? `بستن
+               <i class="fa-solid fa-chevron-up"></i>`
 
-        };
-
+            : `بیشتر
+               <i class="fa-solid fa-chevron-down"></i>`;
+    };
 }
-
-
-
-/* =========================================================
-   RELATED AUDIO
-========================================================= */
-
-function renderRelatedAudio(
-    content
-) {
-
-    const card =
-        document.getElementById(
-            "related-audio"
-        );
-
-
-    if (!card) {
-
-        return;
-
-    }
-
-
-    card.style.display =
-        "flex";
-
-
-
-    /*
-        COVER
-    */
-
-    const image =
-        document.getElementById(
-            "related-audio-image"
-        );
-
-
-    if (image) {
-
-        image.src =
-            getText(
-                content,
-                "cover"
-            );
-
-    }
-
-
-
-    /*
-        TITLE
-    */
-
-    const title =
-        document.getElementById(
-            "related-audio-title"
-        );
-
-
-    if (title) {
-
-        title.textContent =
-            getText(
-                content,
-                "title"
-            );
-
-    }
-
-
-
-    /*
-        LINK
-    */
-
-    card.href =
-        "#";
-
-}
-
-
-
-/* =========================================================
-   AUDIO PLAYER
-========================================================= */
-
-function initAudioPlayer() {
-
-    const audio =
-        document.getElementById(
-            "content-audio"
-        );
-
-
-    const playButton =
-        document.getElementById(
-            "audio-play"
-        );
-
-
-    const progress =
-        document.getElementById(
-            "audio-progress-bar"
-        );
-
-
-    const currentTime =
-        document.getElementById(
-            "audio-current"
-        );
-
-
-    const duration =
-        document.getElementById(
-            "audio-duration"
-        );
-
-
-    if (
-        !audio ||
-        !playButton ||
-        !progress ||
-        !currentTime ||
-        !duration
-    ) {
-
-        return;
-
-    }
-
-
-
-    /*
-        PLAY / PAUSE
-    */
-
-    playButton.onclick =
-        () => {
-
-            if (audio.paused) {
-
-                audio.play();
-
-                playButton.innerHTML =
-                    '<i class="fa-solid fa-pause"></i>';
-
-            }
-
-            else {
-
-                audio.pause();
-
-                playButton.innerHTML =
-                    '<i class="fa-solid fa-play"></i>';
-
-            }
-
-        };
-
-
-
-    /*
-        DURATION
-    */
-
-    audio.addEventListener(
-        "loadedmetadata",
-        () => {
-
-            duration.textContent =
-                formatTime(
-                    audio.duration
-                );
-
-        }
-    );
-
-
-
-    /*
-        PROGRESS
-    */
-
-    audio.addEventListener(
-        "timeupdate",
-        () => {
-
-            if (!audio.duration) {
-
-                return;
-
-            }
-
-
-            progress.value =
-                (
-                    audio.currentTime /
-                    audio.duration
-                ) * 100;
-
-
-            currentTime.textContent =
-                formatTime(
-                    audio.currentTime
-                );
-
-        }
-    );
-
-
-
-    /*
-        SEEK
-    */
-
-    progress.oninput =
-        () => {
-
-            if (!audio.duration) {
-
-                return;
-
-            }
-
-
-            audio.currentTime =
-                (
-                    progress.value /
-                    100
-                ) *
-                audio.duration;
-
-        };
-
-
-
-    /*
-        END
-    */
-
-    audio.addEventListener(
-        "ended",
-        () => {
-
-            playButton.innerHTML =
-                '<i class="fa-solid fa-play"></i>';
-
-            progress.value =
-                0;
-
-        }
-    );
-
-}
-
 
 
 /* =========================================================
    FORMAT TIME
 ========================================================= */
 
-function formatTime(
-    seconds
-) {
+function formatTime(seconds) {
 
     if (
         !seconds ||
         isNaN(seconds)
     ) {
-
         return "00:00";
-
     }
 
 
     const minutes =
-        Math.floor(
-            seconds / 60
-        );
-
+        Math.floor(seconds / 60);
 
     const remainingSeconds =
-        Math.floor(
-            seconds % 60
-        );
+        Math.floor(seconds % 60);
 
 
     return (
-        String(minutes).padStart(
-            2,
-            "0"
-        ) +
+        String(minutes).padStart(2, "0") +
         ":" +
-        String(
-            remainingSeconds
-        ).padStart(
-            2,
-            "0"
-        )
+        String(remainingSeconds).padStart(2, "0")
     );
-
 }
-
 
 
 /* =========================================================
@@ -1495,13 +748,9 @@ function getText(
 ) {
 
     const element =
-        parent.querySelector(
-            selector
-        );
-
+        parent.querySelector(selector);
 
     return element
         ? element.textContent.trim()
         : "";
-
 }

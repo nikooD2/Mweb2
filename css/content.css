@@ -1,34 +1,4 @@
-/* =========================================================
-   BACK
-========================================================= */
-/* 
-.content-back {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: .5rem;
-
-    margin-bottom: 1.5rem;
-
-    color: var(--text-light);
-
-    text-decoration: none;
-
-    font-size: .9rem;
-
-    transition: color .2s ease;
-
-}
-
-.content-back:hover {
-
-    color: var(--primary);
-
-}
- */
-
+@import url("./rows.css");
 
 /* =========================================================
    DEFAULT
@@ -36,41 +6,29 @@
 
 .video-layout,
 .audio-layout {
-
     display: none;
-
 }
 
-
+.audio-layout {
+    text-align: center;
+}
 
 /* =========================================================
    VIDEO
 ========================================================= */
 
 .video-box {
-
     width: 100%;
-
     overflow: hidden;
-
-    /* border-radius: var(--radius-lg); */
-
     background: #111;
-
 }
 
 .video-box video {
-
     display: block;
-
     width: 100%;
-
     aspect-ratio: 16 / 9;
-
     object-fit: cover;
-
 }
-
 
 
 /* =========================================================
@@ -78,29 +36,18 @@
 ========================================================= */
 
 .video-information {
-
     width: 100%;
-
     padding-top: 1rem;
-
     text-align: right;
-
 }
 
 .video-information h1 {
-
     margin: 0;
-
     color: var(--text);
-
     font-size: 1.5rem;
-
     line-height: 1.7;
-
     font-weight: 800;
-
 }
-
 
 
 /* =========================================================
@@ -108,60 +55,41 @@
 ========================================================= */
 
 .content-tags {
-
     display: flex;
-
     flex-wrap: wrap;
-
     align-items: center;
-
     gap: .5rem;
-
-    margin-top: 0.8rem;
-
+    margin-top: .8rem;
 }
 
 .content-tag {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
 
     padding: .35rem .8rem;
 
     border: 1px solid var(--border);
-
     border-radius: 999px;
 
     background: var(--surface);
-
     color: var(--text-light);
 
     text-decoration: none;
-
     font-family: var(--font-family);
-
     font-size: .78rem;
 
     transition:
         color .2s ease,
         background .2s ease,
         border-color .2s ease;
-
 }
 
 .content-tag:hover {
-
     color: var(--primary-dark);
-
     background: var(--primary-soft);
-
     border-color: var(--primary-light);
-
 }
-
 
 
 /* =========================================================
@@ -169,52 +97,37 @@
 ========================================================= */
 
 .speaker-profile {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: .7rem;
 
-    margin-top: 0.8rem;
+    margin-top: .8rem;
 
     color: var(--text);
-
     text-decoration: none;
-
 }
 
 .speaker-avatar {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     width: 44px;
     height: 44px;
 
     border-radius: 50%;
-
     overflow: hidden;
 
     background: var(--primary-soft);
-
     color: var(--primary-dark);
 
     font-weight: 700;
-
 }
 
 .speaker-profile span {
-
     font-size: .9rem;
-
     font-weight: 600;
-
 }
-
 
 
 /* =========================================================
@@ -222,75 +135,48 @@
 ========================================================= */
 
 .transcript-section {
-
-    margin-top: 0.8rem;
-
-    /* padding-top: 1.4rem; */
-
-    /* border-top: 1px solid var(--border); */
-
+    margin-top: .8rem;
 }
 
 .transcript-text {
-
     color: var(--text-light);
-
     font-size: .92rem;
-
     line-height: 2;
 
     overflow: hidden;
-
     white-space: pre-line;
-
 }
 
 .transcript-text.collapsed {
-
     max-height: 4rem;
-
 }
 
 .transcript-text.expanded {
-
     max-height: 3000px;
-
 }
 
 .transcript-more {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: .4rem;
 
     margin-top: .4rem;
-
     padding: 0;
 
     border: none;
-
     background: transparent;
 
     color: var(--primary-dark);
-
     font-family: var(--font-family);
-
     font-size: .82rem;
 
     cursor: pointer;
-
 }
 
 .transcript-more i {
-
     font-size: .65rem;
-
     transition: transform .2s ease;
-
 }
-
 
 
 /* =========================================================
@@ -298,259 +184,61 @@
 ========================================================= */
 
 .content-actions {
-
     display: flex;
-
     align-items: center;
-
     gap: 1.5rem;
 
     margin-top: 1.4rem;
-
     padding-top: 1.2rem;
-
-    /* border-top: 1px solid var(--border); */
-
 }
 
 .content-action {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: .4rem;
 
     padding: 0;
 
     border: none;
-
     background: transparent;
 
     color: var(--text-light);
-
     font-family: var(--font-family);
-
     font-size: .82rem;
 
     cursor: pointer;
 
     transition: color .2s ease;
-
 }
 
 .content-action:hover {
-
     color: var(--primary-dark);
-
 }
 
-
 /* =========================================================
-   VIDEO AUDIO SECTION
+   AUDIO SECTION
 ========================================================= */
 
-.video-audio-section {
-
-    display: none;
-
+.audio-divider {
     width: 100%;
-
-    margin-top: 1.8rem;
-
-}
-
-
-/* =========================================================
-   DIVIDER
-========================================================= */
-
-.video-audio-divider {
-
-    width: 100%;
-
     height: 1px;
-
-    margin-bottom: 1.4rem;
-
+    margin-bottom: 2rem;
+    margin-top: 2rem;
     background: var(--border);
-
 }
 
 
 /* =========================================================
-   AUDIO TITLE
+   AUDIO COVER
 ========================================================= */
-
-.video-audio-title {
-
-    margin: 0;
-
-    color: var(--text);
-
-    font-size: 1rem;
-
-    line-height: 1.8;
-
-    font-weight: 700;
-
-}
-
-
-/* =========================================================
-   VIDEO AUDIO PLAYER
-========================================================= */
-
-.video-audio-player {
-
-    margin-top: 1rem;
-
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.video-audio-player .audio-progress {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: .7rem;
-
-    color: var(--text-light);
-
-    font-size: .72rem;
-
-}
-
-
-.video-audio-player
-.audio-progress input {
-
-    flex: 1;
-
-    accent-color: var(--primary);
-
-    cursor: pointer;
-
-}
-
-
-/* =========================================================
-   CONTROLS
-========================================================= */
-
-.video-audio-player .audio-controls {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 1.5rem;
-
-    margin-top: 1rem;
-
-}
-
-
-.video-audio-player
-.audio-control,
-
-.video-audio-player
-.audio-play {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border: none;
-
-    cursor: pointer;
-
-}
-
-
-.video-audio-player
-.audio-control {
-
-    width: 40px;
-
-    height: 40px;
-
-    background: transparent;
-
-    color: var(--text);
-
-    font-size: .95rem;
-
-}
-
-
-.video-audio-player
-.audio-play {
-
-    width: 55px;
-
-    height: 55px;
-
-    border-radius: 50%;
-
-    background: var(--primary);
-
-    color: white;
-
-    font-size: 1rem;
-
-}
-
-
-/* =========================================================
-   AUDIO ACTIONS
-========================================================= */
-
-.video-audio-actions {
-
-    justify-content: flex-start;
-
-    margin-top: 1.2rem;
-
-    padding-top: 0;
-
-    border-top: none;
-
-}
-
-
-
-/* =========================================================
-   AUDIO LAYOUT
-========================================================= */
-
-.audio-layout {
-
-    text-align: center;
-
-}
 
 .audio-cover-container {
-
     display: flex;
-
     justify-content: center;
-
 }
 
 .audio-cover {
-
     width: min(380px, 80vw);
-
     aspect-ratio: 1 / 1;
 
     object-fit: cover;
@@ -558,144 +246,113 @@
     border-radius: 24px;
 
     box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
-
 }
-
-.audio-information {
-
-    width: min(700px, 100%);
-
-    margin: 0 auto;
-
-}
-
-.audio-information h1 {
-
-    margin: 1.6rem 0 0;
-
-    color: var(--text);
-
-    font-size: 2rem;
-
-    line-height: 1.6;
-
-    font-weight: 800;
-
-}
-
 
 
 /* =========================================================
-   AUDIO TAGS
+   AUDIO INFORMATION
 ========================================================= */
 
-.audio-tags {
-
-    justify-content: center;
-
+.audio-information {
+    width: min(700px, 100%);
+    margin: 0 auto;
 }
 
+.audio-information h1 {
+    margin: 1.6rem 0 0;
+    color: var(--text);
+    font-size: 2rem;
+    line-height: 1.6;
+    font-weight: 800;
+}
 
+.audio-tags {
+    justify-content: center;
+}
 
 /* =========================================================
    AUDIO PLAYER
 ========================================================= */
 
 .audio-player {
-
-    margin-top: 2rem;
-
+    width: min(700px, 100%);
+    margin: 2rem auto 0;
 }
 
 .audio-progress {
-
     display: flex;
-
     align-items: center;
-
     gap: .7rem;
 
     color: var(--text-light);
-
     font-size: .72rem;
 
+    direction: ltr;
 }
 
 .audio-progress input {
-
     flex: 1;
 
     accent-color: var(--primary);
-
     cursor: pointer;
-
 }
 
 .audio-controls {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 1.5rem;
-
     margin-top: 1rem;
 
+    direction: ltr;
 }
 
 .audio-control,
 .audio-play {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     border: none;
-
     cursor: pointer;
-
 }
 
 .audio-control {
-
     width: 40px;
     height: 40px;
 
     background: transparent;
-
     color: var(--text);
 
     font-size: .95rem;
-
 }
 
 .audio-play {
-
     width: 55px;
     height: 55px;
 
     border-radius: 50%;
 
     background: var(--primary);
-
     color: white;
 
     font-size: 1rem;
-
 }
+
+
+/* =========================================================
+   AUDIO ACTIONS
+========================================================= */
 
 .audio-actions {
-
     justify-content: center;
 
+    margin-top: 1.4rem;
+    padding-top: 0;
+
     text-align: center;
-
 }
-
 
 
 /* =========================================================
@@ -705,48 +362,25 @@
 @media (max-width: 700px) {
 
     .content-page {
-
         padding: 1.2rem 1rem 4rem;
-
     }
-
 
     .video-information h1,
     .audio-information h1 {
-
         font-size: 1.4rem;
-
     }
-
 
     .video-box {
-
         border-radius: 14px;
-
     }
-
 
     .audio-cover {
-
         width: min(300px, 82vw);
-
         border-radius: 18px;
-
     }
-
 
     .content-actions {
-
         gap: 1.2rem;
-
-    }
-
-
-    .related-audio-card img {
-
-        width: 62px;
-        height: 62px;
-
     }
 
 }

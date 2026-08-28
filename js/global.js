@@ -633,3 +633,88 @@ function initLanguageSelector() {
     );
 
 }
+
+document.querySelectorAll(".content-slider").forEach(slider => {
+
+    let isDragging = false;
+    let startX = 0;
+    let moved = false;
+
+    slider.addEventListener("pointerdown", (e) => {
+
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+
+        isDragging = true;
+        moved = false;
+        startX = e.clientX;
+
+        slider.classList.add("dragging");
+
+        slider.setPointerCapture(e.pointerId);
+    });
+
+
+    slider.addEventListener("pointermove", (e) => {
+
+        if (!isDragging) return;
+
+        const distance = e.clientX - startX;
+
+        if (Math.abs(distance) > 5) {
+            moved = true;
+        }
+
+        if (!moved) return;
+
+        e.preventDefault();
+
+        slider.scrollBy({
+            left: -distance,
+            behavior: "auto"
+        });
+
+        startX = e.clientX;
+    });
+
+
+    slider.addEventListener("pointerup", (e) => {
+
+        if (isDragging && moved) {
+            slider.dataset.dragged = "true";
+
+            setTimeout(() => {
+                delete slider.dataset.dragged;
+            }, 50);
+        }
+
+        isDragging = false;
+        slider.classList.remove("dragging");
+
+        if (slider.hasPointerCapture(e.pointerId)) {
+            slider.releasePointerCapture(e.pointerId);
+        }
+    });
+
+
+    // جلوگیری از باز شدن کارت بعد از Drag
+    slider.addEventListener("click", (e) => {
+
+        if (slider.dataset.dragged === "true") {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+    }, true);
+
+
+    slider.addEventListener("pointercancel", (e) => {
+
+        isDragging = false;
+        slider.classList.remove("dragging");
+
+        if (slider.hasPointerCapture(e.pointerId)) {
+            slider.releasePointerCapture(e.pointerId);
+        }
+    });
+
+});

@@ -29,25 +29,12 @@
     <main class="page">
 
 
-        <!-- BACK -->
-<!-- 
-        <a href="index.html" class="content-back">
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-            <span>بازگشت</span>
-
-        </a> -->
-
-
-
         <!-- =====================================================
-             VIDEO CONTENT
+             VIDEO
         ====================================================== -->
 
         <section id="video-layout"
                  class="content-main video-layout">
-
 
             <!-- VIDEO -->
 
@@ -68,27 +55,17 @@
             </div>
 
 
-
-            <!-- INFORMATION -->
+            <!-- VIDEO INFORMATION -->
 
             <div class="video-information">
 
-
-                <!-- TITLE -->
-
                 <h1 id="video-title"></h1>
 
-
-
-                <!-- TOPIC -->
 
                 <div id="video-topic"
                      class="content-tags">
                 </div>
 
-
-
-                <!-- SPEAKER -->
 
                 <a id="video-speaker"
                    class="speaker-profile"
@@ -106,17 +83,14 @@
                 </a>
 
 
-
                 <!-- TRANSCRIPT -->
 
                 <section id="video-transcript-section"
                          class="transcript-section">
 
-
                     <div id="video-transcript"
                          class="transcript-text collapsed">
                     </div>
-
 
                     <button id="video-transcript-more"
                             class="transcript-more"
@@ -128,15 +102,12 @@
 
                     </button>
 
-
                 </section>
-
 
 
                 <!-- ACTIONS -->
 
                 <div class="content-actions">
-
 
                     <button type="button"
                             class="content-action">
@@ -167,30 +138,33 @@
 
                     </button>
 
-
                 </div>
 
 
-                <!-- =====================================================
-                    RELATED AUDIO PLAYER
-                ====================================================== -->
+                <!-- =================================================
+                     AUDIO WITH VIDEO
+                ================================================== -->
 
                 <section id="video-audio-section"
-                        class="video-audio-section">
+                        class="audio-layout">
 
-                    <div class="video-audio-divider"></div>
+                    <div class="audio-divider"></div>
+
+                    <div class="audio-cover-container">
+
+                        <img id="video-audio-cover"
+                            class="audio-cover"
+                            src=""
+                            alt="">
+
+                    </div>
+                    <div class="audio-information">
+
+                        <h1 id="audio-title"> صوت </h1>
+                    </div>
 
 
-                    <!-- AUDIO TITLE -->
-
-                    <h2 id="video-audio-title"
-                        class="video-audio-title">
-                    </h2>
-
-
-                    <!-- AUDIO PLAYER -->
-
-                    <div class="video-audio-player">
+                    <div class="audio-player">
 
                         <audio id="video-audio">
 
@@ -207,13 +181,11 @@
                                 00:00
                             </span>
 
-
                             <input id="video-audio-progress"
                                 type="range"
                                 min="0"
                                 max="100"
                                 value="0">
-
 
                             <span id="video-audio-duration">
                                 00:00
@@ -255,9 +227,7 @@
                     </div>
 
 
-                    <!-- AUDIO ACTIONS -->
-
-                    <div class="content-actions video-audio-actions">
+                    <div class="content-actions audio-actions">
 
                         <button type="button"
                                 class="content-action">
@@ -292,22 +262,17 @@
 
                 </section>
 
-
             </div>
 
         </section>
 
 
-
         <!-- =====================================================
-             AUDIO CONTENT
+             AUDIO ONLY
         ====================================================== -->
 
         <section id="audio-layout"
                  class="content-main audio-layout">
-
-
-            <!-- COVER -->
 
             <div class="audio-cover-container">
 
@@ -319,30 +284,17 @@
             </div>
 
 
-
-            <!-- INFORMATION -->
-
             <div class="audio-information">
-
-
-                <!-- TITLE -->
 
                 <h1 id="audio-title"></h1>
 
-
-
-                <!-- SPEAKER + TOPIC -->
 
                 <div id="audio-tags"
                      class="content-tags audio-tags">
                 </div>
 
 
-
-                <!-- AUDIO PLAYER -->
-
                 <div class="audio-player">
-
 
                     <audio id="content-audio">
 
@@ -354,7 +306,6 @@
 
 
                     <div class="audio-progress">
-
 
                         <span id="audio-current">
                             00:00
@@ -372,13 +323,10 @@
                             00:00
                         </span>
 
-
                     </div>
 
 
-
                     <div class="audio-controls">
-
 
                         <button id="audio-prev"
                                 type="button"
@@ -387,7 +335,6 @@
                             <i class="fa-solid fa-backward-step"></i>
 
                         </button>
-
 
 
                         <button id="audio-play"
@@ -399,7 +346,6 @@
                         </button>
 
 
-
                         <button id="audio-next"
                                 type="button"
                                 class="audio-control">
@@ -408,19 +354,15 @@
 
                         </button>
 
-
                     </div>
 
-
                 </div>
-
 
 
                 <!-- TRANSCRIPT -->
 
                 <section id="audio-transcript-section"
                          class="transcript-section">
-
 
                     <div id="audio-transcript"
                          class="transcript-text collapsed">
@@ -437,15 +379,12 @@
 
                     </button>
 
-
                 </section>
-
 
 
                 <!-- ACTIONS -->
 
                 <div class="content-actions audio-actions">
-
 
                     <button type="button"
                             class="content-action">
@@ -476,17 +415,13 @@
 
                     </button>
 
-
                 </div>
-
 
             </div>
 
         </section>
 
-
     </main>
-
 
 
     <!-- ================= JS ================= -->
