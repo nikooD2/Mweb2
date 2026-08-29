@@ -633,88 +633,162 @@ function initLanguageSelector() {
     );
 
 }
-
 document.querySelectorAll(".content-slider").forEach(slider => {
 
     let isDragging = false;
+
     let startX = 0;
-    let moved = false;
+    let startScroll = 0;
 
-    slider.addEventListener("pointerdown", (e) => {
+    let lastX = 0;
+    let lastTime = 0;
 
-        if (e.pointerType === "mouse" && e.button !== 0) return;
+    let velocity = 0;
+    let animationFrame = null;
+
+
+    // =========================================
+    // MOUSE
+    // =========================================
+
+    slider.addEventListener("mousedown", (e) => {
+
+        if (e.button !== 0) return;
 
         isDragging = true;
-        moved = false;
-        startX = e.clientX;
 
-        slider.classList.add("dragging");
+        startX = e.pageX;
+        startScroll = slider.scrollLeft;
 
-        slider.setPointerCapture(e.pointerId);
+        lastX = e.pageX;
+        lastTime = performance.now();
+
+        velocity = 0;
+
+        cancelAnimationFrame(animationFrame);
     });
 
 
-    slider.addEventListener("pointermove", (e) => {
+    slider.addEventListener("mousemove", (e) => {
 
         if (!isDragging) return;
 
-        const distance = e.clientX - startX;
-
-        if (Math.abs(distance) > 5) {
-            moved = true;
-        }
-
-        if (!moved) return;
-
         e.preventDefault();
 
-        slider.scrollBy({
-            left: -distance,
-            behavior: "auto"
-        });
+        const now = performance.now();
 
-        startX = e.clientX;
+        const distance = e.pageX - startX;
+
+        slider.scrollLeft = startScroll - distance;
+
+
+        // محاسبه سرعت
+        const deltaX = e.pageX - lastX;
+        const deltaTime = now - lastTime;
+
+        if (deltaTime > 0) {
+            velocity = deltaX / deltaTime;
+        }
+
+        lastX = e.pageX;
+        lastTime = now;
     });
 
 
-    slider.addEventListener("pointerup", (e) => {
+    document.addEventListener("mouseup", () => {
 
-        if (isDragging && moved) {
-            slider.dataset.dragged = "true";
-
-            setTimeout(() => {
-                delete slider.dataset.dragged;
-            }, 50);
-        }
+        if (!isDragging) return;
 
         isDragging = false;
-        slider.classList.remove("dragging");
 
-        if (slider.hasPointerCapture(e.pointerId)) {
-            slider.releasePointerCapture(e.pointerId);
-        }
+        startMomentum();
+
     });
 
 
-    // جلوگیری از باز شدن کارت بعد از Drag
-    slider.addEventListener("click", (e) => {
+    // =========================================
+    // TOUCH
+    // =========================================
 
-        if (slider.dataset.dragged === "true") {
-            e.preventDefault();
-            e.stopPropagation();
+    slider.addEventListener("touchstart", (e) => {
+
+        isDragging = true;
+
+        startX = e.touches[0].pageX;
+        startScroll = slider.scrollLeft;
+
+        lastX = startX;
+        lastTime = performance.now();
+
+        velocity = 0;
+
+        cancelAnimationFrame(animationFrame);
+
+    }, { passive: true });
+
+
+    slider.addEventListener("touchmove", (e) => {
+
+        if (!isDragging) return;
+
+        const now = performance.now();
+
+        const x = e.touches[0].pageX;
+
+        const distance = x - startX;
+
+        slider.scrollLeft = startScroll - distance;
+
+
+        const deltaX = x - lastX;
+        const deltaTime = now - lastTime;
+
+        if (deltaTime > 0) {
+            velocity = deltaX / deltaTime;
         }
 
-    }, true);
+        lastX = x;
+        lastTime = now;
+
+    }, { passive: true });
 
 
-    slider.addEventListener("pointercancel", (e) => {
+    slider.addEventListener("touchend", () => {
+
+        if (!isDragging) return;
 
         isDragging = false;
-        slider.classList.remove("dragging");
 
-        if (slider.hasPointerCapture(e.pointerId)) {
-            slider.releasePointerCapture(e.pointerId);
-        }
+        startMomentum();
+
     });
+
+
+    // =========================================
+    // MOMENTUM
+    // =========================================
+
+    function startMomentum() {
+
+        let currentVelocity = velocity;
+
+        function animate() {
+
+            // سرعت فعلی را اعمال کن
+            slider.scrollLeft -= currentVelocity * 16;
+
+            // اصطکاک
+            currentVelocity *= 0.94;
+
+            // وقتی تقریباً متوقف شد
+            if (Math.abs(currentVelocity) < 0.01) {
+                return;
+            }
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        animationFrame = requestAnimationFrame(animate);
+    }
 
 });

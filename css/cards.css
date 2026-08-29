@@ -3,19 +3,12 @@
 .filter-fields {
     width: 70%;
     margin: 0 auto 20px auto;
-    align-items: center;
-    margin-bottom: 0px;
     background: none;
 
-    display: grid;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
-    grid-template-columns:
-        minmax(60px, 1fr)
-        minmax(60px, 1fr)
-        minmax(60px, 1fr)
-        auto;
-
-    align-items: end;
     gap: 1rem;
 }
 
@@ -23,27 +16,29 @@
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+
+    width: 200px;
+    flex: 0 0 200px;
 }
 
 
 /* =========================================
    SELECT
 ========================================= */
+
 .filter-field select {
+    width: 100%;
     height: 44px;
 
     padding: 0 0.85rem;
 
     border: 1px solid var(--border);
-
     border-radius: var(--radius-lg);
 
     background-color: var(--surface);
-
     color: var(--text);
 
     font-family: var(--font-family);
-
     font-size: var(--fs-sm);
 
     cursor: pointer;
@@ -56,15 +51,11 @@
 }
 
 
-/* Hover */
-
 .filter-field select:hover {
     border-color: var(--primary-light);
     background-color: var(--surface);
 }
 
-
-/* Focus */
 
 .filter-field select:focus {
     border-color: var(--primary);
@@ -81,9 +72,12 @@
 ========================================= */
 
 .filter-button {
+    width: 130px;
     height: 44px;
 
-    padding: 0 1.15rem;
+    flex: 0 0 130px;
+
+    padding: 0 1rem;
 
     display: flex;
     align-items: center;
@@ -92,15 +86,12 @@
     gap: 0.45rem;
 
     border: 1px solid var(--primary);
-
     border-radius: var(--radius-lg);
 
     background: var(--primary);
-
     color: var(--surface);
 
     font-family: var(--font-family);
-
     font-size: var(--fs-sm);
     font-weight: 600;
 
@@ -113,15 +104,11 @@
 }
 
 
-/* Hover */
-
 .filter-button:hover {
     background: var(--primary-dark);
     border-color: var(--primary-dark);
 }
 
-
-/* Active */
 
 .filter-button:active {
     transform: scale(0.97);
@@ -135,11 +122,13 @@
 @media (min-width: 769px) and (max-width: 1050px) {
 
     .filter-fields {
-        grid-template-columns: 1fr 1fr;
+        width: 80%;
+        flex-wrap: wrap;
     }
 
     .filter-button {
-        width: 100%;
+        width: 130px;
+        flex: 0 0 130px;
     }
 }
 
@@ -151,8 +140,15 @@
 @media (max-width: 768px) {
 
     .filter-fields {
-        grid-template-columns: 1fr;
+        width: 90%;
+        flex-direction: column;
+        align-items: stretch;
         gap: 0.8rem;
+    }
+
+    .filter-field {
+        width: 100%;
+        flex: none;
     }
 
     .filter-field select {
@@ -161,12 +157,12 @@
 
     .filter-button {
         width: 100%;
+        flex: none;
         height: 42px;
     }
 }
 
 /* #endregion */
-
 
 /* #region CONTENT CARD */
 
@@ -424,7 +420,6 @@
     min-width: 0;
 }
 
-
 /* =========================================================
    PLAYLIST IMAGE AREA
 ========================================================= */
@@ -522,6 +517,9 @@
 
     box-shadow:
         0 7px 20px rgba(0, 0, 0, 0.13);
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
 }
 
 
@@ -545,9 +543,45 @@
 
 .playlist-card:hover .playlist-images img:nth-child(3) {
     transform: translateY(-4px);
+    filter: brightness(0.5);
+}
+
+.playlist-card:hover .playlist-info {
+    opacity: 0;
+    transform: translateY(5px);
 }
 
 
+.playlist-hover-text {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+
+    width: 80%;
+
+    color: var(--surface);
+
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.8;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transition: opacity 0.25s ease;
+
+    pointer-events: none;
+}
+
+.playlist-card:hover .playlist-hover-text {
+    opacity: 1;
+}
 /* =========================================================
    PLAYLIST INFO
 ========================================================= */
@@ -577,6 +611,9 @@
     line-height: 1.4;
 
     backdrop-filter: blur(4px);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
 }
 
 
@@ -1025,7 +1062,7 @@
     }
 
     .content-slider > .playlist-card {
-        flex: 0 0 190px;
+        flex: 0 0 120px;
     }
 
     .content-slider > .topic-card {

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<results type="playlists">
+
+    <item>
+
+        <type>playlist</type>
+
+        <id>1</id>
+
+        <title>
+            عنوان مجموعه
+        </title>
+
+        <description>
+            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+        </description>
+
+        <image1>
+            pics/ahkam.jpg
+        </image1>
+
+        <image2>
+            pics/ahkam.jpg
+        </image2>
+
+        <image3>
+            pics/ahkam.jpg
+        </image3>
+
+    </item>
+
+
+    <item>
+
+        <type>playlist</type>
+
+        <id>2</id>
+
+        <title>
+            عنوان مجموعه
+        </title>
+
+        <description>
+            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+        </description>
+
+        <image1>
+            pics/history.jpg
+        </image1>
+
+        <image2>
+            pics/history.jpg
+        </image2>
+
+        <image3>
+            pics/history.jpg
+        </image3>
+
+    </item>
+
+
+    <item>
+
+        <type>playlist</type>
+
+        <id>3</id>
+
+        <title>
+            عنوان مجموعه
+        </title>
+
+        <description>
+            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+        </description>
+
+        <image1>
+            pics/ethics.jpg
+        </image1>
+
+        <image2>
+            pics/ethics.jpg
+        </image2>
+
+        <image3>
+            pics/ethics.jpg
+        </image3>
+
+    </item>
+
+
+    <item>
+
+        <type>playlist</type>
+
+        <id>4</id>
+
+        <title>
+            عنوان مجموعه
+        </title>
+
+        <description>
+            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+        </description>
+
+        <image1>
+            pics/quran.jpg
+        </image1>
+
+        <image2>
+            pics/quran.jpg
+        </image2>
+
+        <image3>
+            pics/quran.jpg
+        </image3>
+
+    </item>
+
+
+    <item>
+
+        <type>playlist</type>
+
+        <id>5</id>
+
+        <title>
+            عنوان مجموعه
+        </title>
+
+        <description>
+            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+        </description>
+
+        <image1>
+            pics/ramadan.jpg
+        </image1>
+
+        <image2>
+            pics/ramadan.jpg
+        </image2>
+
+        <image3>
+            pics/ramadan.jpg
+        </image3>
+
+    </item>
+
+
+    <item>
+
+        <type>playlist</type>
+
+        <id>6</id>
+
+        <title>
+            عنوان مجموعه
+        </title>
+
+        <description>
+            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+        </description>
+
+        <image1>
+            pics/family.jpg
+        </image1>
+
+        <image2>
+            pics/family.jpg
+        </image2>
+
+        <image3>
+            pics/family.jpg
+        </image3>
+
+    </item>
+
+</results>

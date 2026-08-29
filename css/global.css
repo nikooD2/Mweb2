@@ -45,6 +45,8 @@
     --fs-sm: 0.85rem;
     --fs-md: 0.95rem;
     --fs-lg: 1.05rem;
+    --fs-xlg: 1.3rem;
+
 
     /* Shadows */
     --shadow-navbar:
@@ -995,70 +997,73 @@ body {
 
 @media (max-width: 768px) {
 
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
     /* -------------------------
        MAIN NAVBAR
     ------------------------- */
 
     .navbar {
         height: var(--mobile-navbar-height);
-        padding: 8px 12px;
-
-        gap: 10px;
-
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
         flex-wrap: nowrap;
-
+        direction: rtl;
     }
-
 
     /* -------------------------
        RIGHT SIDE
     ------------------------- */
 
     .nav-right {
-
-        gap: 8px;
-
+        display: flex;
+        align-items: center;
+        gap: 4px;
         flex-shrink: 0;
     }
-
 
     /* -------------------------
        LOGO
     ------------------------- */
 
     .logo {
-
-        gap: 5px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
     }
 
     .logo img {
-
         width: 36px;
         height: 36px;
     }
 
     .logo span {
-
         display: none;
     }
-
 
     /* -------------------------
        MENU
     ------------------------- */
 
     .menu-toggle {
-
-        width: 40px;
-        height: 40px;
-
+        width: 38px;
+        height: 38px;
         padding: 0;
-
+        display: flex;
+        align-items: center;
         justify-content: center;
+        gap: 0;
+        flex-shrink: 0;
     }
 
     .menu-toggle span {
-
         display: none;
     }
 
@@ -1066,90 +1071,86 @@ body {
         font-size: var(--fs-md);
     }
 
-
     /* -------------------------
        CENTER
     ------------------------- */
 
     .nav-center {
-
         flex: 1;
-
         min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-
-
-    /* -------------------------
-       LEFT SIDE
-    ------------------------- */
-
-    .nav-left {
-
-        gap: 4px;
-
-        flex-shrink: 1;
-
-        min-width: 0;
-    }
-
-
-    /* -------------------------
-       LANGUAGE
-    ------------------------- */
-
-    .language-select {
-        width: 62px;
-
-        height: 36px;
-
-        padding: 0 5px;
-
-        font-size: var(--fs-xs);
-    }
-
-
-    /* -------------------------
-       ICONS
-    ------------------------- */
-
-    .nav-actions {
-
-        gap: 0;
-    }
-
-    .nav-icon {
-        width: 34px;
-        height: 34px;
-
-        font-size: var(--fs-sm);
-    }
-
 
     /* -------------------------
        SEARCH
     ------------------------- */
 
     .nav-search {
-
-        width: 150px;
-
+        width: 100%;
+        max-width: 180px;
         height: 36px;
     }
 
     .nav-search input {
+        min-width: 0;
         padding: 0 10px;
-
         font-size: var(--fs-xs);
     }
 
     .nav-search button {
-
         width: 36px;
+        flex-shrink: 0;
     }
+
+    /* -------------------------
+       LEFT SIDE
+    ------------------------- */
+
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        flex-shrink: 0;
+        min-width: 0;
+    }
+
+    /* -------------------------
+       ICONS
+    ------------------------- */
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0;
+    }
+
+    .nav-icon {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+        font-size: var(--fs-sm);
+    }
+
+    /* -------------------------
+       LANGUAGE
+    ------------------------- */
+
+    .language-select {
+        width: 56px;
+        height: 34px;
+        padding: 0 4px;
+        font-size: var(--fs-xs);
+    }
+
+    /* -------------------------
+       SIDE MENU
+    ------------------------- */
+
     .mega-menu {
-
         width: min(300px, 85vw);
-
+        padding-top: 70px;
     }
 
     /* -------------------------
@@ -1161,28 +1162,20 @@ body {
         padding: 0 6px;
     }
 
-
     .category-arrow {
-
         width: 26px;
         height: 26px;
     }
 
-
     .categories {
-
         gap: 3px;
     }
 
-
     .categories a {
         height: 30px;
-
         padding: 0 10px;
-
         font-size: var(--fs-xs);
     }
-    
 }
 
 /*======================================
@@ -1365,22 +1358,18 @@ body {
 @media (max-width: 700px) {
 
     .page {
+        min-height: calc(
+            100vh -
+            var(--mobile-navbar-height) -
+            var(--mobile-category-height)
+        );
+
         margin-top: calc(
             var(--mobile-navbar-height) +
             var(--mobile-category-height)
         );
-        padding:
-            1.5rem
-            2rem
-            2.5rem;
-    }
 
-
-    .page-header {
-
-        margin-bottom: 1.25rem;
-
-        padding-bottom: 0.75rem;
+        padding: 1.5rem 1rem 2.5rem;
     }
 
 }

@@ -93,19 +93,6 @@
                 </select>
             </div>
 
-
-            <!-- قالب -->
-            <div class="filter-field">
-                <select id="format-filter">
-                    <option value="">همه قالب‌ها</option>
-                    <option value="video">ویدیو</option>
-                    <option value="audio">صوت</option>
-                    <option value="image">عکس</option>
-                    <option value="text">متن</option>
-                </select>
-            </div>
-
-
             <!-- دکمه اعمال -->
             <button type="button" class="filter-button" id="apply-filter">
                 <i class="fa-solid fa-sliders"></i>
@@ -117,14 +104,19 @@
 
         <!-- ================= CARDS ================= -->
 
-        <section class="results-grid">
+        <div class="results-grid">
 
             <!--
-                کارت‌ها اینجا توسط results.js
-                ساخته می‌شوند.
+                JS اینجا به صورت خودکار:
+                - بخش ویدیوها
+                - بخش صوت‌ها
+                - کارت‌ها
+                - دکمه نمایش نتایج بیشتر
+
+                را ایجاد می‌کند.
             -->
 
-        </section>
+        </div>
 
 
     </main>
@@ -140,6 +132,8 @@
     <!-- ================= JS ================= -->
 
     <script src="js/global.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/cards-loader.js"></script>
     <script src="js/results.js"></script>
 
 

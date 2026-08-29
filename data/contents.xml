@@ -14,10 +14,10 @@
 
         <type>video</type>
 
-        <topic>معارف اسلامی</topic>
+        <topic>توحید</topic>
 
         <tags>
-            <tag>معارف اسلامی</tag>
+            <tag>توحید</tag>
             <tag>سخنرانی</tag>
             <tag>آموزشی</tag>
             <tag>مباحث اعتقادی</tag>
@@ -57,10 +57,10 @@
 
         <type>audio</type>
 
-        <topic>معارف اسلامی</topic>
+        <topic>توحید</topic>
 
         <tags>
-            <tag>معارف اسلامی</tag>
+            <tag>توحید</tag>
             <tag>سخنرانی</tag>
             <tag>صوت</tag>
             <tag>آموزشی</tag>
@@ -133,11 +133,11 @@
 
         <type>video</type>
 
-        <topic>معارف اسلامی</topic>
+        <topic>معاد</topic>
 
         <tags>
             <tag>سخنرانی</tag>
-            <tag>معارف اسلامی</tag>
+            <tag>معاد</tag>
             <tag>آموزشی</tag>
             <tag>ویدئو</tag>
         </tags>
@@ -177,12 +177,12 @@
 
         <audio>media/audio/content2.mp3</audio>
 
-        <topic>معارف اسلامی</topic>
+        <topic>معاد</topic>
 
         <tags>
             <tag>پربازدید</tag>
             <tag>سخنرانی</tag>
-            <tag>معارف اسلامی</tag>
+            <tag>معاد</tag>
             <tag>ویدئو</tag>
         </tags>
 
@@ -207,7 +207,7 @@
 
         <type>audio</type>
 
-        <topic>معارف اسلامی</topic>
+        <topic>عدل</topic>
 
         <tags>
             <tag>پربازدید</tag>
@@ -273,13 +273,13 @@
         <type>video</type>
         <audio>media/audio/content2.mp3</audio>
 
-        <topic>معارف اسلامی</topic>
+        <topic>عدل</topic>
 
         <tags>
             <tag>پربازدید</tag>
             <tag>ویدئو</tag>
             <tag>سخنرانی</tag>
-            <tag>معارف اسلامی</tag>
+            <tag>عدل</tag>
         </tags>
 
         <image>pics/content/content8.jpg</image>
@@ -308,13 +308,12 @@
 
         <type>video</type>
 
-        <topic>aqeedah</topic>
+        <topic>توحید</topic>
 
         <tags>
             <tag>توحید</tag>
             <tag>عقاید</tag>
             <tag>خداشناسی</tag>
-            <tag>معارف اسلامی</tag>
         </tags>
 
         <image>pics/content/content9.jpg</image>
@@ -324,7 +323,7 @@
         <video>media/video/content9.mp4</video>
 
         <text>
-            بررسی معارف توحیدی و شناخت مبانی توحید در معارف اسلامی.
+            بررسی معارف توحیدی و شناخت مبانی توحید .
         </text>
 
         <transcript>
@@ -356,7 +355,7 @@
 
         <type>audio</type>
 
-        <topic>aqeedah</topic>
+        <topic>توحید</topic>
 
         <tags>
             <tag>توحید</tag>
@@ -386,7 +385,7 @@
 
         <type>article</type>
 
-        <topic>aqeedah</topic>
+        <topic>توحید</topic>
 
         <tags>
             <tag>توحید</tag>
@@ -429,7 +428,7 @@
         <type>video</type>
         <audio>media/audio/content2.mp3</audio>
 
-        <topic>aqeedah</topic>
+        <topic>توحید</topic>
 
         <tags>
             <tag>توحید</tag>
@@ -465,7 +464,7 @@
         <type>video</type>
         <audio>media/audio/content2.mp3</audio>
 
-        <topic>aqeedah</topic>
+        <topic>معاد</topic>
 
         <tags>
             <tag>معاد</tag>
@@ -499,7 +498,7 @@
 
         <type>audio</type>
 
-        <topic>aqeedah</topic>
+        <topic>معاد</topic>
 
         <tags>
             <tag>معاد</tag>
@@ -529,7 +528,7 @@
 
         <type>article</type>
 
-        <topic>aqeedah</topic>
+        <topic>معاد</topic>
 
         <tags>
             <tag>معاد</tag>

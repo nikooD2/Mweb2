@@ -280,4 +280,8 @@
             var(--mobile-navbar-height) + var(--mobile-category-height)
         );
     }
+    .hero-slider-arrow
+    {
+        display: none;
+    }
 }

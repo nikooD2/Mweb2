@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<results type="speakers">
+
+    <item>
+
+        <type>speaker</type>
+
+        <id>1</id>
+
+        <title>
+            نام سخنران
+        </title>
+
+        <image>
+            pics/speakers/hazar.jpg
+        </image>
+
+    </item>
+
+
+    <item>
+
+        <type>speaker</type>
+
+        <id>2</id>
+
+        <title>
+            نام سخنران
+        </title>
+
+        <image>
+            pics/speakers/kashani.jpg
+        </image>
+
+    </item>
+
+
+    <item>
+
+        <type>speaker</type>
+
+        <id>4</id>
+
+        <title>
+            نام سخنران
+        </title>
+
+        <image>
+            pics/speakers/moavenian.jpg
+        </image>
+
+    </item>
+
+
+    <item>
+
+        <type>speaker</type>
+
+        <id>5</id>
+
+        <title>
+            نام سخنران
+        </title>
+
+        <image>
+            pics/speakers/mofid.jpg
+        </image>
+
+    </item>
+
+
+    <item>
+
+        <type>speaker</type>
+
+        <id>4</id>
+
+        <title>
+            نام سخنران
+        </title>
+
+        <image>
+            pics/speakers/qasemi.jpg
+        </image>
+
+    </item>
+
+
+    <item>
+
+        <type>speaker</type>
+
+        <id>5</id>
+
+        <title>
+            نام سخنران
+        </title>
+
+        <image>
+            pics/speakers/skandari.jpg
+        </image>
+
+    </item>
+
+</results>

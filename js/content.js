@@ -98,6 +98,8 @@ async function loadContent() {
 
 function renderContent(content) {
 
+    renderContentInfo(content);
+
     const type = getText(content, "type");
 
     if (type === "video") {
@@ -753,4 +755,32 @@ function getText(
     return element
         ? element.textContent.trim()
         : "";
+}
+
+/* =========================================================
+   CONTENT INFO
+========================================================= */
+
+function renderContentInfo(content) {
+
+    document
+        .querySelectorAll("[data-content-info]")
+        .forEach(element => {
+
+            const infoType =
+                element.dataset.contentInfo;
+
+            const value =
+                getText(content, infoType);
+
+            if (!value) {
+                return;
+            }
+
+            element.appendChild(
+                document.createTextNode(
+                    " " + value
+                )
+            );
+        });
 }

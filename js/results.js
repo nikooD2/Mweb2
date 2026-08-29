@@ -2,7 +2,6 @@
    RESULTS
 ========================================================= */
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const params =
@@ -19,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadResults(type);
 
 });
+
+
 /* =========================================================
    SET RESULTS TITLE
 ========================================================= */
@@ -32,17 +33,38 @@ function setResultsTitle(type) {
         return;
     }
 
+
     const titles = {
 
-        newest: "تازه‌ها",
+        newest:
+            "تازه‌ها",
 
-        popular: "پربازدیدترین‌ها"
+        popular:
+            "محبوب‌ترین‌ها",
+
+        "popular-video":
+            "محبوب‌ترین‌ها",
+
+        "popular-audio":
+            "محبوب‌ترین‌ها",
+
+        upcoming:
+            "مناسبت‌های پیش‌رو",
+        "upcoming-video":
+            "مناسبت‌های پیش‌رو",
+        "upcoming-audio":
+            "مناسبت‌های پیش‌رو",
+        filtered:
+            "نتایج جستجو"
 
     };
 
+
     title.textContent =
         titles[type] || "تازه‌ها";
+
 }
+
 
 /* =========================================================
    LOAD RESULTS
@@ -61,8 +83,15 @@ async function loadResults(type) {
     };
 
 
+    const baseType =
+    type === "newest-video" ||
+    type === "newest-audio"
+        ? "newest"
+        : type;
+
+
     const file =
-        files[type] || files.newest;
+        files[baseType] || files.newest;
 
 
     try {
@@ -99,7 +128,7 @@ async function loadResults(type) {
             [...xml.querySelectorAll("item")];
 
 
-        renderCards(items);
+        renderResults(items, type)
 
 
     } catch (error) {
@@ -115,24 +144,96 @@ async function loadResults(type) {
 
 
 /* =========================================================
-   RENDER CARDS
+   RENDER RESULTS
 ========================================================= */
 
-function renderCards(items) {
+function renderResults(items, resultType) {
 
     const container =
         document.querySelector(".results-grid");
-
 
     if (!container) {
         return;
     }
 
-
     container.innerHTML = "";
 
+    const videos = [];
+    const audios = [];
 
-    if (!items.length) {
+    items.forEach(item => {
+
+        const itemType =
+            getXMLValue(item, "type");
+
+        if (itemType === "video") {
+            videos.push(item);
+        }
+
+        else if (itemType === "audio") {
+            audios.push(item);
+        }
+
+    });
+
+
+    /* =========================================
+       تعیین تب فعال
+    ========================================= */
+
+    const videoOnly =
+        resultType.endsWith("-video");
+
+    const audioOnly =
+        resultType.endsWith("-audio");
+
+
+    /* =========================================
+       ویدئوها
+    ========================================= */
+
+    if (videos.length) {
+
+        container.appendChild(
+            createResultsSection(
+                "ویدئوها",
+                videos,
+                "video",
+
+                // اگر video-only بود باز
+                // در غیر این صورت اگر audio-only بود بسته
+                !audioOnly
+            )
+        );
+
+    }
+
+
+    /* =========================================
+       صوت‌ها
+    ========================================= */
+
+    if (audios.length) {
+
+        container.appendChild(
+            createResultsSection(
+                "صوت‌ها",
+                audios,
+                "audio",
+
+                // اگر audio-only بود باز
+                // در غیر این صورت اگر video-only بود بسته
+                !videoOnly
+            )
+        );
+
+    }
+
+
+    if (
+        !videos.length &&
+        !audios.length
+    ) {
 
         container.innerHTML = `
             <div class="results-empty">
@@ -140,75 +241,290 @@ function renderCards(items) {
             </div>
         `;
 
-        return;
-
     }
 
-
-    items.forEach(item => {
-
-        const title =
-            item.querySelector("title")
-                ?.textContent.trim() || "";
+}
 
 
-        const speaker =
-            item.querySelector("speaker")
-                ?.textContent.trim() || "";
+/* =========================================================
+   CREATE RESULTS SECTION
+========================================================= */
+
+function createResultsSection(
+    title,
+    items,
+    sectionType,
+    isOpen = true
+) {
+
+    const section =
+        document.createElement("section");
 
 
-        const type =
-            item.querySelector("type")
-                ?.textContent.trim() || "";
+    section.className =
+        `results-section results-${sectionType}-section` +
+        (isOpen ? " is-open" : "");
 
 
-        const image =
-            item.querySelector("image")
-                ?.textContent.trim() || "";
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    const header =
+        document.createElement("button");
 
 
-        const card =
-            document.createElement("article");
+    header.type = "button";
+
+    header.className =
+        "results-section-header";
+
+    header.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
 
 
-        card.className =
-            "content-card";
+    header.innerHTML = `
+
+        <div class="results-section-title">
+
+            <h2>
+                ${title}
+            </h2>
+
+            <span class="results-count">
+                ${items.length} نتیجه
+            </span>
+
+        </div>
 
 
-        card.innerHTML = `
-
-            <div class="content-card-image">
-
-                <img
-                    src="${image}"
-                    alt="${title}"
-                    loading="lazy"
-                >
-
-                <span class="content-type">
-                    ${type}
-                </span>
-
-            </div>
+        <i class="
+            fa-solid
+            ${isOpen ? "fa-chevron-up" : "fa-chevron-down"}
+            results-section-arrow
+        "></i>
+    `;
 
 
-            <div class="content-card-body">
+    /* =========================================
+       CONTENT
+    ========================================= */
 
-                <h3>
-                    ${title}
-                </h3>
+    const content =
+        document.createElement("div");
 
-                <p>
-                    ${speaker}
-                </p>
 
-            </div>
+    content.className =
+        "results-section-content";
+
+
+    /* =========================================
+       GRID
+    ========================================= */
+
+    const grid =
+        document.createElement("div");
+
+
+    grid.className =
+        `results-items-grid results-${sectionType}-grid`;
+
+
+    /* =========================================
+       تعداد اولیه
+    ========================================= */
+
+    const initialCount =
+        sectionType === "video"
+            ? 8
+            : 12;
+
+
+    let visibleCount =
+        Math.min(
+            initialCount,
+            items.length
+        );
+
+
+    renderSectionItems(
+        grid,
+        items,
+        visibleCount
+    );
+
+
+    content.appendChild(grid);
+
+
+    // =========================================
+    // نمایش نتایج بیشتر / کمتر
+    // =========================================
+
+    if (items.length > visibleCount) {
+
+        const moreButton =
+            document.createElement("button");
+
+        moreButton.type = "button";
+
+        moreButton.className =
+            "results-more-btn";
+
+        moreButton.innerHTML = `
+
+            <span>
+                نمایش نتایج بیشتر
+            </span>
+
+            <i class="
+                fa-solid
+                fa-chevron-down
+            "></i>
 
         `;
 
 
-        container.appendChild(card);
+        moreButton.addEventListener(
+            "click",
+            () => {
+
+                /* اگر هنوز همه نتایج نمایش داده نشده */
+                if (visibleCount < items.length) {
+
+                    visibleCount =
+                        Math.min(
+                            visibleCount + initialCount,
+                            items.length
+                        );
+
+                    renderSectionItems(
+                        grid,
+                        items,
+                        visibleCount,
+                    );
+
+
+                    /* اگر همه نتایج نمایش داده شد */
+                    if (
+                        visibleCount >=
+                        items.length
+                    ) {
+
+                        moreButton.querySelector("span")
+                            .textContent =
+                            "نمایش نتایج کمتر";
+
+                        moreButton.querySelector("i")
+                            .className =
+                            "fa-solid fa-chevron-up";
+                    }
+
+                }
+
+                /* اگر همه نمایش داده شده، برگرد به حالت اولیه */
+                else {
+
+                    visibleCount =
+                        initialCount;
+
+                    renderSectionItems(
+                        grid,
+                        items,
+                        visibleCount,
+                    );
+
+
+                    moreButton.querySelector("span")
+                        .textContent =
+                        "نمایش نتایج بیشتر";
+
+                    moreButton.querySelector("i")
+                        .className =
+                        "fa-solid fa-chevron-down";
+                }
+
+            }
+        );
+
+
+        content.appendChild(
+            moreButton
+        );
+    }
+
+
+    /* =========================================
+       باز و بسته شدن
+    ========================================= */
+
+    header.addEventListener("click", () => {
+
+        const isOpen =
+            section.classList.toggle("is-open");
+
+
+        header.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+
+        const arrow =
+            header.querySelector(
+                ".results-section-arrow"
+            );
+
+
+        arrow.classList.toggle(
+            "fa-chevron-up",
+            isOpen
+        );
+
+
+        arrow.classList.toggle(
+            "fa-chevron-down",
+            !isOpen
+        );
 
     });
+
+
+    section.appendChild(header);
+
+    section.appendChild(content);
+
+
+    return section;
+
+}
+
+
+/* =========================================================
+   RENDER SECTION ITEMS
+========================================================= */
+
+function renderSectionItems(
+    grid,
+    items,
+    visibleCount
+) {
+
+    grid.innerHTML = "";
+
+    items
+        .slice(0, visibleCount)
+        .forEach(item => {
+
+            const card =
+                createCard(item);
+
+            if (card) {
+                grid.appendChild(card);
+            }
+
+        });
 
 }

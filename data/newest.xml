@@ -1,53 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <results type="newest">
+
+    <!-- VIDEO -->
+
     <item>
-        <id>101</id>
-        <title>معارف توحیدی</title>
-        <speaker>سخنران</speaker>
-        <type>ویدئو</type>
+        <type>video</type>
+        <id>1</id>
+        <title>معارف توحیدی و شناخت خداوند</title>
+        <speaker>استاد محمد رضایی</speaker>
         <image>pics/content/content1.jpg</image>
-        <topic>aqeedah</topic>
-        <views>1250</views>
-        <date>2026-08-25</date>
+        <duration>12:35</duration>
     </item>
+
     <item>
-        <id>102</id>
-        <title>شناخت خداوند</title>
-        <speaker>سخنران</speaker>
-        <type>صوت</type>
+        <type>video</type>
+        <id>2</id>
+        <title>سیره امام حسن مجتبی (ع)</title>
+        <speaker>حجت‌الاسلام علی احمدی</speaker>
         <image>pics/content/content2.jpg</image>
-        <topic>aqeedah</topic>
-        <views>980</views>
-        <date>2026-08-24</date>
+        <duration>18:20</duration>
     </item>
+
     <item>
-        <id>103</id>
-        <title>سیره امیرالمؤمنین (ع)</title>
-        <speaker>سخنران</speaker>
-        <type>مقاله</type>
+        <type>video</type>
+        <id>3</id>
+        <title>تاریخ امیرالمؤمنین (ع)</title>
+        <speaker>استاد مهدی کریمی</speaker>
         <image>pics/content/content3.jpg</image>
-        <topic>seerah</topic>
-        <views>760</views>
-        <date>2026-08-23</date>
+        <duration>24:10</duration>
     </item>
+
     <item>
-        <id>104</id>
-        <title>زندگی امام حسن مجتبی (ع)</title>
-        <speaker>سخنران</speaker>
-        <type>ویدئو</type>
+        <type>video</type>
+        <id>4</id>
+        <title>آشنایی با مفاهیم قرآن کریم</title>
+        <speaker>دکتر حسین موسوی</speaker>
         <image>pics/content/content4.jpg</image>
-        <topic>ahlulbayt</topic>
-        <views>650</views>
-        <date>2026-08-22</date>
+        <duration>16:45</duration>
     </item>
+
+
+    <!-- AUDIO -->
+
     <item>
-        <id>105</id>
-        <title>حقیقت معاد</title>
-        <speaker>سخنران</speaker>
-        <type>صوت</type>
+        <type>audio</type>
+        <id>5</id>
+        <title>درس‌هایی از نهج‌البلاغه</title>
+        <speaker>حجت‌الاسلام محمد حسینی</speaker>
         <image>pics/content/content5.jpg</image>
-        <topic>aqeedah</topic>
-        <views>540</views>
-        <date>2026-08-21</date>
     </item>
+
+    <item>
+        <type>audio</type>
+        <id>6</id>
+        <title>اخلاق اسلامی در زندگی روزمره</title>
+        <speaker>استاد رضا کریمی</speaker>
+        <image>pics/content/content6.jpg</image>
+    </item>
+
+    <item>
+        <type>audio</type>
+        <id>7</id>
+        <title>نگاهی به زندگی پیامبر اکرم (ص)</title>
+        <speaker>حجت‌الاسلام علی رضایی</speaker>
+        <image>pics/content/content7.jpg</image>
+    </item>
+
+    <item>
+        <type>audio</type>
+        <id>8</id>
+        <title>آرامش در پرتو یاد خدا</title>
+        <speaker>استاد محمد مهدوی</speaker>
+        <image>pics/content/content8.jpg</image>
+    </item>
+
+
+    <!-- VIDEO -->
+
+    <item>
+        <type>video</type>
+        <id>9</id>
+        <title>زندگی و فضائل حضرت فاطمه (س)</title>
+        <speaker>حجت‌الاسلام مهدی نادری</speaker>
+        <image>pics/content/content9.jpg</image>
+        <duration>21:30</duration>
+    </item>
+
+    <item>
+        <type>video</type>
+        <id>10</id>
+        <title>آموزه‌های تربیتی در قرآن</title>
+        <speaker>دکتر علی اکبری</speaker>
+        <image>pics/content/content10.jpg</image>
+        <duration>19:05</duration>
+    </item>
+
+
+    <!-- AUDIO -->
+
+    <item>
+        <type>audio</type>
+        <id>11</id>
+        <title>آشنایی با معاد و زندگی پس از مرگ</title>
+        <speaker>استاد حسن مرادی</speaker>
+        <image>pics/content/content11.jpg</image>
+    </item>
+
+    <item>
+        <type>audio</type>
+        <id>12</id>
+        <title>مبانی عقاید اسلامی</title>
+        <speaker>حجت‌الاسلام احمد کریمی</speaker>
+        <image>pics/content/content12.jpg</image>
+    </item>
+
+
+    <!-- VIDEO -->
+
+    <item>
+        <type>video</type>
+        <id>13</id>
+        <title>آشنایی با سیره اهل‌بیت (ع)</title>
+        <speaker>استاد مهدی حسینی</speaker>
+        <image>pics/content/content13.jpg</image>
+        <duration>27:15</duration>
+    </item>
+
+    <item>
+        <type>video</type>
+        <id>14</id>
+        <title>جایگاه خانواده در اسلام</title>
+        <speaker>دکتر محمد اکبری</speaker>
+        <image>pics/content/content14.jpg</image>
+        <duration>15:40</duration>
+    </item>
+
+
+    <!-- AUDIO -->
+
+    <item>
+        <type>audio</type>
+        <id>15</id>
+        <title>شرح کوتاه دعای کمیل</title>
+        <speaker>حجت‌الاسلام رضا موسوی</speaker>
+        <image>pics/content/content15.jpg</image>
+    </item>
+
+    <item>
+        <type>audio</type>
+        <id>16</id>
+        <title>فضائل و برکات ماه رمضان</title>
+        <speaker>استاد حسین رضایی</speaker>
+        <image>pics/content/content16.jpg</image>
+    </item>
+
 </results>
