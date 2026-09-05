@@ -40,13 +40,13 @@ function setResultsTitle(type) {
             "تازه‌ها",
 
         popular:
-            "محبوب‌ترین‌ها",
+            "پربازدید‌ها",
 
         "popular-video":
-            "محبوب‌ترین‌ها",
+            "پربازدید‌ها",
 
         "popular-audio":
-            "محبوب‌ترین‌ها",
+            "پربازدید‌ها",
 
         upcoming:
             "مناسبت‌های پیش‌رو",
@@ -293,9 +293,9 @@ function createResultsSection(
                 ${title}
             </h2>
 
-            <span class="results-count">
+           <!-- <span class="results-count">
                 ${items.length} نتیجه
-            </span>
+            </span> -->
 
         </div>
 

@@ -164,11 +164,13 @@
 
 /* #endregion */
 
+
 /* #region CONTENT CARD */
 
 .content-card {
     flex: 0 0 250px;
 
+    padding: 5px 5px;
     overflow: hidden;
 
     background: transparent;
@@ -646,20 +648,17 @@
     overflow: hidden;
 }
 
+@media (max-width: 1050px) {
+    .playlist-card.show-info .playlist-hover-text {
+        opacity: 1;
+    }
+}
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media (max-width: 768px) {
-
-    .playlists-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 2rem 1rem;
-    }
-
 
     .playlist-image {
         margin-bottom: 0.7rem;
@@ -706,6 +705,7 @@
     .playlist-card h3 {
         font-size: 0.82rem;
     }
+
 }
 
 /* #endregion */
@@ -716,13 +716,13 @@
 .topic-card {
     position: relative;
     flex: 0 0 180px;
-    height: 125px;
     margin-bottom: 15px;
 
     display: flex;
     align-items: flex-end;
 
     overflow: hidden;
+    aspect-ratio: 1 / 1;
 
     /* background:
         radial-gradient(
@@ -820,8 +820,8 @@
     height: 100%;
 
     margin: 0;
-    /* padding: 18px 18px 16px; */
-    padding: 0;
+    padding: 18px 18px 16px;
+    /* padding: 0; */
 
     color: var(--text);
 
@@ -874,23 +874,6 @@
     outline-offset: 3px;
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .topic-card {
-        flex: 0 0 160px;
-        height: 115px;
-    }
-
-    .topic-card h3 {
-        padding: 16px 14px 14px;
-        font-size: 15px;
-    }
-}
 /* #endregion */
 
 
@@ -997,13 +980,6 @@
 
 @media (max-width: 768px) {
 
-    .speakers-grid {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-        gap: 2rem 1rem;
-    }
-
 
     .speaker-card {
         gap: 0.6rem;
@@ -1066,7 +1042,11 @@
     }
 
     .content-slider > .topic-card {
-        flex: 0 0 130px;
+        flex: 0 0 110px;
+    }
+    .topic-card h3 {
+        padding: 16px 14px 14px;
+        font-size: 13px;
     }
 
     .content-slider > .speaker-card {

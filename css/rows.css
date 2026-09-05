@@ -121,7 +121,7 @@
 
 @media (max-width: 768px) {
 
-    .home-content {
+    /* .home-content {
         padding: 1.8rem 1rem 3rem;
     }
 
@@ -131,7 +131,7 @@
 
     .content-row-header {
         margin-bottom: 0.9rem;
-    }
+    } */
 
     .content-row-header h2 {
         font-size: 1.1rem;
@@ -141,8 +141,8 @@
         font-size: 0.75rem;
     }
 
-    .content-slider {
+    /* .content-slider {
         gap: 0.8rem;
-    }
+    } */
 
 }

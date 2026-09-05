@@ -2,8 +2,15 @@
    CONTENT PAGE
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", loadContent);
+document.addEventListener("DOMContentLoaded", () => {
 
+    loadContent();
+
+    initShare();
+
+    initDownload();
+
+});
 
 /* =========================================================
    LOAD CONTENT
@@ -784,3 +791,595 @@ function renderContentInfo(content) {
             );
         });
 }
+
+/* =========================================================
+   WEB SHARE
+========================================================= */
+
+function initShare() {
+
+    const shareButtons =
+        document.querySelectorAll(".share-button");
+
+
+    if (!shareButtons.length) {
+        return;
+    }
+
+
+    shareButtons.forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            try {
+
+                /* =========================
+                   CONTENT ID
+                ========================= */
+
+                const params =
+                    new URLSearchParams(
+                        window.location.search
+                    );
+
+                const contentId =
+                    params.get("id");
+
+
+                if (!contentId) {
+                    return;
+                }
+
+
+                /* =========================
+                   LOAD XML
+                ========================= */
+
+                const response =
+                    await fetch("data/contents.xml");
+
+                if (!response.ok) {
+                    throw new Error(
+                        "XML پیدا نشد."
+                    );
+                }
+
+
+                const xmlText =
+                    await response.text();
+
+
+                const xml =
+                    new DOMParser().parseFromString(
+                        xmlText,
+                        "application/xml"
+                    );
+
+
+                /* =========================
+                   FIND CONTENT
+                ========================= */
+
+                const content =
+                    Array.from(
+                        xml.querySelectorAll("content")
+                    ).find(
+                        item =>
+                            item.getAttribute("id") ===
+                            contentId
+                    );
+
+
+                if (!content) {
+                    throw new Error(
+                        "محتوا پیدا نشد."
+                    );
+                }
+
+
+                /* =========================
+                   CONTENT INFO
+                ========================= */
+
+                const title =
+                    getText(content, "title");
+
+                const speaker =
+                    getText(content, "speaker");
+
+                const type =
+                    getText(content, "type");
+
+
+                /* =========================
+                   DETERMINE MEDIA TYPE
+                   BASED ON BUTTON
+                ========================= */
+
+                const audioActions =
+                    button.closest(".audio-actions");
+
+
+                let mediaUrl = "";
+                let mediaType = "";
+
+
+                /* AUDIO BUTTON */
+
+                if (audioActions) {
+
+                    mediaUrl =
+                        getText(
+                            content,
+                            "audio"
+                        );
+
+                    mediaType = "audio";
+                }
+
+
+                /* VIDEO BUTTON */
+
+                else {
+
+                    if (type === "video") {
+
+                        mediaUrl =
+                            getText(
+                                content,
+                                "video"
+                            );
+
+                        mediaType = "video";
+                    }
+
+                    else if (type === "audio") {
+
+                        mediaUrl =
+                            getText(
+                                content,
+                                "audio"
+                            );
+
+                        mediaType = "audio";
+                    }
+
+                }
+
+
+                if (!mediaUrl) {
+
+                    alert(
+                        "فایل قابل اشتراک پیدا نشد."
+                    );
+
+                    return;
+                }
+
+
+                /* =========================
+                   PAGE URL
+                ========================= */
+
+                const pageUrl =
+                    window.location.href;
+
+
+                /* =========================
+                   SHARE TEXT
+                ========================= */
+
+                let shareText =
+                    `«${title}»\n\n`;
+
+
+                if (speaker) {
+
+                    shareText +=
+                        `گوینده: ${speaker}\n\n`;
+                }
+
+
+                shareText +=
+                    `از سامانه مصباح\n`;
+
+                shareText +=
+                    pageUrl;
+
+
+                /* =========================
+                   DOWNLOAD MEDIA
+                ========================= */
+
+                const mediaResponse =
+                    await fetch(mediaUrl);
+
+
+                if (
+                    !mediaResponse.ok
+                ) {
+                    throw new Error(
+                        "فایل رسانه‌ای پیدا نشد."
+                    );
+                }
+
+
+                const blob =
+                    await mediaResponse.blob();
+
+
+                /* =========================
+                   FILE NAME
+                ========================= */
+
+                let fileName =
+                    mediaUrl
+                        .split("/")
+                        .pop()
+                        .split("?")[0];
+
+
+                if (!fileName) {
+
+                    fileName =
+                        mediaType === "video"
+                            ? "mosbah-video.mp4"
+                            : "mosbah-audio.mp3";
+                }
+
+
+                /* =========================
+                   CREATE FILE
+                ========================= */
+
+                const mediaFile =
+                    new File(
+                        [blob],
+                        fileName,
+                        {
+                            type:
+                                blob.type ||
+                                (
+                                    mediaType === "video"
+                                        ? "video/mp4"
+                                        : "audio/mpeg"
+                                )
+                        }
+                    );
+
+
+                /* =========================
+                   WEB SHARE
+                ========================= */
+
+                if (
+                    navigator.share &&
+                    navigator.canShare &&
+                    navigator.canShare({
+                        files: [mediaFile]
+                    })
+                ) {
+
+                    await navigator.share({
+
+                        title: title,
+
+                        text: shareText,
+
+                        files: [mediaFile]
+
+                    });
+
+                    return;
+                }
+
+
+                /* =========================
+                   SHARE WITHOUT FILE
+                ========================= */
+
+                if (navigator.share) {
+
+                    await navigator.share({
+
+                        title: title,
+
+                        text: shareText,
+
+                        url: pageUrl
+
+                    });
+
+                    return;
+                }
+
+
+                alert(
+                    "اشتراک‌گذاری در این مرورگر پشتیبانی نمی‌شود."
+                );
+
+            }
+
+            catch (error) {
+
+                if (
+                    error.name ===
+                    "AbortError"
+                ) {
+                    return;
+                }
+
+
+                console.error(
+                    "SHARE ERROR:",
+                    error
+                );
+
+            }
+
+        });
+
+    });
+
+}
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+function initDownload() {
+
+    const downloadButtons =
+        document.querySelectorAll(".download-button");
+
+    if (!downloadButtons.length) {
+        return;
+    }
+
+    downloadButtons.forEach(button => {
+
+        button.addEventListener("click", async () => {
+
+            try {
+
+                const params =
+                    new URLSearchParams(
+                        window.location.search
+                    );
+
+                const contentId =
+                    params.get("id");
+
+                if (!contentId) {
+                    return;
+                }
+
+                const response =
+                    await fetch("data/contents.xml");
+
+                if (!response.ok) {
+                    throw new Error(
+                        "XML پیدا نشد."
+                    );
+                }
+
+                const xmlText =
+                    await response.text();
+
+                const xml =
+                    new DOMParser().parseFromString(
+                        xmlText,
+                        "application/xml"
+                    );
+
+                const content =
+                    Array.from(
+                        xml.querySelectorAll("content")
+                    ).find(
+                        item =>
+                            item.getAttribute("id") ===
+                            contentId
+                    );
+
+                if (!content) {
+                    throw new Error(
+                        "محتوا پیدا نشد."
+                    );
+                }
+
+                const type =
+                    getText(content, "type");
+
+                /*
+                 * اگر دکمه داخل بخش صوتی باشد
+                 * همیشه فایل audio دانلود می‌شود.
+                 */
+                const audioActions =
+                    button.closest(".audio-actions");
+
+                let mediaUrl = "";
+
+                if (audioActions) {
+
+                    mediaUrl =
+                        getText(
+                            content,
+                            "audio"
+                        );
+
+                }
+
+                /*
+                 * دکمه اصلی محتوا
+                 */
+                else {
+
+                    if (type === "video") {
+
+                        mediaUrl =
+                            getText(
+                                content,
+                                "video"
+                            );
+
+                    }
+
+                    else if (type === "audio") {
+
+                        mediaUrl =
+                            getText(
+                                content,
+                                "audio"
+                            );
+
+                    }
+
+                }
+
+                if (!mediaUrl) {
+
+                    alert(
+                        "فایل قابل دانلود پیدا نشد."
+                    );
+
+                    return;
+                }
+
+                const mediaResponse =
+                    await fetch(mediaUrl);
+
+                if (!mediaResponse.ok) {
+
+                    throw new Error(
+                        "فایل رسانه‌ای پیدا نشد."
+                    );
+
+                }
+
+                const blob =
+                    await mediaResponse.blob();
+
+                let fileName =
+                    mediaUrl
+                        .split("/")
+                        .pop()
+                        .split("?")[0];
+
+                if (!fileName) {
+
+                    fileName =
+                        type === "video"
+                            ? "mosbah-video.mp4"
+                            : "mosbah-audio.mp3";
+
+                }
+
+                const blobUrl =
+                    URL.createObjectURL(blob);
+
+                const link =
+                    document.createElement("a");
+
+                link.href = blobUrl;
+                link.download = fileName;
+
+                document.body.appendChild(link);
+
+                link.click();
+
+                document.body.removeChild(link);
+
+                URL.revokeObjectURL(blobUrl);
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "DOWNLOAD ERROR:",
+                    error
+                );
+
+                alert(
+                    "دانلود فایل با خطا مواجه شد."
+                );
+
+            }
+
+        });
+
+    });
+
+}
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelectorAll(".save-action").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const icon = button.querySelector("i");
+            const text = button.querySelector("span");
+
+            button.classList.toggle("saved");
+
+            if (button.classList.contains("saved")) {
+
+                icon.classList.remove("fa-regular");
+                icon.classList.add("fa-solid");
+
+                text.textContent = "ذخیره شد";
+
+            } else {
+
+                icon.classList.remove("fa-solid");
+                icon.classList.add("fa-regular");
+
+                text.textContent = "ذخیره";
+
+            }
+
+        });
+
+    });
+
+});
+
+/* =========================================================
+   COPY LINK
+========================================================= */
+
+document.querySelectorAll(".copy-link-action").forEach(button => {
+
+    button.addEventListener("click", async () => {
+
+        try {
+
+            await navigator.clipboard.writeText(window.location.href);
+
+            const icon = button.querySelector("i");
+            const text = button.querySelector("span");
+
+            icon.className = "fa-solid fa-check";
+            text.textContent = "کپی شد";
+
+            setTimeout(() => {
+
+                icon.className = "fa-regular fa-copy";
+                text.textContent = "کپی لینک";
+
+            }, 1500);
+
+        } catch (error) {
+
+            console.error("خطا در کپی لینک:", error);
+
+        }
+
+    });
+
+});

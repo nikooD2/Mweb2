@@ -285,6 +285,46 @@ function createPlaylistCard(item) {
     `;
 
 
+    /* =========================================================
+    MOBILE + TABLET CLICK
+    ========================================================= */
+
+    card.addEventListener("click", (event) => {
+
+        /* فقط موبایل و تبلت */
+        if (window.innerWidth > 1000) {
+            return;
+        }
+
+
+        /* اگر اطلاعات هنوز نمایش داده نشده */
+        if (!card.classList.contains("show-info")) {
+
+            event.preventDefault();
+
+            /* بستن اطلاعات کارت‌های دیگر */
+            document
+                .querySelectorAll(".playlist-card.show-info")
+                .forEach(otherCard => {
+
+                    otherCard.classList.remove("show-info");
+
+                });
+
+
+            /* نمایش اطلاعات این کارت */
+            card.classList.add("show-info");
+
+        }
+
+        /*
+        اگر show-info از قبل وجود داشته باشد،
+        preventDefault اجرا نمی‌شود
+        و لینک باز می‌شود.
+        */
+
+    });
+
     return card;
 
 }

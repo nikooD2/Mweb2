@@ -28,16 +28,30 @@
     gap: 40px 28px;
 }
 
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .topics-grid {
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 42px 21px;
+    }
+
+}
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
 
     .topics-grid {
 
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
 
         gap: 28px 14px;
     }

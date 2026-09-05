@@ -1,0 +1,352 @@
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    background: var(--primary);
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+    color: var(--surface);
+}
+
+
+/* =========================================================
+   FOOTER CONTAINER
+========================================================= */
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 25px 40px;
+
+    display: grid;
+    grid-template-columns:
+        1.5fr
+        1fr
+        1.3fr
+        1fr
+        1.3fr;
+
+    gap: 40px;
+}
+
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.footer-column h3 {
+    margin: 0 0 12px;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: var(--surface);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.footer-about {
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 130px;
+    height: auto;
+    object-fit: contain;
+    align-self: center;
+    filter: brightness(0) saturate(100%)
+            invert(92%)
+            sepia(12%)
+            saturate(500%)
+            hue-rotate(5deg)
+            brightness(98%);
+}
+
+.footer-about p {
+    margin: 0;
+
+    max-width: 200px;
+
+    color: var(--primary-soft);
+    font-size: 14px;
+    line-height: 2;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.footer-column a {
+    width: fit-content;
+
+    color: var(--primary-soft);
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: var(--surface);
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.footer-contact p {
+    margin: 0;
+
+    color: var(--primary-soft);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.footer-contact span {
+    color: var(--surface);
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 25px;
+
+    /* border-top: 1px solid var(--border); */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--primary-soft);
+    font-size: 14px;
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    color: var(--primary-soft);
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.footer-social a:hover {
+    background: var(--primary-light);
+    color: #fff;
+}
+
+
+/* =========================================================
+   TRUST BADGES
+========================================================= */
+
+.footer-trust {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    color: var(--primary-soft);
+    font-size: 13px;
+}
+
+.trust-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trust-badges a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    padding: 5px;
+
+    /* border: 1px solid var(--border); */
+    border-radius: 8px;
+
+    background: var(--primary-light);
+}
+
+.trust-badges img {
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.footer-copyright {
+    /* border-top: 1px solid var(--border); */
+
+    padding: 18px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    background: var(--primary);
+    border-top: 1px solid rgba(255, 255, 255, .2);
+
+    color: var(--primary-soft);
+    font-size: 12px;
+
+    text-align: center;
+}
+
+.footer-copyright p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    /* .footer-container {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 35px;
+    } */
+/* 
+    .footer-about {
+        grid-column: span 3;
+    }
+
+    .footer-about p {
+        max-width: 500px;
+    }
+
+    .footer-bottom {
+        flex-wrap: wrap;
+    } */
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .footer {
+        margin-top: 40px;
+    }
+
+    /* .footer-container {
+        padding: 40px 20px 30px;
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    } */
+
+    .footer-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 30px;
+    }
+
+    .footer-about {
+        grid-column:span 2;
+    }
+
+    /* .footer-about p {
+        max-width: 500px;
+    } */
+
+    .footer-bottom {
+        padding: 25px 20px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+
+    .footer-social {
+        flex-wrap: wrap;
+    }
+
+
+    /* .footer-trust {
+        width: 100%;
+
+        flex-direction: column;
+        align-items: flex-start;
+    } */
+
+
+    .footer-copyright {
+        padding: 18px 20px;
+
+        flex-direction: column;
+        gap: 6px;
+
+        line-height: 1.8;
+    }
+
+}
