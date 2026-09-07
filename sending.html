@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>سامانه مصباح</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/sending.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div
+        id="header"
+        data-component="components/header.html">
+    </div>
+
+    <main class="page">
+
+        <div class="submission-container">
+
+            <!-- Page Header -->
+            <!-- <div class="submission-header">
+
+                <span class="submission-header-icon">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </span>
+
+                <div>
+                    <h1>ارسال یا ‌پیشنهاد ‌محتوای جدید</h1>
+
+                    <p>
+                        ‌محتوای جدیدی ارسال کنید یا ‌محتوای موردنظر خود را ‌پیشنهاد دهید.
+                    </p>
+                </div>
+
+            </div> -->
+            <section class="page-header">
+                <h1>ارسال یا ‌پیشنهاد ‌محتوای جدید</h1>
+            </section>
+
+            <!-- Tabs -->
+            <div class="submission-tabs">
+
+                <button
+                    type="button"
+                    class="submission-tab active"
+                    data-form="send-form">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <span>ارسال ‌محتوا</span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="submission-tab"
+                    data-form="request-form">
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                    <span>‌پیشنهاد ‌محتوا</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- Forms -->
+            <div class="submission-form-wrapper">
+
+
+                <!-- Send Form -->
+                <form
+                    id="send-form"
+                    class="submission-form active">
+
+                    <div class="form-title">
+
+                        <div>
+                            <p>
+                                در صورتی که محتوای جدیدی در فضای مجازی مشاهده کردید یا خودتان محتوای جدیدی تولید کرده‌اید که درباره آن مطالب کافی در سایت وجود ندارد و تمایل دارید آن را به سایت اضافه کنید تا دیگران نیز بتوانند از آن استفاده کنند از این بخش می توانید فایل های خود را برای ما ارسال کنید 
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="send-title">
+                                عنوان ‌‌محتوا
+                            </label>
+
+                            <input
+                                type="text"
+                                id="send-title"
+                                placeholder="عنوان ‌‌محتوا را وارد کنید">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="send-type">
+                                نوع ‌محتوا
+                            </label>
+
+                            <select id="send-type">
+
+                                <option value="">
+                                    انتخاب کنید
+                                </option>
+
+                                <option value="video">
+                                    ویدیو
+                                </option>
+
+                                <option value="audio">
+                                    صوت
+                                </option>
+
+                                <option value="article">
+                                    مقاله / کتاب
+                                </option>
+
+
+                                <option value="other">
+                                    سایر
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="send-speaker">
+                                گوینده / نویسنده
+                            </label>
+
+                            <input
+                                type="text"
+                                id="send-speaker"
+                                placeholder="نام گوینده یا نویسنده">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="send-topic">
+                                موضوع
+                            </label>
+
+                            <input
+                                type="text"
+                                id="send-topic"
+                                placeholder="موضوع ‌‌محتوا">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="send-link">
+                                لینک ‌‌محتوا
+                            </label>
+
+                            <input
+                                type="url"
+                                id="send-link"
+                                placeholder="https://">
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="send-description">
+                                توضیحات
+                            </label>
+
+                            <textarea
+                                id="send-description"
+                                rows="5"
+                                placeholder="توضیحات تکمیلی درباره ‌‌محتوا..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-group full">
+<!-- 
+                            <label>
+                                فایل ‌‌محتوا
+                            </label>
+
+                            <label class="file-upload">
+
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                                <span>
+                                    انتخاب فایل
+                                </span>
+
+                                <small>
+                                    فایل خود را انتخاب کنید
+                                </small>
+
+                                <input
+                                    type="file"
+                                    hidden>
+
+                            </label> -->
+                            
+                            <label class="upload-box">
+
+                                <input
+                                    type="file"
+                                    id="uploadFile"
+                                    multiple
+                                    accept="image/*,video/*,audio/*,.pdf,.doc,.docx"
+                                >
+
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                                <h3>
+
+                                    فایل را اینجا رها کنید
+
+                                </h3>
+
+                                <p>
+
+                                    یا برای انتخاب فایل کلیک کنید
+
+                                </p>
+
+                                <span>
+
+                                    فرمت‌های مجاز:
+                                    تصویر، ویدیو، صوت
+
+                                </span>
+
+                            </label>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-footer">
+
+                        <!-- <span>
+                            <i class="fa-solid fa-circle-info"></i>
+                            ‌محتوای شما پس از بررسی منتشر خواهد شد.
+                        </span> -->
+
+                        <button
+                            type="submit"
+                            class="submission-submit">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+                            ارسال ‌‌محتوا
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- Request Form -->
+                <form
+                    id="request-form"
+                    class="submission-form">
+
+                    <div class="form-title">
+
+                        <div>
+                            <p>
+                                در صورتی که تمایل به یادگیری یا بررسی مطلبی دارید که هنوز در سامانه وجود ندارد یا پیشنهادی برای مطالب بعدی دارید از این قسمت می توانید ما را مطلع کنید 
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="request-title">
+                                عنوان یا موضوع موردنظر
+                            </label>
+
+                            <input
+                                type="text"
+                                id="request-title"
+                                placeholder="عنوان یا موضوع ‌‌محتوا">
+
+                        </div>
+
+                        <div class="form-group full">
+
+                            <label for="request-description">
+                                توضیحات 
+                            </label>
+
+                            <textarea
+                                id="request-description"
+                                rows="6"
+                                placeholder="توضیح دهید چه ‌‌محتوای موردنظر شماست..."></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-footer">
+
+                        <!-- <span>
+                            <i class="fa-solid fa-circle-info"></i>
+                            ‌پیشنهاد شما پس از بررسی پیگیری خواهد شد.
+                        </span> -->
+
+                        <button
+                            type="submit"
+                            class="submission-submit">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+                            ثبت ‌پیشنهاد
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="success-modal" id="successModal">
+
+        <div class="success-box">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3 id="successTitle">
+                پیام شما با موفقیت ارسال شد
+            </h3>
+
+            <p id="successMessage">
+                با تشکر از شما، محتوای ارسالی ثبت شد.
+            </p>
+
+            <button type="button" id="closeSuccess">
+                متوجه شدم
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div
+        id="footer"
+        data-component="components/footer.html">
+    </div>
+
+    <script src="js/global.js"></script>
+    <script src="js/sending.js"></script>
+
+
+</body>
+
+</html>

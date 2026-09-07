@@ -1,0 +1,1343 @@
+/* =========================================================
+   SUBMISSION PAGE
+========================================================= */
+/* 
+.submission-page {
+
+    min-height: calc(
+        100vh - var(--navbar-height)
+    );
+
+    padding: 50px 20px 70px;
+
+    background:
+        var(--background);
+
+    font-family:
+        var(--font-family);
+
+    color:
+        var(--text);
+} */
+
+
+.submission-container {
+
+    width: 100%;
+    /* max-width: 1050px; */
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.submission-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 32px;
+}
+
+
+.submission-header-icon {
+
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--primary-soft);
+
+    color:
+        var(--primary);
+
+    font-size: 1.35rem;
+}
+
+
+.submission-header h1 {
+
+    margin: 0 0 7px;
+
+    font-size:
+        1.55rem;
+
+    font-weight: 700;
+}
+
+
+.submission-header p {
+
+    margin: 0;
+
+    color:
+        var(--text-light);
+
+    font-size:
+        var(--fs-md);
+
+    line-height: 1.8;
+}
+/* =========================================================
+   SUBMISSION TABS
+========================================================= */
+
+.submission-tabs {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 2px;
+
+    padding: 0 30px;
+
+    /* border-bottom:
+        1px solid var(--border); */
+}
+
+
+.submission-tab {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    height: 40px;
+
+    padding: 0 24px;
+
+    margin-bottom: -1px;
+
+    border: 1px solid transparent;
+
+    border-bottom: none;
+
+    border-radius:
+        var(--radius-md)
+        var(--radius-md)
+        0 0;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-light);
+
+    font-family:
+        var(--font-family);
+
+    font-size:
+        var(--fs-md);
+
+    cursor: pointer;
+
+    transition:
+        var(--transition);
+}
+
+.submission-tab.active {
+    position: relative;
+    z-index: 2;
+
+    background: var(--surface);
+    color: var(--primary);
+
+    /* border: 1px solid var(--border);
+    border-bottom: none;
+
+    border-radius:
+        var(--radius-md)
+        var(--radius-md)
+        0
+        0; */
+
+    margin-bottom: -1px;
+
+    font-weight: 600;
+}
+
+.submission-tab.active::before,
+.submission-tab.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -1px;
+
+    width: 14px;
+    height: 14px;
+
+    background: transparent;
+
+    z-index: 3;
+}
+
+
+/* قوس سمت راست */
+
+.submission-tab.active::before {
+
+    right: -14px;
+
+    border-bottom-left-radius: 14px;
+
+    box-shadow:
+        -7px 7px 0 7px var(--surface);
+}
+
+
+/* قوس سمت چپ */
+
+.submission-tab.active::after {
+
+    left: -14px;
+
+    border-bottom-right-radius: 14px;
+
+    box-shadow:
+        7px 7px 0 7px var(--surface);
+}
+
+.submission-tab:not(.active):hover {
+
+    color:
+        var(--text);
+}
+
+
+.submission-form-wrapper {
+
+    position: relative;
+
+    margin-top: -1px;
+
+    background:
+        var(--surface);
+
+    /* border:
+        1px solid var(--border);
+
+    border-top:
+        none; */
+
+    border-radius: var(--radius-md);
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.045);
+}
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+
+.submission-form {
+
+    display: none;
+
+    padding: 30px;
+}
+
+
+.submission-form.active {
+
+    display: block;
+}
+
+
+/* =========================================================
+   FORM TITLE
+========================================================= */
+
+.form-title {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 24px;
+
+    margin-bottom: 26px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.form-title h2 {
+
+    margin: 0 0 6px;
+
+    font-size:
+        1.15rem;
+
+    font-weight: 700;
+}
+
+
+.form-title p {
+
+    text-align: center;
+    margin: 0;
+
+    color:
+        var(--text-light);
+
+    font-size:
+        var(--fs-md);
+}
+
+
+.form-title > i {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--primary-soft);
+
+    color:
+        var(--primary);
+
+    font-size:
+        1.1rem;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.form-group.full {
+
+    grid-column:
+        1 / -1;
+}
+
+
+.form-group label {
+
+    font-size:
+        var(--fs-sm);
+
+    font-weight: 600;
+
+    color:
+        var(--text);
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    font-family:
+        var(--font-family);
+
+    font-size:
+        var(--fs-sm);
+
+    outline: none;
+
+    transition:
+        var(--transition);
+}
+
+
+.form-group input,
+.form-group select {
+
+    height: 46px;
+}
+
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 120px;
+
+    line-height: 1.9;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color:
+        var(--text-light);
+
+    opacity:
+        0.7;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color:
+        var(--primary);
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        0 0 0 3px
+        var(--primary-soft);
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+/* 
+.file-upload {
+
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    border:
+        1px dashed var(--primary-light);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--primary-soft);
+
+    color:
+        var(--primary);
+
+    cursor: pointer;
+
+    transition:
+        var(--transition);
+}
+
+
+.file-upload:hover {
+
+    border-color:
+        var(--primary);
+
+    background:
+        var(--primary-soft);
+}
+
+
+.file-upload i {
+
+    font-size:
+        1.35rem;
+
+    margin-bottom: 3px;
+}
+
+
+.file-upload span {
+
+    font-size:
+        var(--fs-sm);
+
+    font-weight: 600;
+}
+
+
+.file-upload small {
+
+    color:
+        var(--text-light);
+
+    font-size:
+        var(--fs-xs);
+} */
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+.upload-box {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    min-height: 220px;
+
+    padding: 35px;
+
+    border:
+        2px dashed
+        var(--primary-light);
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--primary-soft);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        .35s;
+
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.upload-box:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.upload-box input {
+
+    display: none;
+
+}
+
+
+/* =========================
+   DEFAULT ICON
+========================= */
+
+.upload-box > i {
+
+    font-size:
+        var(--fs-xl);
+
+    color:
+        var(--primary);
+
+    margin-bottom:
+        20px;
+
+}
+
+
+/* =========================
+   DEFAULT TITLE
+========================= */
+
+.upload-box > h3 {
+
+    color:
+        var(--primary);
+
+    margin:
+        0 0 10px;
+
+    font-size:
+        var(--fs-xl);
+
+}
+
+
+/* =========================
+   DEFAULT TEXT
+========================= */
+
+.upload-box > p {
+
+    color:
+        var(--gray);
+
+    margin:
+        0 0 12px;
+
+    font-size:
+        var(--fs-base);
+
+}
+
+
+/* =========================
+   DEFAULT SPAN
+========================= */
+
+.upload-box > span {
+
+    font-size:
+        var(--fs-xs);
+
+    color:
+        var(--gray);
+
+}
+
+
+/* =========================================================
+   HAS FILES
+========================================================= */
+
+.upload-box.has-files {
+
+    align-items:
+        stretch;
+
+    justify-content:
+        flex-start;
+
+    text-align:
+        right;
+
+    min-height:
+        220px;
+
+    padding:
+        25px;
+
+}
+
+
+/* =========================
+   FILES TITLE
+========================= */
+
+.upload-box.has-files
+.upload-files-title {
+
+    width:
+        100%;
+
+    margin:
+        0 0 18px;
+
+    text-align:
+        center;
+
+    color:
+        var(--primary);
+
+    font-size:
+        var(--fs-lg);
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   FILE LIST
+========================================================= */
+
+.upload-file-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+    width:
+        100%;
+
+    max-height:
+        180px;
+
+    overflow-y:
+        auto;
+
+}
+
+
+/* =========================================================
+   FILE ITEM
+========================================================= */
+
+.upload-file-item {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    padding:
+        10px 12px;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        12px;
+
+}
+
+
+/* =========================================================
+   FILE ICON
+========================================================= */
+
+/*
+   خیلی مهم:
+   اینجا از > i استفاده کردیم تا
+   استایل .upload-box > i روی این آیکون‌ها
+   اعمال نشود.
+*/
+
+.upload-file-item > i {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    flex-shrink:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin:
+        0;
+
+    border-radius:
+        10px;
+
+    background:
+        var(--primary-soft);
+
+    color:
+        var(--primary);
+
+    font-size:
+        1rem;
+
+}
+
+
+/* =========================================================
+   FILE INFO
+========================================================= */
+
+.upload-file-info {
+
+    min-width:
+        0;
+
+    flex:
+        1;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+}
+
+
+/* =========================
+   FILE NAME
+========================= */
+
+.upload-file-info strong {
+
+    display:
+        block;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+
+    color:
+        var(--text);
+
+    font-size:
+        var(--fs-sm);
+
+}
+
+
+/* =========================
+   FILE SIZE
+========================= */
+
+.upload-file-info small {
+
+    color:
+        var(--text-light);
+
+    font-size:
+        var(--fs-xs);
+
+}
+
+
+/* =========================================================
+   REMOVE BUTTON
+========================================================= */
+
+.remove-upload-file {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    flex-shrink:
+        0;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-light);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+
+}
+
+
+/* آیکون دکمه حذف */
+
+.remove-upload-file i {
+
+    margin:
+        0;
+
+    font-size:
+        .9rem;
+
+}
+
+
+/* Hover */
+
+.remove-upload-file:hover {
+
+    color:
+        #c0392b;
+
+    background:
+        rgba(192, 57, 43, .08);
+
+}
+
+
+/* =========================================================
+   HINT
+========================================================= */
+
+.upload-box.has-files
+.upload-file-hint {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    margin:
+        14px 0 0;
+
+    text-align:
+        center;
+
+    color:
+        var(--text-light);
+
+    font-size:
+        var(--fs-xs);
+
+}
+
+
+/* =========================================================
+   DRAG OVER
+========================================================= */
+
+.upload-box.drag-over {
+
+    border-color:
+        var(--primary);
+
+    background:
+        var(--primary-soft);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.upload-file-list::-webkit-scrollbar {
+
+    width:
+        5px;
+
+}
+
+.upload-file-list::-webkit-scrollbar-thumb {
+
+    background:
+        var(--primary-light);
+
+    border-radius:
+        10px;
+
+}
+/* =========================================================
+   FORM FOOTER
+========================================================= */
+
+.form-footer {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 30px;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid var(--border);
+}
+
+
+.form-footer > span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color:
+        var(--text-light);
+
+    font-size:
+        var(--fs-xs);
+}
+
+
+.form-footer > span i {
+
+    color:
+        var(--primary);
+}
+
+
+.submission-submit {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 145px;
+
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius:
+        var(--radius-md);
+
+    background:
+        var(--primary);
+
+    color:
+        var(--surface);
+
+    font-family:
+        var(--font-family);
+
+    font-size:
+        var(--fs-sm);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        var(--transition);
+}
+
+
+.submission-submit:hover {
+
+    background:
+        var(--primary-dark);
+
+    transform:
+        translateY(-1px);
+}
+
+.success-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: 9999;
+
+    padding: 20px;
+}
+
+.success-modal.show {
+    display: flex;
+}
+
+.success-box {
+    width: min(420px, 100%);
+
+    background: var(--surface);
+
+    border-radius: var(--radius-lg);
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+
+    animation: successModalIn 0.25s ease;
+}
+
+.success-box > i {
+    font-size: 48px;
+    color: var(--primary);
+
+    margin-bottom: 15px;
+}
+
+.success-box h3 {
+    margin: 0 0 12px;
+
+    color: var(--text);
+
+    font-size: 20px;
+}
+
+.success-box p {
+    margin: 0 auto 22px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 2;
+}
+
+.success-box button {
+    border: none;
+
+    background: var(--primary);
+    color: white;
+
+    padding: 10px 28px;
+
+    border-radius: var(--radius-md);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.success-box button:hover {
+    background: var(--primary-dark);
+}
+
+@keyframes successModalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .submission-page {
+
+        padding:
+            30px 15px 50px;
+    }
+
+
+    .submission-header {
+
+        align-items:
+            flex-start;
+
+        gap: 12px;
+
+        margin-bottom:
+            24px;
+    }
+
+
+    .submission-header-icon {
+
+        width: 48px;
+        height: 48px;
+
+        font-size:
+            1.1rem;
+    }
+
+
+    .submission-header h1 {
+
+        font-size:
+            1.25rem;
+    }
+
+
+    .submission-header p {
+
+        font-size:
+            var(--fs-xs);
+    }
+
+
+    .submission-tabs {
+
+        padding-right: 0;
+    }
+
+
+    .submission-tab {
+
+        flex: 1;
+
+        padding:
+            0 10px;
+
+        font-size:
+            var(--fs-sm);
+    }
+
+
+    .submission-form {
+
+        padding:
+            22px 18px;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 18px;
+    }
+
+
+    .form-group.full {
+
+        grid-column:
+            auto;
+    }
+
+
+    .form-footer {
+
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+    }
+
+
+    .form-footer > span {
+
+        line-height:
+            1.8;
+    }
+
+
+    .submission-submit {
+
+        width:
+            100%;
+    }
+
+}
