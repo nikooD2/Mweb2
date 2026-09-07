@@ -420,6 +420,8 @@
     text-decoration: none;
     color: var(--text);
     min-width: 0;
+
+    container-type: inline-size;
 }
 
 /* =========================================================
@@ -623,6 +625,13 @@
     font-size: 0.8rem;
 }
 
+@container (max-width: 105px) {
+
+    .playlist-info span {
+        display: none;
+    }
+
+}
 
 /* =========================================================
    PLAYLIST TITLE
