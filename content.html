@@ -21,7 +21,10 @@
 
     <!-- ================= HEADER ================= -->
 
-    <div id="header"></div>
+    <div
+        id="header"
+        data-component="components/header.html">
+    </div>
 
 
     <!-- ================= CONTENT ================= -->
@@ -107,33 +110,28 @@
 
                 <!-- ACTIONS -->
 
-                <div class="content-actions">
+                <div class="content-actions video-actions">
 
                     <button type="button"
                             class="content-action download-button">
 
                         <i class="fa-solid fa-download"></i>
-
                         <span>دانلود</span>
 
                     </button>
-
 
                     <button type="button"
                             class="content-action share-button">
 
                         <i class="fa-solid fa-share-nodes"></i>
-
                         <span>اشتراک گذاری</span>
 
                     </button>
-
 
                     <button type="button"
                             class="content-action save-action">
 
                         <i class="fa-regular fa-bookmark"></i>
-
                         <span>ذخیره</span>
 
                     </button>
@@ -142,7 +140,6 @@
                             class="content-action copy-link-action">
 
                         <i class="fa-regular fa-copy"></i>
-
                         <span>کپی لینک</span>
 
                     </button>
@@ -168,7 +165,7 @@
                     </div>
                     <div class="audio-information">
 
-                        <h1 id="audio-title"> صوت </h1>
+                        <h2 id="video-audio-title"></h2>
                     </div>
 
 
@@ -241,39 +238,34 @@
                                 class="content-action download-button">
 
                             <i class="fa-solid fa-download"></i>
-
                             <span>دانلود</span>
 
                         </button>
-
 
                         <button type="button"
                                 class="content-action share-button">
 
                             <i class="fa-solid fa-share-nodes"></i>
-
                             <span>اشتراک گذاری</span>
 
                         </button>
 
-
-                        <button type="button"
+                        <!-- <button type="button"
                                 class="content-action save-action">
 
                             <i class="fa-regular fa-bookmark"></i>
-
                             <span>ذخیره</span>
 
-                        </button>
+                        </button> -->
 
                         <button type="button"
                                 class="content-action copy-link-action">
 
                             <i class="fa-regular fa-copy"></i>
-
                             <span>کپی لینک</span>
 
                         </button>
+
                     </div>
                     
                     <div class="content-divider"></div> 
@@ -408,27 +400,22 @@
                             class="content-action download-button">
 
                         <i class="fa-solid fa-download"></i>
-
                         <span>دانلود</span>
 
                     </button>
-
 
                     <button type="button"
                             class="content-action share-button">
 
                         <i class="fa-solid fa-share-nodes"></i>
-
                         <span>اشتراک گذاری</span>
 
                     </button>
-
 
                     <button type="button"
                             class="content-action save-action">
 
                         <i class="fa-regular fa-bookmark"></i>
-
                         <span>ذخیره</span>
 
                     </button>
@@ -437,7 +424,6 @@
                             class="content-action copy-link-action">
 
                         <i class="fa-regular fa-copy"></i>
-
                         <span>کپی لینک</span>
 
                     </button>
@@ -457,7 +443,7 @@
                 <div class="content-row-header">
 
                     <h2 data-content-info="topic">
-                        ویدیو های جدید
+                        ویدیو‌های جدید درباره
                     </h2>
 
                     <a
@@ -474,8 +460,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/newest.xml"
+                    data-xml="data/contents2.xml"
                     data-type="video"
+                    data-ids="1-8"
                 ></div>
 
             </section>
@@ -486,7 +473,7 @@
                 <div class="content-row-header">
 
                     <h2 data-content-info="topic">
-                        صوت های جدید
+                        صوت‌های جدید درباره
                     </h2>
 
                     <a
@@ -503,8 +490,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/newest.xml"
+                    data-xml="data/contents2.xml"
                     data-type="audio"
+                    data-ids="15-30"
                 ></div>
 
             </section>
@@ -544,7 +532,7 @@
                 <div class="content-row-header">
 
                     <h2 data-content-info="speaker">
-                        ویدیو های جدید از
+                        ویدیو‌های جدید از
                     </h2>
 
                     <a
@@ -561,8 +549,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/newest.xml"
+                    data-xml="data/contents2.xml"
                     data-type="video"
+                    data-ids="9-15"
                 ></div>
 
             </section>
@@ -573,7 +562,7 @@
                 <div class="content-row-header">
 
                     <h2 data-content-info="speaker">
-                        صوت های جدید از
+                        صوت‌های جدید از
                     </h2>
 
                     <a
@@ -590,8 +579,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/newest.xml"
+                    data-xml="data/contents2.xml"
                     data-type="audio"
+                    data-ids="30-39"
                 ></div>
 
             </section>
@@ -599,12 +589,16 @@
     </main>
 
     <!-- Footer -->
-    <div id="footer"></div>
+    <div
+        id="footer"
+        data-component="components/footer.html">
+    </div>
     
     <!-- ================= JS ================= -->
 
     <script src="js/global.js"></script>
     <script src="js/content.js"></script>
+    <script src="js/content-actions.js"></script>
     <script src="js/cards.js"></script>
     <script src="js/rows.js"></script>
 

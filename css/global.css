@@ -31,9 +31,9 @@
 
     /* Navbar */
     --navbar-height: 76px;
-    --category-height: 48px;
+    --category-height: 0px;
     --mobile-navbar-height: 64px;
-    --mobile-category-height: 46px;
+    --mobile-category-height: 0px;
     /* Radius */
     --radius-sm: 6px;
     --radius-md: 10px;
@@ -462,6 +462,17 @@ body {
 
     font-size: var(--fs-sm);
 }
+
+
+/* حذف ضربدر پیش‌فرض input search */
+
+.nav-search input[type="search"]::-webkit-search-cancel-button,
+.nav-search input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
 
 .nav-search input::placeholder {
     color: var(--text-light);

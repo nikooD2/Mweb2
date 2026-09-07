@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ذخیره‌ها | سامانه مصباح</title>
+
+
+    <!-- Global -->
+
+    <link
+        rel="stylesheet"
+        href="css/global.css">
+
+
+    <!-- Saved -->
+
+    <link
+        rel="stylesheet"
+        href="css/saved.css">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- Header -->
+    <div
+        id="header"
+        data-component="components/header.html">
+    </div>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="page">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="saved-header">
+
+            <div class="saved-header-icon">
+
+                <i class="fa-regular fa-bookmark"></i>
+
+            </div>
+
+
+            <div class="saved-header-text">
+
+                <h1>
+                    ذخیره‌ها
+                </h1>
+
+                <p id="saved-count">
+                    در حال بارگذاری...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SAVED CONTENT
+        ================================================== -->
+
+        <section class="saved-content">
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="saved-empty"
+                class="saved-empty"
+                hidden>
+
+                <div class="saved-empty-icon">
+
+                    <i class="fa-regular fa-bookmark"></i>
+
+                </div>
+
+                <h2>
+                    هنوز چیزی ذخیره نکرده‌اید
+                </h2>
+
+                <p>
+                    محتواهایی که ذخیره می‌کنید
+                    در اینجا نمایش داده می‌شوند.
+                </p>
+
+            </div>
+
+
+
+            <!-- LOADING -->
+
+            <div
+                id="saved-loading"
+                class="saved-loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <span>
+                    در حال بارگذاری ذخیره‌ها...
+                </span>
+
+            </div>
+
+
+
+            <!-- ERROR -->
+
+            <div
+                id="saved-error"
+                class="saved-error"
+                hidden>
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <span>
+                    بارگذاری ذخیره‌ها با خطا مواجه شد.
+                </span>
+
+            </div>
+
+
+
+            <!-- CARDS -->
+
+            <div
+                id="saved-grid"
+                class="saved-grid">
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <div
+        id="footer"
+        data-component="components/footer.html">
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/global.js"></script>
+    <script src="js/cards.js"></script>
+    <!-- <script src="js/content-actions.js"></script> -->
+    <script src="js/saved.js"></script>
+
+
+</body>
+
+</html>

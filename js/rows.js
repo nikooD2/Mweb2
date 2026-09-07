@@ -55,7 +55,6 @@ async function loadContentRow(slider) {
         const xmlText =
             await response.text();
 
-
         const parser =
             new DOMParser();
 
@@ -77,13 +76,61 @@ async function loadContentRow(slider) {
 
         }
 
-
         let items =
-            [...xml.querySelectorAll("item")];
-
+            [...xml.querySelectorAll("content")];
 
         /* -----------------------------------------
-           FILTER
+        FILTER BY IDS
+        ----------------------------------------- */
+
+        const ids =
+            slider.dataset.ids;
+
+        if (ids) {
+
+            const allowedIds = [];
+
+            ids.split(",").forEach(range => {
+
+                const parts =
+                    range.trim().split("-");
+
+                const start =
+                    parseInt(parts[0]);
+
+                const end =
+                    parts.length > 1
+                        ? parseInt(parts[1])
+                        : start;
+
+                for (
+                    let i = start;
+                    i <= end;
+                    i++
+                ) {
+
+                    allowedIds.push(String(i));
+
+                }
+
+            });
+
+
+            items =
+                items.filter(item => {
+
+                    // ID از attribute گرفته می‌شود
+                    const id =
+                        item.getAttribute("id");
+
+                    return allowedIds.includes(id);
+
+                });
+
+        }
+
+        /* -----------------------------------------
+        FILTER BY TYPE
         ----------------------------------------- */
 
         if (type) {

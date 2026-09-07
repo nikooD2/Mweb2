@@ -55,8 +55,7 @@ function getXMLValue(item, tag) {
 
 function createVideoCard(item) {
 
-    const id =
-        getXMLValue(item, "id");
+    const id = item.getAttribute("id");
 
     const title =
         getXMLValue(item, "title");
@@ -138,8 +137,7 @@ function createVideoCard(item) {
 
 function createAudioCard(item) {
 
-    const id =
-        getXMLValue(item, "id");
+    const id = item.getAttribute("id");
 
     const title =
         getXMLValue(item, "title");
@@ -202,23 +200,75 @@ function createAudioCard(item) {
 function createPlaylistCard(item) {
 
     const id =
-        getXMLValue(item, "id");
+        item.getAttribute("id");
+
 
     const title =
         getXMLValue(item, "title");
 
+
     const description =
         getXMLValue(item, "description");
+
+
+    const format =
+        getXMLValue(item, "format");
+
 
     const image1 =
         getXMLValue(item, "image1");
 
+
     const image2 =
         getXMLValue(item, "image2");
+
 
     const image3 =
         getXMLValue(item, "image3");
 
+
+    /* =========================================================
+       FORMAT INFO
+    ========================================================= */
+
+    let formatIcon = "fa-solid fa-layer-group";
+    let formatText = "";
+
+
+    if (format === "audio") {
+
+        formatIcon =
+            "fa-solid fa-headphones";
+
+        formatText =
+            "صوتی";
+
+    }
+
+    else if (format === "video") {
+
+        formatIcon =
+            "fa-solid fa-video";
+
+        formatText =
+            "تصویری";
+
+    }
+
+    else if (format === "mixed") {
+
+        formatIcon =
+            "fa-solid fa-photo-film";
+
+        formatText =
+            "صوتی-تصویری";
+
+    }
+
+
+    /* =========================================================
+       CREATE CARD
+    ========================================================= */
 
     const card =
         document.createElement("a");
@@ -258,7 +308,11 @@ function createPlaylistCard(item) {
 
                 <span class="playlist-info">
 
-                    <i class="fa-solid fa-layer-group"></i>
+                    <i class="${formatIcon}"></i>
+
+                    <span>
+                        ${formatText}
+                    </span>
 
                 </span>
 
@@ -286,7 +340,7 @@ function createPlaylistCard(item) {
 
 
     /* =========================================================
-    MOBILE + TABLET CLICK
+       MOBILE + TABLET CLICK
     ========================================================= */
 
     card.addEventListener("click", (event) => {
@@ -301,6 +355,7 @@ function createPlaylistCard(item) {
         if (!card.classList.contains("show-info")) {
 
             event.preventDefault();
+
 
             /* بستن اطلاعات کارت‌های دیگر */
             document
@@ -325,6 +380,7 @@ function createPlaylistCard(item) {
 
     });
 
+
     return card;
 
 }
@@ -336,8 +392,7 @@ function createPlaylistCard(item) {
 
 function createSpeakerCard(item) {
 
-    const id =
-        getXMLValue(item, "id");
+    const id = item.getAttribute("id");
 
     const name =
         getXMLValue(item, "title");
@@ -389,7 +444,7 @@ function createSpeakerCard(item) {
 function createTopicCard(item) {
 
     const id =
-        getXMLValue(item, "id");
+        item.getAttribute("id");
 
     const title =
         getXMLValue(item, "title");
@@ -399,8 +454,14 @@ function createTopicCard(item) {
         document.createElement("a");
 
 
+    /*
+       با کلیک روی کارت دسته‌بندی
+       به صفحه نتایج می‌رویم
+       و اسم خود کارت را همراه لینک می‌فرستیم
+    */
+
     card.href =
-        `topic.html?id=${id}`;
+        `results.html?topicTitle=${encodeURIComponent(title)}`;
 
 
     card.className =
@@ -419,3 +480,4 @@ function createTopicCard(item) {
     return card;
 
 }
+

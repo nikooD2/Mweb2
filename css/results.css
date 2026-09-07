@@ -284,7 +284,7 @@
 .results-video-grid {
     grid-template-columns:
         repeat(
-            4,
+            6,
             minmax(0, 1fr)
         );
 }
@@ -297,13 +297,22 @@
 .results-audio-grid {
     grid-template-columns:
         repeat(
-            6,
+            8,
             minmax(0, 1fr)
         );
 
     column-gap: 1.25rem;
 }
 
+/* -------------------------
+   PLAYLIST
+------------------------- */
+
+.results-playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 24px;
+}
 
 /* =========================================================
    CARD OVERRIDES

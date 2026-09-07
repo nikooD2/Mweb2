@@ -2,7 +2,7 @@
 
 <results type="topics">
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -12,10 +12,10 @@
             میلاد پیامبر اکرم (ص)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -25,10 +25,10 @@
             میلاد امام جعفر صادق (ع)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -38,10 +38,10 @@
             آغاز امامت امام زمان (عج)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -51,10 +51,10 @@
             ولادت حضرت زینب (س)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -64,10 +64,10 @@
             شهادت حضرت فاطمه زهرا (س)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -77,10 +77,10 @@
             ولادت حضرت فاطمه زهرا (س)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -90,10 +90,10 @@
             شهادت امام هادی (ع)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -103,10 +103,10 @@
             ولادت امام جواد (ع)
         </title>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content>
 
         <type>topic</type>
 
@@ -116,6 +116,6 @@
             ولادت امام علی (ع)
         </title>
 
-    </item>
+    </content>
 
 </results>

@@ -1,0 +1,457 @@
+/* =========================================================
+   PLAYLIST PAGE
+========================================================= */
+
+.playlist-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PLAYLIST HEADER
+========================================================= */
+
+.playlist-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+/* عنوان پلی لیست */
+
+#playlist-title {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+
+/* تعداد محتوا */
+
+.playlist-count {
+    color: var(--text-light);
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.playlist-cover {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.playlist-cover img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* =========================================================
+   PLAYLIST ACTIONS
+========================================================= */
+
+.playlist-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+
+/* دکمه‌های کپی و ذخیره
+   این دو توسط JS ساخته می‌شوند */
+
+.playlist-actions > div {
+    display: flex;
+    align-items: center;
+}
+
+
+/* دکمه پخش همه */
+
+.playlist-play-all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 150px;
+    height: 46px;
+
+    padding: 0 24px;
+
+    border: none;
+    border-radius: var(--radius-lg);
+
+    background: var(--primary);
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.playlist-play-all:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.playlist-play-all i {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   PLAYLIST CONTENT
+========================================================= */
+
+#playlist-content {
+    width: 100%;
+}
+
+
+/* =========================================================
+   PLAYLIST CONTENT ITEM
+========================================================= */
+
+.playlist-content-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 120px;
+
+    padding: 18px 0;
+
+    background: transparent;
+
+    border: none;
+    border-bottom: 1px solid var(--border);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.playlist-content-item:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.playlist-content-item:hover {
+    border-bottom-color: var(--primary-light);
+}
+
+
+/* =========================================================
+   COVER
+========================================================= */
+
+.playlist-content-cover {
+    flex: 0 0 90px;
+
+    width: 90px;
+    height: 90px;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-lg);
+
+    background: var(--primary-soft);
+}
+
+.playlist-content-cover img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   CONTENT INFO
+========================================================= */
+
+.playlist-content-info {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 0 18px;
+}
+
+
+/* عنوان */
+
+.playlist-content-title {
+    margin-bottom: 7px;
+
+    color: var(--text);
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.7;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* سخنران */
+
+.playlist-content-speaker {
+    margin-bottom: 8px;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.playlist-content-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+}
+
+.playlist-content-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.playlist-content-meta i {
+    color: var(--primary);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.playlist-content-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    flex-shrink: 0;
+
+    padding-right: 8px;
+}
+
+
+/* دکمه‌های اشتراک / دانلود / ذخیره / پخش */
+
+.playlist-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+    color: var(--text-light);
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.playlist-action:hover {
+    background: var(--primary-soft);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.playlist-action:last-child {
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+    #playlist-title {
+        font-size: 24px;
+    }
+    
+    .playlist-cover {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 16px;
+    }
+
+    .playlist-actions {
+        flex-wrap: wrap;
+    }
+
+
+    .playlist-play-all {
+        min-width: 140px;
+    }
+
+
+    .playlist-content-item {
+        min-height: 100px;
+        padding: 15px 0;
+    }
+
+
+    .playlist-content-cover {
+        flex: 0 0 76px;
+
+        width: 76px;
+        height: 76px;
+
+        border-radius: 12px;
+    }
+
+
+    .playlist-content-info {
+        padding: 0 12px;
+    }
+
+
+    .playlist-content-title {
+        font-size: 14px;
+    }
+
+
+    .playlist-content-speaker {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+
+    .playlist-content-meta {
+        gap: 9px;
+        font-size: 11px;
+    }
+
+
+    .playlist-content-actions {
+        gap: 0;
+        padding-right: 0;
+
+        flex-direction: column;
+    }
+
+
+    .playlist-action {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+/* 
+@media (max-width: 480px) {
+
+
+
+    #playlist-title {
+        font-size: 21px;
+    }
+
+
+    .playlist-count {
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+
+    .playlist-content-cover {
+        flex: 0 0 64px;
+
+        width: 64px;
+        height: 64px;
+    }
+
+
+    .playlist-content-info {
+        padding: 0 10px;
+    }
+
+
+    .playlist-content-title {
+        font-size: 13px;
+    }
+
+
+    .playlist-content-speaker {
+        font-size: 11px;
+    }
+
+
+    .playlist-content-meta {
+        gap: 7px;
+    }
+
+
+    .playlist-action {
+        width: 32px;
+        height: 32px;
+    }
+
+} */

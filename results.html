@@ -40,7 +40,10 @@
 
     <!-- ================= HEADER ================= -->
 
-    <div id="header"></div>
+    <div
+        id="header"
+        data-component="components/header.html">
+    </div>
 
 
 
@@ -61,44 +64,11 @@
 
         </section>
 
-        <div class="filter-fields">
+        <!-- ================= FILTER ================= -->
 
-            <!-- موضوع -->
-            <div class="filter-field">
-                <select id="topic-filter">
-                    <option value="">همه موضوعات</option>
-                    <option value="quran">قرآن</option>
-                    <option value="ahlulbayt">چهارده معصوم</option>
-                    <option value="prophets">پیامبران</option>
-                    <option value="hadith">حدیث</option>
-                    <option value="history">تاریخ</option>
-                    <option value="seerah">سیره</option>
-                    <option value="arabic">قواعد عربی</option>
-                    <option value="aqeedah">کلام و عقاید</option>
-                    <option value="fiqh">فقه و احکام</option>
-                    <option value="ethics">اخلاق</option>
-                    <option value="family">خانواده</option>
-                    <option value="islamic-sciences">علوم اسلامی</option>
-                </select>
-            </div>
-
-
-            <!-- نام سخنران -->
-            <div class="filter-field">
-                <select id="speaker-filter">
-                    <option value="">همه پدیدآوران</option>
-                    <option value="speaker1">سخنران 1</option>
-                    <option value="speaker2">سخنران 2</option>
-                    <option value="speaker3">سخنران 3</option>
-                </select>
-            </div>
-
-            <!-- دکمه اعمال -->
-            <button type="button" class="filter-button" id="apply-filter">
-                <i class="fa-solid fa-sliders"></i>
-                اعمال فیلتر
-            </button>
-
+        <div
+            id="filter"
+            data-component="components/filter.html">
         </div>
 
 
@@ -125,13 +95,17 @@
 
     <!-- ================= FOOTER ================= -->
 
-    <div id="footer"></div>
+    <div
+        id="footer"
+        data-component="components/footer.html">
+    </div>
 
 
 
     <!-- ================= JS ================= -->
 
     <script src="js/global.js"></script>
+    <script src="js/filter.js"></script>
     <script src="js/cards.js"></script>
     <script src="js/cards-loader.js"></script>
     <script src="js/results.js"></script>

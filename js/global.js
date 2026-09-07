@@ -1,5 +1,5 @@
 /* =========================================================
-   LOAD COMPONENTS
+   LOAD COMPONENT
 ========================================================= */
 
 async function loadComponent(elementId, filePath) {
@@ -30,7 +30,43 @@ async function loadComponent(elementId, filePath) {
         console.error(error);
 
     }
+}
 
+
+/* =========================================================
+   LOAD ALL COMPONENTS
+========================================================= */
+
+async function loadAllComponents() {
+
+    const components =
+        document.querySelectorAll("[data-component]");
+
+    for (const element of components) {
+
+        const filePath =
+            element.dataset.component;
+
+        try {
+
+            const response =
+                await fetch(filePath);
+
+            if (!response.ok) {
+                throw new Error(
+                    `Failed to load: ${filePath}`
+                );
+            }
+
+            element.innerHTML =
+                await response.text();
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+    }
 }
 
 
@@ -40,24 +76,7 @@ async function loadComponent(elementId, filePath) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    /* =========================
-       LOAD HEADER
-    ========================= */
-
-    await loadComponent(
-        "header",
-        "components/header.html"
-    );
-
-
-    /* =========================
-       LOAD FOOTER
-    ========================= */
-
-    await loadComponent(
-        "footer",
-        "components/footer.html"
-    );
+    await loadAllComponents();
 
 
     /* =========================
@@ -68,6 +87,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     initCategoryBar();
     initNavbarDropdowns();
     initLanguageSelector();
+    initSearch();
+
+
+    /* =========================
+       COMPONENTS READY
+    ========================= */
+
+    document.dispatchEvent(
+        new Event("componentsLoaded")
+    );
 
 });
 
@@ -185,7 +214,6 @@ function initNavbarMenu() {
     }
 
 }
-
 
 
 /* =========================================================
@@ -792,3 +820,33 @@ document.querySelectorAll(".content-slider").forEach(slider => {
     }
 
 });
+
+/* =========================================================
+    SEARCH
+========================================================= */
+
+function initSearch() {
+
+    const searchForm =
+        document.querySelector(".nav-search");
+
+    if (!searchForm) {
+        return;
+    }
+
+    searchForm.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        const input =
+            searchForm.querySelector("input");
+
+        const query =
+            input.value.trim();
+
+        window.location.href =
+            `results.html?type=search&q=${encodeURIComponent(query)}`;
+
+    });
+
+}

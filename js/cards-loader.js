@@ -55,7 +55,7 @@ async function loadCards(container) {
 
 
         let items =
-            [...xml.querySelectorAll("item")];
+            [...xml.querySelectorAll("content")];
 
 
         if (type) {

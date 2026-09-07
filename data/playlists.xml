@@ -2,18 +2,23 @@
 
 <results type="playlists">
 
-    <item>
+    <content id="1">
 
         <type>playlist</type>
+        
+        <format>audio</format>
 
-        <id>1</id>
+        <count>
+            <audio>8</audio>
+            <video>0</video>
+        </count>
 
         <title>
             عنوان مجموعه
         </title>
 
         <description>
-            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+            مجموعه صحبت های آقای .. شامل ۸ صوت 
         </description>
 
         <image1>
@@ -28,21 +33,26 @@
             pics/ahkam.jpg
         </image3>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content id="2">
 
         <type>playlist</type>
 
-        <id>2</id>
+        <format>video</format>
 
+        <count>
+            <audio>0</audio>
+            <video>4</video>
+        </count>
+        
         <title>
             عنوان مجموعه
         </title>
 
         <description>
-            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+            مجموعه صحبت های آقای .. ۴ ویدئوی 1 ساعته
         </description>
 
         <image1>
@@ -57,21 +67,26 @@
             pics/history.jpg
         </image3>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content id="3">
 
         <type>playlist</type>
+        
+        <format>mixed</format>
 
-        <id>3</id>
-
+        <count>
+            <audio>8</audio>
+            <video>4</video>
+        </count>
+        
         <title>
             عنوان مجموعه
         </title>
 
         <description>
-            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+            مجموعه درس های اخلاق اسلامی شامل ۸ صوت و ۴ ویدئو
         </description>
 
         <image1>
@@ -86,21 +101,26 @@
             pics/ethics.jpg
         </image3>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content id="4">
 
         <type>playlist</type>
+        
+        <format>audio</format>
 
-        <id>4</id>
-
+        <count>
+            <audio>12</audio>
+            <video>0</video>
+        </count>
+        
         <title>
             عنوان مجموعه
         </title>
 
         <description>
-            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+            درس های قرآنی از استاد .. شامل 12 فایل صوتی حدودا 20 دقیقه ای
         </description>
 
         <image1>
@@ -115,21 +135,26 @@
             pics/quran.jpg
         </image3>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content id="5">
 
         <type>playlist</type>
+        
+        <format>video</format>
 
-        <id>5</id>
-
+        <count>
+            <audio>0</audio>
+            <video>3</video>
+        </count>
+        
         <title>
             عنوان مجموعه
         </title>
 
         <description>
-            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+            بررسی احکام ماه مبارک رمضان شامل 3 ویدیو کوتاه
         </description>
 
         <image1>
@@ -144,21 +169,26 @@
             pics/ramadan.jpg
         </image3>
 
-    </item>
+    </content>
 
 
-    <item>
+    <content id="6">
 
         <type>playlist</type>
+        
+        <format>audio</format>
 
-        <id>6</id>
-
+        <count>
+            <audio>7</audio>
+            <video>0</video>
+        </count>
+        
         <title>
             عنوان مجموعه
         </title>
 
         <description>
-            مجموعه صحبت های آقای .. شامل ۸ صوت · ۴ ویدئو
+            مجموعه برخی نکات اخلاقی اسلامی پیرامون موضوع خانواده در قالب 7 فایل صوتی
         </description>
 
         <image1>
@@ -173,6 +203,6 @@
             pics/family.jpg
         </image3>
 
-    </item>
+    </content>
 
 </results>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>پلی لیست</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/playlist.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <div
+        id="header"
+        data-component="components/header.html">
+    </div>
+
+    <main class="page">
+
+        <div class="playlist-container">
+
+            <!-- ================= PLAYLIST HEADER ================= -->
+
+            <section class="playlist-header">
+
+                <div class="playlist-cover">
+                    <img id="playlist-cover" src="" alt="کاور پلی لیست">
+                </div>
+
+                <h1 id="playlist-title">
+                    پلی لیست
+                </h1>
+
+                <div class="playlist-count" id="playlist-count">
+                    ۰ صوت · ۰ ویدئو
+                </div>
+
+            </section>
+
+
+            <!-- ================= CONTENT LIST ================= -->
+
+            <div id="playlist-content"></div>
+
+                <div id="playlist-items"></div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <div
+        id="footer"
+        data-component="components/footer.html">
+    </div>
+
+    <script src="js/global.js"></script>
+    <script src="js/playlist.js"></script>
+    <script src="js/playlist-actions.js"></script>
+
+</body>
+
+</html>

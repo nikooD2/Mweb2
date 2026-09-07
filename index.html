@@ -21,7 +21,10 @@
 <body>
 
     <!-- Header -->
-    <div id="header"></div>
+    <div
+        id="header"
+        data-component="components/header.html">
+    </div>
 
     <main class="home-page">
 
@@ -151,143 +154,9 @@
 
         <!-- ================= FILTER ================= -->
 
-        <div class="filter-fields">
-
-            <!-- موضوع -->
-            <div class="filter-field">
-
-                <select id="topic-filter">
-
-                    <option value="">
-                        همه موضوعات
-                    </option>
-
-                    <option value="quran">
-                        قرآن
-                    </option>
-
-                    <option value="ahlulbayt">
-                        چهارده معصوم
-                    </option>
-
-                    <option value="prophets">
-                        پیامبران
-                    </option>
-
-                    <option value="hadith">
-                        حدیث
-                    </option>
-
-                    <option value="history">
-                        تاریخ
-                    </option>
-
-                    <option value="seerah">
-                        سیره
-                    </option>
-
-                    <option value="arabic">
-                        قواعد عربی
-                    </option>
-
-                    <option value="aqeedah">
-                        کلام و عقاید
-                    </option>
-
-                    <option value="fiqh">
-                        فقه و احکام
-                    </option>
-
-                    <option value="ethics">
-                        اخلاق
-                    </option>
-
-                    <option value="family">
-                        خانواده
-                    </option>
-
-                    <option value="islamic-sciences">
-                        علوم اسلامی
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- نام سخنران -->
-
-            <div class="filter-field">
-
-                <select id="speaker-filter">
-
-                    <option value="">
-                        همه پدید آوران
-                    </option>
-
-                    <option value="speaker1">
-                        سخنران 1
-                    </option>
-
-                    <option value="speaker2">
-                        سخنران 2
-                    </option>
-
-                    <option value="speaker3">
-                        سخنران 3
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- قالب -->
-
-            <div class="filter-field">
-
-                <select id="format-filter">
-
-                    <option value="">
-                        همه قالب‌ها
-                    </option>
-
-                    <option value="video">
-                        ویدیو
-                    </option>
-
-                    <option value="audio">
-                        صوت
-                    </option>
-
-                    <option value="image">
-                        عکس
-                    </option>
-
-                    <option value="text">
-                        کتاب
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- دکمه اعمال -->
-
-            <button
-                type="button"
-                class="filter-button"
-                id="apply-filter"
-            >
-
-                <i class="fa-solid fa-sliders"></i>
-
-                <!-- اعمال فیلتر -->
-                 فیلتر
-
-            </button>
-
+        <div
+            id="filter"
+            data-component="components/filter.html">
         </div>
 
         <!-- =====================================================
@@ -306,7 +175,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        ویدیو ها
+                        ویدیو‌ها
                     </h2>
 
                     <a
@@ -323,8 +192,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/newest.xml"
+                    data-xml="data/contents2.xml"
                     data-type="video"
+                    data-ids="1-8"
                 ></div>
 
             </section>
@@ -335,7 +205,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        صوت ها
+                        صوت‌ها
                     </h2>
 
                     <a
@@ -352,8 +222,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/newest.xml"
+                    data-xml="data/contents2.xml"
                     data-type="audio"
+                    data-ids="16-23"
                 ></div>
 
             </section>
@@ -364,12 +235,12 @@
                 <div class="content-row-header">
 
                     <h2>
-                        <!-- فهرست های پخش -->
+                        <!-- فهرست‌های پخش -->
                          مجموعه‌ها
                     </h2>
 
                     <a
-                        href="playlists.html"
+                        href="results.html?type=newest-playlist"
                         class="view-all"
                     >
                         مشاهده همه
@@ -404,7 +275,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        ویدیو ها
+                        ویدیو‌ها
                     </h2>
 
                     <a
@@ -421,8 +292,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/popular.xml"
+                    data-xml="data/contents2.xml"
                     data-type="video"
+                    data-ids="9-15"
                 ></div>
 
             </section>
@@ -433,7 +305,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        صوت ها
+                        صوت‌ها
                     </h2>
 
                     <a
@@ -450,8 +322,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/popular.xml"
+                    data-xml="data/contents2.xml"
                     data-type="audio"
+                    data-ids="16-26"
                 ></div>
 
             </section>
@@ -464,7 +337,7 @@
         <section class="content-group">
 
             <h2 class="content-group-title">
-                مناسبت های پیش رو
+                مناسبت‌های پیش رو
             </h2>
 
             <!-- ---------------- TOPICS ---------------- -->
@@ -473,7 +346,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        دسته بندی ها
+                        دسته بندی‌ها
                     </h2>
 
                     <a
@@ -501,7 +374,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        ویدیو ها
+                        ویدیو‌ها
                     </h2>
 
                     <a
@@ -518,8 +391,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/upcoming.xml"
+                    data-xml="data/contents2.xml"
                     data-type="video"
+                    data-ids="20-39"
                 ></div>
 
             </section>
@@ -530,7 +404,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        صوت ها
+                        صوت‌ها
                     </h2>
 
                     <a
@@ -547,8 +421,9 @@
 
                 <div
                     class="content-slider"
-                    data-xml="data/upcoming.xml"
+                    data-xml="data/contents2.xml"
                     data-type="audio"
+                    data-ids="20-39"
                 ></div>
 
             </section>
@@ -564,7 +439,7 @@
             <!-- =====================================================
                 4. SPEAKERS
             ====================================================== -->
-
+<!-- 
             <section class="content-row">
 
                 <div class="content-row-header">
@@ -590,7 +465,7 @@
                     data-xml="data/speakers.xml"
                 ></div>
 
-            </section>
+            </section> -->
 
             <!-- =====================================================
                 5. CATEGORIES
@@ -601,7 +476,7 @@
                 <div class="content-row-header">
 
                     <h2>
-                        دسته بندی ها
+                        دسته بندی‌ها
                     </h2>
 
                     <a
@@ -630,10 +505,14 @@
     </main>
 
     <!-- Footer -->
-    <div id="footer"></div>
+    <div
+        id="footer"
+        data-component="components/footer.html">
+    </div>
 
     <script src="js/global.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/filter.js"></script>
     <script src="js/cards.js"></script>
     <script src="js/rows.js"></script>
 
