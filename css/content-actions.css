@@ -38,18 +38,13 @@
 /* =========================================================
    AUDIO ACTIONS
 ========================================================= */
-
-.audio-actions .content-actions{
+.audio-actions {
     justify-content: center;
 
     margin-top: 1.4rem;
     padding-top: 0;
 
     text-align: center;
-}
-
-.playlist-actions .content-action span {
-    display: none;
 }
 
 /* =========================================================
