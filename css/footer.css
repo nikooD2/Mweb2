@@ -41,6 +41,10 @@
     gap: 11px;
 }
 
+.footer-column:not(.footer-about) {
+    margin-top: 25px;
+}
+
 .footer-column h3 {
     margin: 0 0 12px;
 
@@ -111,6 +115,7 @@
 /* =========================================================
    CONTACT
 ========================================================= */
+
 
 .footer-contact p {
     margin: 0;
@@ -314,9 +319,19 @@
         grid-column:span 2;
     }
 
-    /* .footer-about p {
-        max-width: 500px;
-    } */
+    .footer-contact {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 20px;
+    }
+    .footer-contact h3 {
+        grid-column: span 2;
+    }
+
+    .footer-contact p {
+        margin: 0;
+    }
 
     .footer-bottom {
         padding: 25px 20px;

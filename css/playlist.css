@@ -209,17 +209,38 @@
 /* عنوان */
 
 .playlist-content-title {
-    margin-bottom: 7px;
-
-    color: var(--text);
-
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.7;
-
+    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    position: relative;
+}
+
+.playlist-title-text {
+    display: inline-block;
+    white-space: nowrap;
+    direction: rtl;
+}
+
+
+/* فقط عنوان‌های بلند حرکت کنند */
+
+.playlist-content-title.is-long .playlist-title-text {
+    animation: playlist-marquee 40s linear infinite;
+}
+
+
+/* حرکت */
+
+@keyframes playlist-marquee {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+
 }
 
 
@@ -370,7 +391,7 @@
 
 
     .playlist-content-title {
-        font-size: 14px;
+        font-size: 13px;
     }
 
 
@@ -390,14 +411,15 @@
         gap: 0;
         padding-right: 0;
 
-        flex-direction: column;
+        /* flex-direction: column; */
     }
 
-
     .playlist-action {
-        width: 34px;
-        height: 34px;
-        font-size: 13px;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        margin: 0 -3px;
+        font-size: 11px;
     }
 }
 

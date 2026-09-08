@@ -264,8 +264,8 @@ async function handleShare(button) {
 
             fileName =
                 mediaType === "video"
-                    ? "mosbah-video.mp4"
-                    : "mosbah-audio.mp3";
+                    ? "mesbah-video.mp4"
+                    : "mesbah-audio.mp3";
 
         }
 
@@ -494,8 +494,8 @@ async function handleDownload(button) {
 
             fileName =
                 type === "video"
-                    ? "mosbah-video.mp4"
-                    : "mosbah-audio.mp3";
+                    ? "mesbah-video.mp4"
+                    : "mesbah-audio.mp3";
 
         }
 
@@ -562,7 +562,7 @@ async function handleDownload(button) {
 
 const HistoryStorage = {
 
-    key: "mosbah_history",
+    key: "mesbah_history",
 
     get() {
 
@@ -691,7 +691,7 @@ function addCurrentContentToHistory() {
 const SaveStorage = {
 
     key:
-        "mosbah_saved_contents",
+        "mesbah_saved_contents",
 
 
     get() {

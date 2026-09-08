@@ -1,0 +1,230 @@
+
+.contact-intro h1 {
+
+    margin: 0 0 20px;
+
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    letter-spacing: -0.5px;
+    color: var(--primary);
+
+}
+
+
+.contact-intro p {
+
+    max-width: 650px;
+
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: var(--fs-md);
+
+    line-height: 2.2;
+
+}
+
+/* =========================
+   CONTACT LIST
+========================= */
+
+.contact-list {
+    width: 100%;
+}
+
+
+/* =========================
+   CONTACT ITEM
+========================= */
+
+.contact-link {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 100px;
+
+    padding: 20px 5px;
+
+    /* border-bottom: 1px solid var(--border); */
+}
+
+
+/* =========================
+   LEFT ICON
+========================= */
+
+.contact-link-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+
+    border-radius: var(--radius-md);
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================
+   TEXT CONTENT
+========================= */
+
+.contact-link-content {
+    flex: 0 1 auto;
+}
+
+.contact-link-title {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text-light);
+
+    font-size: var(--fs-xs);
+}
+
+.contact-value-row {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.contact-link-value {
+    color: var(--text);
+
+    font-size: var(--fs-lg);
+    font-weight: 600;
+
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-link-value:hover {
+    color: var(--text);
+}
+
+
+/* =========================
+   ACTION ICONS
+   ترتیب:
+   متن → کپی → آیکون عمل
+========================= */
+
+.copy-contact,
+.contact-action {
+    width: 30px;
+    height: 30px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--text-light);
+
+    font-family: inherit;
+    font-size: 0.82rem;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: var(--transition);
+}
+
+.copy-contact:hover,
+.contact-action:hover {
+    color: var(--primary-dark);
+}
+
+
+/* =========================
+   COPY SUCCESS
+========================= */
+
+.copy-contact.copied {
+    color: var(--primary-dark);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .contact-header {
+        margin-bottom: 40px;
+    }
+
+    .contact-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .contact-header p {
+        font-size: var(--fs-sm);
+    }
+
+
+    .contact-info-header {
+        gap: 12px;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .contact-link {
+        gap: 12px;
+
+        min-height: 88px;
+
+        padding: 17px 0;
+    }
+
+
+    .contact-link-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: 0.85rem;
+    }
+
+
+    .contact-link-value {
+        font-size: var(--fs-md);
+    }
+
+
+    .copy-contact,
+    .contact-action {
+        width: 28px;
+        height: 28px;
+
+        font-size: 0.78rem;
+    }
+
+}

@@ -295,9 +295,9 @@ function renderPlaylistContents(contents) {
 
             <div class="playlist-content-info">
 
-                <div class="playlist-content-title">
-                    ${title}
-                </div>
+<div class="playlist-content-title">
+    <span class="playlist-title-text">${title}</span>
+</div>
 
                 <div class="playlist-content-speaker">
                     ${speaker}
@@ -379,6 +379,45 @@ function renderPlaylistContents(contents) {
 
 
         container.appendChild(card);
+
+const titleElement =
+    card.querySelector(".playlist-content-title");
+
+const titleText =
+    card.querySelector(".playlist-title-text");
+
+if (titleElement && titleText) {
+
+    requestAnimationFrame(() => {
+
+        const textWidth =
+            titleText.scrollWidth;
+
+        const containerWidth =
+            titleElement.clientWidth;
+
+
+        if (textWidth > containerWidth) {
+
+            /* چند فاصله به انتهای عنوان */
+
+            titleText.textContent =
+                  title + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
+                + title + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
+                + title + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
+                + title + "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
+                + title;
+
+
+            titleElement.classList.add("is-long");
+
+        }
+
+    });
+
+}
+
         loadPlaylistSaveStates();
+
     });
 }

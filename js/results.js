@@ -439,7 +439,7 @@ function renderResults(
             const history =
                 JSON.parse(
                     localStorage.getItem(
-                        "mosbah_history"
+                        "mesbah_history"
                     ) || "[]"
                 );
 
@@ -597,7 +597,7 @@ function renderResults(
             savedIds =
                 JSON.parse(
                     localStorage.getItem(
-                        "mosbah_saved_contents"
+                        "mesbah_saved_contents"
                     ) || "[]"
                 );
 
