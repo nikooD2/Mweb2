@@ -16,12 +16,16 @@ document.addEventListener("componentsLoaded", () => {
     const applyButton =
         document.querySelector("#apply-filter");
 
+    const activeFilters =
+        document.querySelector("#active-filters");
+
 
     if (
         !topicFilter ||
         !speakerFilter ||
         !formatFilter ||
-        !applyButton
+        !applyButton ||
+        !activeFilters
     ) {
         console.error("FILTER ELEMENTS NOT FOUND");
         return;
@@ -29,118 +33,425 @@ document.addEventListener("componentsLoaded", () => {
 
 
     /* =========================================
-       بررسی وضعیت فیلترها
+       اطلاعات فیلترها
+    ========================================= */
+
+    const filterData = {
+
+        topic: {
+            element: topicFilter,
+            title: "موضوع"
+        },
+
+        speaker: {
+            element: speakerFilter,
+            title: "سخنران"
+        },
+
+        format: {
+            element: formatFilter,
+            title: "قالب"
+        }
+
+    };
+
+
+    /* =========================================
+       فیلترهای فعال
+    ========================================= */
+
+    const active = {
+        topic: "",
+        speaker: "",
+        format: ""
+    };
+
+
+    /* =========================================
+       خواندن فیلترهای قبلی از URL
+    ========================================= */
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+
+    active.topic =
+        params.get("topic") || "";
+
+    active.speaker =
+        params.get("speaker") || "";
+
+    active.format =
+        params.get("format") || "";
+
+    /* =========================================
+    نام فارسی موضوعات
+    ========================================= */
+
+    const topicNames = {
+        quran:
+            "قرآن",
+        ahlulbayt:
+            "چهارده معصوم",
+        prophets:
+            "پیامبران",
+        hadith:
+            "حدیث",
+        history:
+            "تاریخ",
+        seerah:
+            "سیره",
+        arabic:
+            "قواعد عربی",
+        aqeedah:
+            "کلام و عقاید",
+        fiqh:
+            "فقه و احکام",
+        ethics:
+            "اخلاق",
+        family:
+            "خانواده",
+        "islamic-sciences":
+            "علوم اسلامی"
+    };
+    /* =========================================
+       نمایش تگ‌های فعال
+    ========================================= */
+
+    function renderActiveFilters() {
+
+        activeFilters.innerHTML = "";
+
+
+        Object.keys(filterData).forEach(key => {
+
+            const value =
+                active[key];
+
+            const select =
+                filterData[key].element;
+
+
+            /* =========================================
+            اگر فیلتر فعال است
+            ========================================= */
+
+            if (value) {
+
+                /* فیلد انتخاب را مخفی کن */
+                select.closest(".filter-field").style.display =
+                    "none";
+
+let label = value;
+
+
+/* موضوع مستقیماً از URL فارسی خوانده می‌شود */
+if (key === "topic") {
+
+    label = value;
+
+}
+
+
+/* سخنران و قالب از option خوانده می‌شوند */
+else {
+
+    const option =
+        select.querySelector(
+            `option[value="${value}"]`
+        );
+
+
+    if (!option) {
+        return;
+    }
+
+
+    label =
+        option.textContent.trim();
+
+}
+
+
+const tag =
+    document.createElement("div");
+
+                tag.className =
+                    "active-filter-tag";
+
+
+                tag.innerHTML = `
+
+<span class="active-filter-label">
+    ${label}
+</span>
+
+                    <button
+                        type="button"
+                        class="remove-filter"
+                        data-filter="${key}"
+                        aria-label="حذف فیلتر"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                `;
+
+
+                activeFilters.appendChild(tag);
+
+            }
+
+            /* =========================================
+            اگر فیلتر فعال نیست
+            ========================================= */
+
+            else {
+
+                /* فیلد را دوباره نمایش بده */
+                select.closest(".filter-field").style.display =
+                    "";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================================
+       بررسی تغییرات انتخاب‌شده
     ========================================= */
 
     function updateFilterButton() {
 
-        const hasFilter =
+        const hasNewFilter =
             topicFilter.value ||
             speakerFilter.value ||
             formatFilter.value;
 
         applyButton.disabled =
-            !hasFilter;
+            !hasNewFilter;
+
     }
 
-
     /* =========================================
-       تغییر فیلتر
+    تغییر فیلتر
     ========================================= */
 
-    topicFilter.addEventListener(
-        "change",
-        updateFilterButton
-    );
+topicFilter.addEventListener("change", () => {
 
-    speakerFilter.addEventListener(
-        "change",
-        updateFilterButton
-    );
+    active.topic =
+        topicNames[topicFilter.value] || "";
 
-    formatFilter.addEventListener(
-        "change",
-        updateFilterButton
-    );
+    updateFilterButton();
+
+});
+
+    speakerFilter.addEventListener("change", () => {
+
+        active.speaker = speakerFilter.value;
+
+        updateFilterButton();
+
+    });
+
+    formatFilter.addEventListener("change", () => {
+
+        active.format = formatFilter.value;
+
+        updateFilterButton();
+
+    });
 
 
     /* =========================================
-       اعمال فیلتر
+    اعمال فیلتر
     ========================================= */
 
-    applyButton.addEventListener(
+    applyButton.addEventListener("click", () => {
+
+        /*
+        * مقدار فعلی هر select مستقیماً
+        * وضعیت همان فیلتر را مشخص می‌کند.
+        *
+        * اگر "همه..." انتخاب شده باشد،
+        * مقدار خالی است و فیلتر حذف می‌شود.
+        */
+
+// active.topic =
+//     topicFilter.value;
+
+        active.speaker =
+            speakerFilter.value;
+
+        active.format =
+            formatFilter.value;
+
+
+        const newParams =
+            new URLSearchParams();
+
+
+        const currentType =
+            params.get("type");
+
+        if (currentType) {
+            newParams.set("type", currentType);
+        }
+
+
+/* موضوع → فارسی در URL */
+
+if (active.topic) {
+
+    newParams.set(
+        "topic",
+        active.topic
+    );
+
+}
+
+
+/* سخنران → بدون تغییر */
+
+if (active.speaker) {
+
+    newParams.set(
+        "speaker",
+        active.speaker
+    );
+
+}
+
+
+/* قالب → بدون تغییر */
+
+if (active.format) {
+
+    newParams.set(
+        "format",
+        active.format
+    );
+
+}
+
+
+        window.location.href =
+            `results.html?${newParams.toString()}`;
+
+    });
+
+    /* =========================================
+       حذف یک فیلتر
+    ========================================= */
+
+    activeFilters.addEventListener(
         "click",
-        () => {
+        event => {
 
-            const topic =
-                topicFilter.value;
-
-            const speaker =
-                speakerFilter.value;
-
-            const format =
-                formatFilter.value;
+            const button =
+                event.target.closest(
+                    ".remove-filter"
+                );
 
 
-            if (
-                !topic &&
-                !speaker &&
-                !format
-            ) {
+            if (!button) {
                 return;
             }
 
 
-            const params =
+            const filter =
+                button.dataset.filter;
+
+
+            active[filter] = "";
+
+
+            const newParams =
                 new URLSearchParams();
 
 
-            params.set(
-                "type",
-                "filtered"
-            );
+            const currentType =
+                params.get("type");
 
-
-            if (topic) {
-
-                params.set(
-                    "topic",
-                    topic
-                );
-
+            if (currentType) {
+                newParams.set("type", currentType);
             }
 
 
-            if (speaker) {
+/* =========================================
+   موضوع → فارسی
+========================================= */
 
-                params.set(
-                    "speaker",
-                    speaker
-                );
+if (active.topic) {
 
-            }
+    newParams.set(
+        "topic",
+        active.topic
+    );
+
+}
 
 
-            if (format) {
+/* =========================================
+   سخنران
+========================================= */
 
-                params.set(
-                    "format",
-                    format
-                );
+if (active.speaker) {
 
-            }
+    newParams.set(
+        "speaker",
+        active.speaker
+    );
+
+}
+
+
+/* =========================================
+   قالب
+========================================= */
+
+if (active.format) {
+
+    newParams.set(
+        "format",
+        active.format
+    );
+
+}
 
 
             window.location.href =
-                `results.html?${params.toString()}`;
+                `results.html?${newParams.toString()}`;
 
         }
     );
 
 
     /* =========================================
+       مقداردهی Select ها
+    ========================================= */
+
+topicFilter.value =
+    Object.keys(topicNames)
+        .find(
+            key =>
+                topicNames[key] === active.topic
+        ) || "";
+
+    speakerFilter.value =
+        active.speaker;
+
+    formatFilter.value =
+        active.format;
+
+
+    /* =========================================
        وضعیت اولیه
     ========================================= */
+
+    renderActiveFilters();
 
     updateFilterButton();
 

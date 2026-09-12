@@ -461,7 +461,7 @@ function createTopicCard(item) {
     */
 
     card.href =
-        `results.html?topicTitle=${encodeURIComponent(title)}`;
+        `results.html?topic=${encodeURIComponent(title)}`;
 
 
     card.className =

@@ -5,7 +5,11 @@
 const SAVED_CONTENTS_KEY =
     "mesbah_saved_contents";
 
+const SAVED_PLAYLISTS_KEY =
+    "mesbah_saved_playlists";
 
+const HISTORY_PLAYLISTS_KEY =
+    "mesbah_history_playlists";
 /* =========================================================
    GET CONTENT
 ========================================================= */
@@ -74,10 +78,25 @@ async function sharePlaylistContent(contentId) {
 
         if (!content) return;
 
+
+        /* =========================
+           CONTENT INFO
+        ========================= */
+
         const title =
             content.querySelector("title")
                 ?.textContent
                 .trim() || "";
+
+        const speaker =
+            content.querySelector("speaker")
+                ?.textContent
+                .trim() || "";
+
+
+        /* =========================
+           CONTENT URL
+        ========================= */
 
         const url =
             `${window.location.origin}` +
@@ -87,19 +106,48 @@ async function sharePlaylistContent(contentId) {
             )}` +
             `?id=${encodeURIComponent(contentId)}`;
 
+
+        /* =========================
+           SHARE TEXT
+        ========================= */
+
+        let shareText =
+            `«${title}»\n\n`;
+
+        if (speaker) {
+
+            shareText +=
+                `گوینده: ${speaker}\n`;
+
+        }
+
+        shareText +=
+            `لینک: ${url}`;
+
+
+        /* =========================
+           SHARE
+        ========================= */
+
         if (navigator.share) {
 
             await navigator.share({
-                title,
-                text: title,
-                url
+
+                title: title,
+
+                text: shareText,
+
+                url: url
+
             });
 
         } else {
 
-            await navigator.clipboard.writeText(url);
+            await navigator.clipboard.writeText(
+                shareText
+            );
 
-            alert("لینک کپی شد");
+            alert("اطلاعات و لینک کپی شد");
 
         }
 
@@ -314,6 +362,351 @@ function loadPlaylistSaveStates() {
 
 }
 
+/* =========================================================
+   PLAYLIST HEADER
+========================================================= */
+
+function getSavedPlaylists() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                SAVED_PLAYLISTS_KEY
+            )
+        ) || [];
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function savePlaylists(playlists) {
+
+    localStorage.setItem(
+        SAVED_PLAYLISTS_KEY,
+        JSON.stringify(playlists)
+    );
+
+}
+
+
+/* =========================================================
+   SAVE PLAYLIST
+========================================================= */
+
+function savePlaylist(playlistId) {
+
+    let saved =
+        getSavedPlaylists();
+
+    const id =
+        String(playlistId);
+
+
+    if (saved.includes(id)) {
+
+        saved =
+            saved.filter(
+                item => item !== id
+            );
+
+    } else {
+
+        saved.push(id);
+
+    }
+
+
+    savePlaylists(saved);
+
+    updatePlaylistSaveButton();
+
+}
+
+
+/* =========================================================
+   UPDATE SAVE BUTTON
+========================================================= */
+
+function updatePlaylistSaveButton() {
+
+    const button =
+        document.querySelector(
+            ".playlist-save-button"
+        );
+
+    if (!button) return;
+
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const playlistId =
+        params.get("id");
+
+
+    if (!playlistId) return;
+
+
+    const saved =
+        getSavedPlaylists();
+
+    const isSaved =
+        saved.includes(
+            String(playlistId)
+        );
+
+
+    const icon =
+        button.querySelector("i");
+
+
+    if (isSaved) {
+
+        button.classList.add("saved");
+
+        if (icon) {
+
+            icon.className =
+                "fa-solid fa-bookmark";
+
+        }
+
+        button.title =
+            "حذف از مجموعه‌های ذخیره‌شده";
+
+    } else {
+
+        button.classList.remove("saved");
+
+        if (icon) {
+
+            icon.className =
+                "fa-regular fa-bookmark";
+
+        }
+
+        button.title =
+            "ذخیره مجموعه";
+
+    }
+
+}
+
+
+/* =========================================================
+   PLAYLIST HISTORY
+========================================================= */
+
+function addPlaylistToHistory(playlistId) {
+
+    try {
+
+        let history =
+            JSON.parse(
+                localStorage.getItem(
+                    HISTORY_PLAYLISTS_KEY
+                )
+            ) || [];
+
+
+        const id =
+            String(playlistId);
+
+
+        history =
+            history.filter(
+                item => item !== id
+            );
+
+
+        history.unshift(id);
+
+
+        /*
+         * فقط ۵۰ مجموعه اخیر
+         */
+
+        history =
+            history.slice(0, 50);
+
+
+        localStorage.setItem(
+            HISTORY_PLAYLISTS_KEY,
+            JSON.stringify(history)
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "PLAYLIST HISTORY ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SHARE PLAYLIST
+========================================================= */
+
+async function sharePlaylist() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const playlistId =
+        params.get("id");
+
+
+    if (!playlistId) return;
+
+
+    const title =
+        document.querySelector(
+            "#playlist-title"
+        )?.textContent.trim()
+        || "مجموعه";
+
+
+    const url =
+        `${window.location.origin}` +
+        `${window.location.pathname}` +
+        `?id=${encodeURIComponent(playlistId)}`;
+
+
+    try {
+
+        if (navigator.share) {
+
+            await navigator.share({
+                title,
+                text: title,
+                url
+            });
+
+        } else {
+
+            await navigator.clipboard.writeText(
+                url
+            );
+
+            alert("لینک مجموعه کپی شد");
+
+        }
+
+    } catch (error) {
+
+        if (
+            error.name !== "AbortError"
+        ) {
+
+            console.error(
+                "PLAYLIST SHARE ERROR:",
+                error
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   PLAYLIST HEADER EVENTS
+========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const saveButton =
+            event.target.closest(
+                ".playlist-save-button"
+            );
+
+
+        if (saveButton) {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            const playlistId =
+                params.get("id");
+
+
+            if (playlistId) {
+
+                savePlaylist(
+                    playlistId
+                );
+
+            }
+
+            return;
+
+        }
+
+
+        const shareButton =
+            event.target.closest(
+                ".playlist-share-button"
+            );
+
+
+        if (shareButton) {
+
+            sharePlaylist();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PLAYLIST INIT
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const playlistId =
+            params.get("id");
+
+
+        if (!playlistId) return;
+
+
+        updatePlaylistSaveButton();
+
+        addPlaylistToHistory(
+            playlistId
+        );
+
+    }
+);
 
 /* =========================================================
    EVENTS

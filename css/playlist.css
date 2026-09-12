@@ -25,7 +25,7 @@
 /* عنوان پلی لیست */
 
 #playlist-title {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     color: var(--text);
     font-size: 30px;
     font-weight: 700;
@@ -39,13 +39,13 @@
     color: var(--text-light);
     font-size: 15px;
     font-weight: 500;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
 }
 
 .playlist-cover {
     width: 180px;
     height: 180px;
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -57,7 +57,61 @@
     display: block;
     object-fit: cover;
 }
+/* =========================================================
+   PLAYLIST HEADER ACTIONS
+========================================================= */
 
+.playlist-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* margin-top: 14px; */
+}
+
+
+.playlist-header-action {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: var(--surface);
+    color: var(--text-light);
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.playlist-header-action:hover {
+    color: var(--primary-dark);
+    border-color: var(--primary-light);
+    background: var(--primary-soft);
+}
+
+
+.playlist-header-action.saved {
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+    border-color: var(--primary-light);
+}
+
+
+.playlist-header-action i {
+    font-size: 14px;
+}
 /* =========================================================
    PLAYLIST ACTIONS
 ========================================================= */

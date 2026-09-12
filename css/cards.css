@@ -6,10 +6,12 @@
     background: none;
 
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 
-    gap: 1rem;
+    gap: 0.6rem;
+
+    min-width: 0;
 }
 
 .filter-field {
@@ -114,7 +116,90 @@
     transform: scale(0.97);
 }
 
+/* =========================================
+   ACTIVE FILTERS
+========================================= */
 
+.active-filters {
+    display: flex;
+    align-items: center;
+
+    gap: 0.35rem;
+
+    flex: 0 0 auto;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   ACTIVE FILTER TAG
+========================================= */
+
+.active-filter-tag {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 0.35rem;
+
+    height: 44px;
+    padding: 0 0.65rem;
+
+    border: 1px solid var(--primary-light);
+    border-radius: var(--radius-lg);
+
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+
+    font-size: var(--fs-sm);
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ACTIVE FILTER LABEL
+========================================= */
+
+.active-filter-label {
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   REMOVE FILTER
+========================================= */
+
+.remove-filter {
+    width: 18px;
+    height: 18px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: var(--primary-dark);
+
+    cursor: pointer;
+
+    font-size: 0.65rem;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition);
+}
+
+
+.remove-filter:hover {
+    background: var(--primary-dark);
+    color: var(--surface);
+}
 /* =========================================
    TABLET
 ========================================= */

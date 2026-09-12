@@ -41,35 +41,51 @@ function setResultsTitle(type) {
         );
 
 
-    const topic =
-    params.get("topic");
+    const format =
+        params.get("format");
 
-    const topicTitle =
-        params.get("topicTitle");
+    const topic =
+        params.get("topic");
 
     const speaker =
         params.get("speaker");
 
-    const format =
-        params.get("format");
+
+    /* =========================================
+       فارسی کردن پارامترها
+    ========================================= */
+
+    const typeTitles = {
+
+        newest: "تازه",
+
+        popular: "پربازدید",
+
+        upcoming: "مناسبت‌های پیش‌رو",
+
+        filtered: "نتایج فیلتر",
+
+        saved: "ذخیره شده",
+
+        history: "تاریخچه"
+
+    };
 
 
+    const formatTitles = {
 
-    /* =====================================================
-    عنوان دسته‌بندی که از کارت آمده
-    ===================================================== */
+        video: "ویدیو",
 
-    if (topicTitle) {
+        audio: "صوت",
 
-        title.textContent =
-            `تازه‌ها درباره ${topicTitle}`;
+        playlist: "مجموعه",
 
-        return;
+        image: "عکس",
 
-    }
-    /* =====================================================
-       نام فارسی موضوعات
-    ===================================================== */
+        text: "کتاب‌ها و مقاله"
+
+    };
+        
     const topicNames = {
 
         quran:
@@ -111,10 +127,6 @@ function setResultsTitle(type) {
     };
 
 
-    /* =====================================================
-       نام سخنران‌ها
-    ===================================================== */
-
     const speakerNames = {
 
         speaker1:
@@ -128,135 +140,86 @@ function setResultsTitle(type) {
 
     };
 
+    const typeTitle =
+        typeTitles[type] || "نتایج";
 
-    const topicName =
-        topic
-            ? (topicNames[topic] || topic)
-            : "";
+    const topicTitle =
+        topicNames[topic] || topic;
 
+    const speakerTitle =
+        speakerNames[speaker] || speaker;
+    /* =========================================
+       ساخت عنوان
+    ========================================= */
 
-    const speakerName =
-        speaker
-            ? (speakerNames[speaker] || speaker)
-            : "";
-
-
-    /* =====================================================
-       اگر موضوع + سخنران
-    ===================================================== */
-
-    if (topicName && speakerName) {
-
-        title.textContent =
-            `تازه‌ها درباره ${topicName} از ${speakerName}`;
-
-        return;
-
-    }
+    const parts = [];
 
 
-    /* =====================================================
-       اگر فقط موضوع
-    ===================================================== */
+    /* format */
 
-    if (topicName) {
+    if (format && formatTitles[format]) {
 
-        title.textContent =
-            `تازه‌ها درباره ${topicName}`;
-
-        return;
+        parts.push(
+            formatTitles[format]
+        );
 
     }
 
 
-    /* =====================================================
-       اگر فقط سخنران
-    ===================================================== */
+    /* type */
 
-    if (speakerName) {
+    if (typeTitle) {
 
-        title.textContent =
-            `تازه‌ها از ${speakerName}`;
-
-        return;
+        parts.push(
+            typeTitle
+        );
 
     }
 
 
-    /* =====================================================
-       اگر فقط قالب انتخاب شده
-    ===================================================== */
+    /* =========================================
+       اگر format وجود نداشت
+       بعد از type «ها» اضافه شود
+    ========================================= */
 
-    if (format === "video") {
-
-        title.textContent =
-            "تازه‌ترین ویدیوها";
-
-        return;
-
-    }
+    let result =
+        parts.join("‌های ");
 
 
-    if (format === "audio") {
+    if (
+        !format &&
+        typeTitle &&
+        !["filtered", "history"].includes(type)
+    ) {
 
-        title.textContent =
-            "تازه‌ترین صوت‌ها";
-
-        return;
+        result += "‌ها";
 
     }
 
 
-    /* =====================================================
-       عنوان عادی بر اساس type
-    ===================================================== */
+    if (topic) {
 
-    const titles = {
+        result +=
+            " درباره‌ی " +
+            topicTitle;
 
-        newest:
-            "تازه‌ها",
-
-        "newest-video":
-            "تازه‌ترین ویدیوها",
-
-        "newest-audio":
-            "تازه‌ترین صوت‌ها",
-        
-        "newest-playlist":
-            "تازه‌ترین مجموعه‌ها",
-
-        popular:
-            "پربازدیدها",
-
-        "popular-video":
-            "پربازدیدترین ویدیوها",
-
-        "popular-audio":
-            "پربازدیدترین صوت‌ها",
-
-        upcoming:
-            "مناسبت‌های پیش‌رو",
-
-        "upcoming-video":
-            "مناسبت‌های پیش‌رو - ویدیوها",
-
-        "upcoming-audio":
-            "مناسبت‌های پیش‌رو - صوت‌ها",
-
-        filtered:
-            "نتایج فیلتر",
-        saved:
-            "ذخیره‌ها",
-
-        history:
-            "تاریخچه"
-        };
+    }
 
 
-    title.textContent =
-        titles[type] || "نتایج";
+    if (speaker) {
+
+        result +=
+            " از " +
+            speakerTitle;
+
+    }
+
+
+        title.textContent =
+            result;
 
 }
+
 
 
 /* =========================================================
@@ -315,56 +278,178 @@ async function loadResults(type) {
 
         }
 
+/* =========================================
+   همه محتواها
+========================================= */
 
-        /* =========================================
-           همه محتواها
-        ========================================= */
-
-        const items =
-            [...xml.querySelectorAll("content")];
-
-
-        /* =========================================
-        PLAYLISTS
-        ========================================= */
-
-        let playlists = [];
-
-        try {
-
-            const playlistResponse =
-                await fetch("data/playlists.xml");
+let items =
+    [...xml.querySelectorAll("content")];
 
 
-            if (playlistResponse.ok) {
+/* =========================================
+   PLAYLISTS
+========================================= */
 
-                const playlistText =
-                    await playlistResponse.text();
+let playlists = [];
+
+try {
+
+    const playlistResponse =
+        await fetch("data/playlists.xml");
 
 
-                const playlistXML =
-                    parser.parseFromString(
-                        playlistText,
-                        "application/xml"
-                    );
+    if (playlistResponse.ok) {
+
+        const playlistText =
+            await playlistResponse.text();
 
 
-                playlists =
-                    [
-                        ...playlistXML.querySelectorAll("content")
-                    ];
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "Error loading playlists:",
-                error
+        const playlistXML =
+            parser.parseFromString(
+                playlistText,
+                "application/xml"
             );
 
-        }
 
+        playlists =
+            [
+                ...playlistXML.querySelectorAll("content")
+            ];
+
+    }
+
+} catch (error) {
+
+    console.error(
+        "Error loading playlists:",
+        error
+    );
+
+}
+
+
+/* =========================================================
+   SAVED / HISTORY
+   فقط IDهای مربوط به نوع صفحه را از XML نگه می‌داریم
+   بقیه منطق Results بدون تغییر ادامه پیدا می‌کند.
+========================================================= */
+
+if (
+    type === "saved" ||
+    type === "history"
+) {
+
+    /* =========================================
+       CONTENT IDS
+    ========================================= */
+
+    const contentStorageKey =
+        type === "saved"
+            ? "mesbah_saved_contents"
+            : "mesbah_history";
+
+
+    let contentIds = [];
+
+
+    try {
+
+        const stored =
+            JSON.parse(
+                localStorage.getItem(
+                    contentStorageKey
+                ) || "[]"
+            );
+
+
+        contentIds =
+            stored.map(item => {
+
+                /*
+                 * mesbah_history ممکن است
+                 * آبجکت یا ID ساده باشد.
+                 */
+
+                if (
+                    typeof item === "object" &&
+                    item !== null
+                ) {
+
+                    return String(item.id);
+
+                }
+
+                return String(item);
+
+            });
+
+    } catch {
+
+        contentIds = [];
+
+    }
+
+
+    /* =========================================
+       فقط محتواهای دارای ID
+    ========================================= */
+
+    items =
+        contentIds
+            .map(id =>
+                items.find(
+                    item =>
+                        item.getAttribute("id") === id
+                )
+            )
+            .filter(Boolean);
+
+
+    /* =========================================
+       PLAYLIST IDS
+    ========================================= */
+
+    const playlistStorageKey =
+        type === "saved"
+            ? "mesbah_saved_playlists"
+            : "mesbah_history_playlists";
+
+
+    let playlistIds = [];
+
+
+    try {
+
+        playlistIds =
+            JSON.parse(
+                localStorage.getItem(
+                    playlistStorageKey
+                ) || "[]"
+            )
+            .map(id => String(id));
+
+    } catch {
+
+        playlistIds = [];
+
+    }
+
+
+    /* =========================================
+       فقط مجموعه‌های دارای ID
+    ========================================= */
+
+    playlists =
+        playlistIds
+            .map(id =>
+                playlists.find(
+                    playlist =>
+                        playlist.getAttribute("id") === id
+                )
+            )
+            .filter(Boolean);
+
+}
 
         /* =========================================
            فقط برای تعیین پنجره باز/بسته
@@ -426,293 +511,7 @@ function renderResults(
 
     container.innerHTML = "";
 
-    /* =========================================================
-    تاریخچه
-    ========================================================= */
 
-    if (resultType === "history") {
-
-        let historyIds = [];
-
-        try {
-
-            const history =
-                JSON.parse(
-                    localStorage.getItem(
-                        "mesbah_history"
-                    ) || "[]"
-                );
-
-            historyIds =
-                history.map(item => {
-
-                    if (
-                        typeof item === "object" &&
-                        item !== null
-                    ) {
-                        return String(item.id);
-                    }
-
-                    return String(item);
-
-                });
-
-        } catch {
-
-            historyIds = [];
-
-        }
-
-
-        /*
-        ترتیب XML را نادیده می‌گیریم.
-        ترتیب تاریخچه را حفظ می‌کنیم:
-        جدیدترین مشاهده → قدیمی‌تر
-        */
-
-        const historyItems =
-            historyIds
-                .map(id =>
-                    items.find(
-                        item =>
-                            item.getAttribute("id") === id
-                    )
-                )
-                .filter(Boolean);
-
-
-        /*
-        حالا همان ساختار معمول Results
-        را برای تاریخچه استفاده می‌کنیم.
-        */
-
-        const videos = [];
-        const audios = [];
-
-        historyItems.forEach(item => {
-
-            const itemType =
-                getXMLValue(
-                    item,
-                    "type"
-                );
-
-            if (itemType === "video") {
-
-                videos.push(item);
-
-            }
-
-            else if (itemType === "audio") {
-
-                audios.push(item);
-
-            }
-
-        });
-
-
-        /*
-        تب/فیلتر فعلی Results
-        تعیین می‌کند چه چیزی نمایش داده شود.
-        */
-
-        let showVideo = false;
-        let showAudio = false;
-
-        if (format === "video") {
-
-            showVideo = true;
-
-        }
-
-        else if (format === "audio") {
-
-            showAudio = true;
-
-        }
-
-        else {
-
-            showVideo = true;
-            showAudio = true;
-
-        }
-
-
-        if (showVideo && videos.length) {
-
-            container.appendChild(
-                createResultsSection(
-                    "ویدئوها",
-                    videos,
-                    "video",
-                    true
-                )
-            );
-
-        }
-
-
-        if (showAudio && audios.length) {
-
-            container.appendChild(
-                createResultsSection(
-                    "صوت‌ها",
-                    audios,
-                    "audio",
-                    true
-                )
-            );
-
-        }
-
-
-        if (
-            !videos.length &&
-            !audios.length
-        ) {
-
-            container.innerHTML = `
-                <div class="results-empty">
-                    هنوز محتوایی مشاهده نکرده‌اید.
-                </div>
-            `;
-
-        }
-
-        return;
-    }
-    
-    /* =========================================
-    ذخیره‌ها
-    ========================================= */
-
-    if (resultType === "saved") {
-
-        let savedIds = [];
-
-        try {
-
-            savedIds =
-                JSON.parse(
-                    localStorage.getItem(
-                        "mesbah_saved_contents"
-                    ) || "[]"
-                );
-
-        } catch {
-
-            savedIds = [];
-
-        }
-
-
-        /* فقط محتواهای ذخیره‌شده */
-
-        const savedItems =
-            savedIds
-                .map(id =>
-                    items.find(
-                        item =>
-                            item.getAttribute("id") === String(id)
-                    )
-                )
-                .filter(Boolean);
-
-
-        const savedVideos = [];
-        const savedAudios = [];
-
-
-        savedItems.forEach(item => {
-
-            const itemType =
-                getXMLValue(
-                    item,
-                    "type"
-                );
-
-
-            if (itemType === "video") {
-
-                savedVideos.push(item);
-
-            }
-
-            else if (itemType === "audio") {
-
-                savedAudios.push(item);
-
-            }
-
-        });
-
-
-        /* =========================================
-        ویدئوهای ذخیره‌شده
-        ========================================= */
-
-        if (savedVideos.length) {
-
-            container.appendChild(
-
-                createResultsSection(
-                    "ویدئوها",
-                    savedVideos,
-                    "video",
-                    true
-                )
-
-            );
-
-        }
-
-
-        /* =========================================
-        صوت‌های ذخیره‌شده
-        ========================================= */
-
-        if (savedAudios.length) {
-
-            container.appendChild(
-
-                createResultsSection(
-                    "صوت‌ها",
-                    savedAudios,
-                    "audio",
-                    true
-                )
-
-            );
-
-        }
-
-
-        /* =========================================
-        بدون ذخیره
-        ========================================= */
-
-        if (
-            !savedVideos.length &&
-            !savedAudios.length
-        ) {
-
-            container.innerHTML = `
-
-                <div class="results-empty">
-
-                    هنوز محتوایی ذخیره نکرده‌اید.
-
-                </div>
-
-            `;
-
-        }
-
-
-        return;
-    }
 
     const videos = [];
     const audios = [];
@@ -755,64 +554,31 @@ function renderResults(
     let showPlaylist = false;
 
 
-    /* =========================================
-    لیست پخش
-    ========================================= */
-
-    if (resultType === "playlist") {
-
-        showPlaylist = true;
-
-    }
-
-
-    /* =========================================
-    ویدیو
-    ========================================= */
-
-    else if (
-        resultType.endsWith("-video") ||
-        format === "video"
-    ) {
+    if (format === "video") {
 
         showVideo = true;
 
     }
 
-
-    /* =========================================
-    صوت
-    ========================================= */
-
-    else if (
-        resultType.endsWith("-audio") ||
-        format === "audio"
-    ) {
+    else if (format === "audio") {
 
         showAudio = true;
 
     }
 
-    else if (
-        resultType.endsWith("-playlist") ||
-        format === "playlist"
-    ) {
+    else if (format === "playlist") {
 
         showPlaylist = true;
 
     }
-
-    /* =========================================
-    حالت عادی
-    newest / popular / ...
-    ========================================= */
 
     else {
+
         showVideo = true;
         showAudio = true;
         showPlaylist = true;
-    }
 
+    }
     /* =========================================
     لیست‌های پخش
     ========================================= */

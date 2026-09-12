@@ -2,7 +2,47 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPlaylistPage();
 });
 
+/* =========================================================
+   DATA
+   تمام خواندن اطلاعات از فایل در این بخش انجام می‌شود
+========================================================= */
 
+async function loadPlaylistData() {
+
+    const response =
+        await fetch("data/playlists.xml");
+
+    if (!response.ok) {
+        throw new Error("خطا در دریافت playlists.xml");
+    }
+
+    const text =
+        await response.text();
+
+    return new DOMParser().parseFromString(
+        text,
+        "application/xml"
+    );
+}
+
+
+async function loadContentsData() {
+
+    const response =
+        await fetch("data/contents2.xml");
+
+    if (!response.ok) {
+        throw new Error("خطا در دریافت contents2.xml");
+    }
+
+    const text =
+        await response.text();
+
+    return new DOMParser().parseFromString(
+        text,
+        "application/xml"
+    );
+}
 /* =========================================================
    LOAD PLAYLIST PAGE
 ========================================================= */
@@ -22,32 +62,28 @@ async function loadPlaylistPage() {
             return;
         }
 
+const shareButton =
+    document.querySelector(".playlist-share-button");
+
+if (shareButton) {
+
+    shareButton.onclick = () => {
+        sharePlaylist(playlistId);
+    };
+
+}
 
         /* =====================================================
            LOAD PLAYLIST INFO
-           از playlists.xml
         ===================================================== */
 
-        const playlistResponse =
-            await fetch("data/playlists.xml");
-
-        if (!playlistResponse.ok) {
-            throw new Error("خطا در دریافت playlists.xml");
-        }
-
-        const playlistText =
-            await playlistResponse.text();
-
         const playlistXML =
-            new DOMParser().parseFromString(
-                playlistText,
-                "application/xml"
-            );
+            await loadPlaylistData();
 
 
         const playlist =
             Array.from(
-                playlistXML.querySelectorAll("content")
+                playlistXML.querySelectorAll("playlist")
             ).find(
                 item =>
                     item.getAttribute("id") === playlistId
@@ -65,7 +101,7 @@ async function loadPlaylistPage() {
 
 
         /* =====================================================
-           PLAYLIST TITLE
+           PLAYLIST INFO
         ===================================================== */
 
         const title =
@@ -85,33 +121,42 @@ async function loadPlaylistPage() {
                 ?.textContent
                 .trim() || "";
 
+
         const audioCount =
             playlist.querySelector("count audio")
                 ?.textContent
                 .trim() || "0";
+
 
         const videoCount =
             playlist.querySelector("count video")
                 ?.textContent
                 .trim() || "0";
 
+
         let countText = "";
+
 
         if (format === "audio") {
 
-            countText = `${audioCount} صوت`;
+            countText =
+                `${audioCount} صوت`;
 
         }
         else if (format === "video") {
 
-            countText = `${videoCount} ویدیو`;
+            countText =
+                `${videoCount} ویدیو`;
 
         }
         else if (format === "mixed") {
 
-            countText = `${audioCount} صوت · ${videoCount} ویدیو`;
+            countText =
+                `${audioCount} صوت · ${videoCount} ویدیو`;
 
         }
+
+
         /* =====================================================
            نمایش اطلاعات پلی‌لیست
         ===================================================== */
@@ -123,6 +168,7 @@ async function loadPlaylistPage() {
             titleElement.textContent = title;
         }
 
+
         const coverElement =
             document.querySelector("#playlist-cover");
 
@@ -131,6 +177,7 @@ async function loadPlaylistPage() {
             coverElement.alt = title;
         }
 
+
         const countElement =
             document.querySelector("#playlist-count");
 
@@ -138,26 +185,13 @@ async function loadPlaylistPage() {
             countElement.textContent = countText;
         }
 
+
         /* =====================================================
            LOAD CONTENTS
-           از contents2.xml
         ===================================================== */
 
-        const contentResponse =
-            await fetch("data/contents2.xml");
-
-        if (!contentResponse.ok) {
-            throw new Error("خطا در دریافت contents2.xml");
-        }
-
-        const contentText =
-            await contentResponse.text();
-
         const contentXML =
-            new DOMParser().parseFromString(
-                contentText,
-                "application/xml"
-            );
+            await loadContentsData();
 
 
         const contents =
@@ -166,18 +200,42 @@ async function loadPlaylistPage() {
             );
 
 
-        console.log(
-            "تعداد محتوا:",
-            contents.length
-        );
+        /* =====================================================
+           PLAYLIST CONTENT IDS
+           آیدی‌ها از خود playlists.xml خوانده می‌شوند
+        ===================================================== */
+
+        const playlistContentIds =
+            Array.from(
+                playlist.querySelectorAll(
+                    "contents > content"
+                )
+            )
+            .map(
+                item =>
+                    item.getAttribute("id")
+            )
+            .filter(Boolean);
 
 
-        /*
-         * فعلاً فقط ۱۰ محتوای اول
-         */
+        /* =====================================================
+           پیدا کردن محتواها بر اساس ID
+        ===================================================== */
+
         const playlistContents =
-            contents.slice(0, 10);
+            playlistContentIds
+                .map(id =>
+                    contents.find(
+                        content =>
+                            content.getAttribute("id") === id
+                    )
+                )
+                .filter(Boolean);
 
+
+        /* =====================================================
+           RENDER
+        ===================================================== */
 
         renderPlaylistContents(
             playlistContents
@@ -195,6 +253,80 @@ async function loadPlaylistPage() {
 
 }
 
+/* =========================================================
+   SHARE PLAYLIST
+========================================================= */
+
+async function sharePlaylist(playlistId) {
+
+    try {
+
+        const playlistXML =
+            await loadPlaylistData();
+
+        const playlist =
+            Array.from(
+                playlistXML.querySelectorAll("playlist")
+            ).find(
+                item =>
+                    item.getAttribute("id") === playlistId
+            );
+
+        if (!playlist) return;
+
+
+        const title =
+            playlist.querySelector("title")
+                ?.textContent
+                .trim() || "";
+
+
+        const description =
+            playlist.querySelector("description")
+                ?.textContent
+                .trim() || "";
+
+
+        const url =
+            `${window.location.origin}` +
+            `${window.location.pathname}` +
+            `?id=${encodeURIComponent(playlistId)}`;
+
+
+        if (navigator.share) {
+
+            await navigator.share({
+
+                title,
+
+                text:
+                    description
+                        ? `${title}\n${description}`
+                        : title,
+
+                url
+
+            });
+
+        } else {
+
+            await navigator.clipboard.writeText(url);
+
+            alert("لینک کپی شد");
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "PLAYLIST SHARE ERROR:",
+            error
+        );
+
+    }
+
+}
 
 /* =========================================================
    RENDER CONTENTS

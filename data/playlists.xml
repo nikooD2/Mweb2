@@ -2,7 +2,7 @@
 
 <results type="playlists">
 
-    <content id="1">
+    <playlist id="1">
 
         <type>playlist</type>
         
@@ -32,11 +32,20 @@
         <image3>
             pics/ahkam.jpg
         </image3>
+        <contents>
+            <content id="16" />
+            <content id="17" />
+            <content id="18" />
+            <content id="19" />
+            <content id="20" />
+            <content id="21" />
+            <content id="22" />
+            <content id="23" />
+        </contents>
+    </playlist>
 
-    </content>
 
-
-    <content id="2">
+    <playlist id="2">
 
         <type>playlist</type>
 
@@ -66,11 +75,16 @@
         <image3>
             pics/history.jpg
         </image3>
+        <contents>
+            <content id="1" />
+            <content id="2" />
+            <content id="3" />
+            <content id="4" />
+        </contents>
+    </playlist>
 
-    </content>
 
-
-    <content id="3">
+    <playlist id="3">
 
         <type>playlist</type>
         
@@ -100,11 +114,24 @@
         <image3>
             pics/ethics.jpg
         </image3>
+        <contents>
+            <content id="4" />
+            <content id="16" />
+            <content id="17" />
+            <content id="2" />
+            <content id="18" />
+            <content id="19" />
+            <content id="1" />
+            <content id="20" />
+            <content id="21" />
+            <content id="3" />
+            <content id="22" />
+            <content id="23" />
+        </contents>
+    </playlist>
 
-    </content>
 
-
-    <content id="4">
+    <playlist id="4">
 
         <type>playlist</type>
         
@@ -134,11 +161,24 @@
         <image3>
             pics/quran.jpg
         </image3>
+        <contents>
+            <content id="16" />
+            <content id="17" />
+            <content id="18" />
+            <content id="19" />
+            <content id="20" />
+            <content id="21" />
+            <content id="22" />
+            <content id="23" />
+            <content id="24" />
+            <content id="25" />
+            <content id="26" />
+            <content id="27" />
+        </contents>
+    </playlist>
 
-    </content>
 
-
-    <content id="5">
+    <playlist id="5">
 
         <type>playlist</type>
         
@@ -168,11 +208,15 @@
         <image3>
             pics/ramadan.jpg
         </image3>
+        <contents>
+            <content id="1" />
+            <content id="2" />
+            <content id="3" />
+        </contents>
+    </playlist>
 
-    </content>
 
-
-    <content id="6">
+    <playlist id="6">
 
         <type>playlist</type>
         
@@ -202,7 +246,15 @@
         <image3>
             pics/family.jpg
         </image3>
-
-    </content>
+        <contents>
+            <content id="16" />
+            <content id="17" />
+            <content id="18" />
+            <content id="19" />
+            <content id="20" />
+            <content id="21" />
+            <content id="22" />
+        </contents>
+    </playlist>
 
 </results>
