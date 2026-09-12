@@ -313,21 +313,19 @@ async function sharePlaylist(playlistId) {
            SHARE DATA
         ========================= */
 
+const shareText =
+    description
+        ? `${title}\n\n${description}\n\n${url}`
+        : `${title}\n\n${url}`;
+
+
 const shareData = {
 
-    title: "TEST TITLE",
+    title: title,
 
-    text:
-        "TEST TEXT\n\n" +
-        "این متن باید حتماً نمایش داده شود\n\n" +
-        "TEST DESCRIPTION",
-
-    url:
-        "https://example.com/test"
+    text: shareText
 
 };
-
-
         /* =========================
            COVER
         ========================= */
@@ -382,25 +380,27 @@ const shareData = {
         }
 
 
-        /* =========================
-           SHARE
-        ========================= */
+/* =========================
+   SHARE
+========================= */
 
-        if (navigator.share) {
+if (navigator.share) {
 
-            await navigator.share(
-                shareData
-            );
+    await navigator.share(
+        shareData
+    );
 
-        } else {
+} else {
 
-            await navigator.clipboard.writeText(
-                `${title}\n\n${description}\n\n${url}`
-            );
+    await navigator.clipboard.writeText(
+        shareText
+    );
 
-            alert("اطلاعات پلی‌لیست و لینک کپی شد");
+    alert(
+        "اطلاعات پلی‌لیست و لینک کپی شد"
+    );
 
-        }
+}
 
 
     } catch (error) {
