@@ -313,18 +313,19 @@ async function sharePlaylist(playlistId) {
            SHARE DATA
         ========================= */
 
-        const shareData = {
+const shareData = {
 
-            title: title,
+    title: "TEST TITLE",
 
-            text:
-                description
-                    ? `${title}\n\n${description}`
-                    : title,
+    text:
+        "TEST TEXT\n\n" +
+        "این متن باید حتماً نمایش داده شود\n\n" +
+        "TEST DESCRIPTION",
 
-            url: url
+    url:
+        "https://example.com/test"
 
-        };
+};
 
 
         /* =========================
