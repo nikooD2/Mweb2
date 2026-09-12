@@ -264,6 +264,7 @@ async function sharePlaylist(playlistId) {
         const playlistXML =
             await loadPlaylistData();
 
+
         const playlist =
             Array.from(
                 playlistXML.querySelectorAll("playlist")
@@ -272,8 +273,13 @@ async function sharePlaylist(playlistId) {
                     item.getAttribute("id") === playlistId
             );
 
+
         if (!playlist) return;
 
+
+        /* =========================
+           PLAYLIST INFO
+        ========================= */
 
         const title =
             playlist.querySelector("title")
@@ -287,32 +293,111 @@ async function sharePlaylist(playlistId) {
                 .trim() || "";
 
 
+        const image =
+            playlist.querySelector("image1")
+                ?.textContent
+                .trim() || "";
+
+
+        /* =========================
+           PLAYLIST URL
+        ========================= */
+
         const url =
             `${window.location.origin}` +
             `${window.location.pathname}` +
             `?id=${encodeURIComponent(playlistId)}`;
 
 
+        /* =========================
+           SHARE DATA
+        ========================= */
+
+        const shareData = {
+
+            title: title,
+
+            text:
+                description
+                    ? `${title}\n\n${description}`
+                    : title,
+
+            url: url
+
+        };
+
+
+        /* =========================
+           COVER
+        ========================= */
+
+        if (image) {
+
+            try {
+
+                const imageResponse =
+                    await fetch(image);
+
+                if (imageResponse.ok) {
+
+                    const blob =
+                        await imageResponse.blob();
+
+
+                    const file =
+                        new File(
+                            [blob],
+                            `playlist-${playlistId}`,
+                            {
+                                type:
+                                    blob.type ||
+                                    "image/jpeg"
+                            }
+                        );
+
+
+                    if (
+                        navigator.canShare &&
+                        navigator.canShare({
+                            files: [file]
+                        })
+                    ) {
+
+                        shareData.files = [file];
+
+                    }
+
+                }
+
+            } catch (imageError) {
+
+                console.warn(
+                    "خطا در دریافت تصویر کاور:",
+                    imageError
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           SHARE
+        ========================= */
+
         if (navigator.share) {
 
-            await navigator.share({
-
-                title,
-
-                text:
-                    description
-                        ? `${title}\n${description}`
-                        : title,
-
-                url
-
-            });
+            await navigator.share(
+                shareData
+            );
 
         } else {
 
-            await navigator.clipboard.writeText(url);
+            await navigator.clipboard.writeText(
+                `${title}\n\n${description}\n\n${url}`
+            );
 
-            alert("لینک کپی شد");
+            alert("اطلاعات پلی‌لیست و لینک کپی شد");
 
         }
 
