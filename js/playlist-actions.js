@@ -93,12 +93,59 @@ async function sharePlaylistContent(contentId) {
                 ?.textContent
                 .trim() || "";
 
+        const type =
+            content.querySelector("type")
+                ?.textContent
+                .trim() || "";
+
 
         /* =========================
-           CONTENT URL
+           DETERMINE MEDIA
         ========================= */
 
-        const url =
+        let mediaUrl = "";
+        let mediaType = "";
+
+
+        if (type === "video") {
+
+            mediaUrl =
+                content.querySelector("video")
+                    ?.textContent
+                    .trim() || "";
+
+            mediaType = "video";
+
+        }
+
+        else if (type === "audio") {
+
+            mediaUrl =
+                content.querySelector("audio")
+                    ?.textContent
+                    .trim() || "";
+
+            mediaType = "audio";
+
+        }
+
+
+        if (!mediaUrl) {
+
+            alert(
+                "فایل قابل اشتراک پیدا نشد."
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           PAGE URL
+        ========================= */
+
+        const pageUrl =
             `${window.location.origin}` +
             `${window.location.pathname.replace(
                 "playlist.html",
@@ -114,19 +161,114 @@ async function sharePlaylistContent(contentId) {
         let shareText =
             `«${title}»\n\n`;
 
+
         if (speaker) {
 
             shareText +=
-                `گوینده: ${speaker}\n`;
+                `گوینده: ${speaker}\n\n`;
 
         }
 
+
         shareText +=
-            `لینک: ${url}`;
+            `از سامانه مصباح\n`;
+
+        shareText +=
+            pageUrl;
 
 
         /* =========================
-           SHARE
+           GET MEDIA
+        ========================= */
+
+        const mediaResponse =
+            await fetch(
+                mediaUrl
+            );
+
+
+        if (!mediaResponse.ok) {
+
+            throw new Error(
+                "فایل رسانه‌ای پیدا نشد."
+            );
+
+        }
+
+
+        const blob =
+            await mediaResponse.blob();
+
+
+        /* =========================
+           FILE NAME
+        ========================= */
+
+        let fileName =
+            mediaUrl
+                .split("/")
+                .pop()
+                .split("?")[0];
+
+
+        if (!fileName) {
+
+            fileName =
+                mediaType === "video"
+                    ? "mesbah-video.mp4"
+                    : "mesbah-audio.mp3";
+
+        }
+
+
+        /* =========================
+           CREATE FILE
+        ========================= */
+
+        const mediaFile =
+            new File(
+                [blob],
+                fileName,
+                {
+                    type:
+                        blob.type ||
+                        (
+                            mediaType === "video"
+                                ? "video/mp4"
+                                : "audio/mpeg"
+                        )
+                }
+            );
+
+
+        /* =========================
+           SHARE FILE
+        ========================= */
+
+        if (
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+                files: [mediaFile]
+            })
+        ) {
+
+            await navigator.share({
+
+                title: title,
+
+                text: shareText,
+
+                files: [mediaFile]
+
+            });
+
+            return;
+        }
+
+
+        /* =========================
+           SHARE WITHOUT FILE
         ========================= */
 
         if (navigator.share) {
@@ -137,21 +279,36 @@ async function sharePlaylistContent(contentId) {
 
                 text: shareText,
 
-                url: url
+                url: pageUrl
 
             });
 
-        } else {
-
-            await navigator.clipboard.writeText(
-                shareText
-            );
-
-            alert("اطلاعات و لینک کپی شد");
-
+            return;
         }
 
-    } catch (error) {
+
+        /* =========================
+           FALLBACK
+        ========================= */
+
+        await navigator.clipboard.writeText(
+            shareText
+        );
+
+        alert(
+            "لینک و اطلاعات محتوا کپی شد."
+        );
+
+    }
+
+    catch (error) {
+
+        if (
+            error.name ===
+            "AbortError"
+        ) {
+            return;
+        }
 
         console.error(
             "PLAYLIST SHARE ERROR:",
