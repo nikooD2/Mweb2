@@ -54,11 +54,35 @@ async function loadCards(container) {
             );
 
 
-        let items =
-            [...xml.querySelectorAll("content")];
+        /* =========================================================
+           ITEMS
+           اگر نوع playlist باشد، خود playlistها خوانده می‌شوند
+           در غیر این صورت contentها خوانده می‌شوند
+        ========================================================= */
+
+        let items;
 
 
-        if (type) {
+        if (type === "playlist") {
+
+            items =
+                [...xml.querySelectorAll("playlist")];
+
+        }
+
+        else {
+
+            items =
+                [...xml.querySelectorAll("content")];
+
+        }
+
+
+        /* =========================================================
+           TYPE FILTER
+        ========================================================= */
+
+        if (type && type !== "playlist") {
 
             items =
                 items.filter(item =>
@@ -68,6 +92,10 @@ async function loadCards(container) {
         }
 
 
+        /* =========================================================
+           LIMIT
+        ========================================================= */
+
         if (limit) {
 
             items =
@@ -75,6 +103,10 @@ async function loadCards(container) {
 
         }
 
+
+        /* =========================================================
+           RENDER
+        ========================================================= */
 
         container.innerHTML = "";
 

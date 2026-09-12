@@ -76,9 +76,19 @@ async function loadContentRow(slider) {
 
         }
 
-        let items =
-            [...xml.querySelectorAll("content")];
+        let items;
 
+        if (type === "playlist") {
+
+            items =
+                [...xml.querySelectorAll("playlist")];
+
+        } else {
+
+            items =
+                [...xml.querySelectorAll("content")];
+
+        }
         /* -----------------------------------------
         FILTER BY IDS
         ----------------------------------------- */
