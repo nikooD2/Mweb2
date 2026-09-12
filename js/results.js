@@ -313,7 +313,7 @@ try {
 
         playlists =
             [
-                ...playlistXML.querySelectorAll("content")
+                ...playlistXML.querySelectorAll("playlist")
             ];
 
     }
